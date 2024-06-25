@@ -6,7 +6,6 @@ website:
   title: "Notes"
   navbar:
     left:
-      - about.qmd
       - icon: website_favicon.png
         href: https://ehansen.ca
 format:

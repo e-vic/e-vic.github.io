@@ -5,12 +5,10 @@ project:
 website:
   title: "Notes"
   navbar:
-    right:
+    left:
       - about.qmd
-      - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+      - icon: website_favicon.png
+        href: https://ehansen.ca
 format:
   html:
     theme: cosmo

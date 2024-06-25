@@ -6,8 +6,8 @@ website:
   title: "Notes"
   navbar:
     left:
-      - icon: website_favicon.png
-        href: https://ehansen.ca
+      - text: Back to ehansen.ca
+        href: https://www.ehansen.ca
 format:
   html:
     theme: cosmo

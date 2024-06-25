@@ -8,7 +8,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: www.ehansen.ca/notes
+      - href: https://www.ehansen.ca/
         text: Back to notes
 
 format:

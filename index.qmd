@@ -1,5 +1,5 @@
 ---
-title: "e-vic-github"
+title: "Notes"
 ---
 
 This is a Quarto website.

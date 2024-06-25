@@ -5,9 +5,12 @@ project:
 website:
   title: "Notes"
   navbar:
+    title: false
+    search: false
     left:
-      - text: Back to ehansen.ca
-        href: https://www.ehansen.ca/notes
+      - text: Contents
+        href: index.qmd
+
 format:
   html:
     theme: cosmo

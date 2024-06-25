@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.550">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Notes - Optimisation Theory and Applications</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Contents</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Optimisation Theory and Applications</h1>
+                      </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-heading">Affiliations</div>
+    
+      <div class="quarto-title-meta-contents">
+      <p class="author">Bahman Gharesifared </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              Queen’s University
+            </p>
+        </div>
+      <div class="quarto-title-meta-contents">
+      <p class="author">Emma Hansen </p>
+    </div>
+    <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              N/A
+            </p>
+        </div>
+    </div>
+
+  <div class="quarto-title-meta">
+
+        
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a>
+  <ul class="collapse">
+  <li><a href="#examples-of-optimisation-problems" id="toc-examples-of-optimisation-problems" class="nav-link" data-scroll-target="#examples-of-optimisation-problems"><span class="header-section-number">1.1</span> Examples of Optimisation Problems</a></li>
+  <li><a href="#notations" id="toc-notations" class="nav-link" data-scroll-target="#notations"><span class="header-section-number">1.2</span> Notations</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">1.3</span> References</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-optimisation" id="toc-introduction-to-optimisation" class="nav-link" data-scroll-target="#introduction-to-optimisation"><span class="header-section-number">2</span> Introduction to Optimisation</a>
+  <ul class="collapse">
+  <li><a href="#unconstrained-optimisation" id="toc-unconstrained-optimisation" class="nav-link" data-scroll-target="#unconstrained-optimisation"><span class="header-section-number">2.1</span> Unconstrained Optimisation</a>
+  <ul class="collapse">
+  <li><a href="#existence-and-uniqueness-of-solutions" id="toc-existence-and-uniqueness-of-solutions" class="nav-link" data-scroll-target="#existence-and-uniqueness-of-solutions"><span class="header-section-number">2.1.1</span> Existence and Uniqueness of Solutions</a></li>
+  <li><a href="#necessary-conditions-of-optimality" id="toc-necessary-conditions-of-optimality" class="nav-link" data-scroll-target="#necessary-conditions-of-optimality"><span class="header-section-number">2.1.2</span> Necessary Conditions of Optimality</a></li>
+  <li><a href="#sufficient-conditions-of-optimality" id="toc-sufficient-conditions-of-optimality" class="nav-link" data-scroll-target="#sufficient-conditions-of-optimality"><span class="header-section-number">2.1.3</span> Sufficient Conditions of Optimality</a></li>
+  </ul></li>
+  <li><a href="#constrained-optimisation" id="toc-constrained-optimisation" class="nav-link" data-scroll-target="#constrained-optimisation"><span class="header-section-number">2.2</span> Constrained Optimisation</a></li>
+  </ul></li>
+  <li><a href="#convex-analysis" id="toc-convex-analysis" class="nav-link" data-scroll-target="#convex-analysis"><span class="header-section-number">3</span> Convex Analysis</a>
+  <ul class="collapse">
+  <li><a href="#convex-sets" id="toc-convex-sets" class="nav-link" data-scroll-target="#convex-sets"><span class="header-section-number">3.1</span> Convex Sets</a>
+  <ul class="collapse">
+  <li><a href="#operations-that-preserve-convexity" id="toc-operations-that-preserve-convexity" class="nav-link" data-scroll-target="#operations-that-preserve-convexity"><span class="header-section-number">3.1.1</span> Operations that Preserve Convexity</a></li>
+  </ul></li>
+  <li><a href="#convex-functions" id="toc-convex-functions" class="nav-link" data-scroll-target="#convex-functions"><span class="header-section-number">3.2</span> Convex Functions</a>
+  <ul class="collapse">
+  <li><a href="#conditions-of-convexity" id="toc-conditions-of-convexity" class="nav-link" data-scroll-target="#conditions-of-convexity"><span class="header-section-number">3.2.1</span> Conditions of Convexity</a></li>
+  </ul></li>
+  <li><a href="#separation-of-convex-sets" id="toc-separation-of-convex-sets" class="nav-link" data-scroll-target="#separation-of-convex-sets"><span class="header-section-number">3.3</span> Separation of Convex Sets</a></li>
+  </ul></li>
+  <li><a href="#convex-optimisation" id="toc-convex-optimisation" class="nav-link" data-scroll-target="#convex-optimisation"><span class="header-section-number">4</span> Convex Optimisation</a>
+  <ul class="collapse">
+  <li><a href="#conjugate-functions" id="toc-conjugate-functions" class="nav-link" data-scroll-target="#conjugate-functions"><span class="header-section-number">4.1</span> Conjugate Functions</a></li>
+  <li><a href="#duality-theory" id="toc-duality-theory" class="nav-link" data-scroll-target="#duality-theory"><span class="header-section-number">4.2</span> Duality Theory</a></li>
+  <li><a href="#nonlinear-programming" id="toc-nonlinear-programming" class="nav-link" data-scroll-target="#nonlinear-programming"><span class="header-section-number">4.3</span> Nonlinear Programming</a>
+  <ul class="collapse">
+  <li><a href="#conditions-for-optimality" id="toc-conditions-for-optimality" class="nav-link" data-scroll-target="#conditions-for-optimality"><span class="header-section-number">4.3.1</span> Conditions for Optimality</a></li>
+  <li><a href="#nlp-and-duality" id="toc-nlp-and-duality" class="nav-link" data-scroll-target="#nlp-and-duality"><span class="header-section-number">4.3.2</span> NLP and Duality</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#algorithms-for-optimisation" id="toc-algorithms-for-optimisation" class="nav-link" data-scroll-target="#algorithms-for-optimisation"><span class="header-section-number">5</span> Algorithms for Optimisation</a>
+  <ul class="collapse">
+  <li><a href="#gradient-methods---first-order" id="toc-gradient-methods---first-order" class="nav-link" data-scroll-target="#gradient-methods---first-order"><span class="header-section-number">5.1</span> Gradient Methods - First Order</a></li>
+  <li><a href="#gradient-methods---second-order" id="toc-gradient-methods---second-order" class="nav-link" data-scroll-target="#gradient-methods---second-order"><span class="header-section-number">5.2</span> Gradient Methods - Second Order</a></li>
+  </ul></li>
+  <li><a href="#extras" id="toc-extras" class="nav-link" data-scroll-target="#extras"><span class="header-section-number">6</span> Extras</a>
+  <ul class="collapse">
+  <li><a href="#minimising-polynomials" id="toc-minimising-polynomials" class="nav-link" data-scroll-target="#minimising-polynomials"><span class="header-section-number">6.1</span> Minimising Polynomials</a></li>
+  </ul></li>
+  <li><a href="#references-1" id="toc-references-1" class="nav-link" data-scroll-target="#references-1"><span class="header-section-number">7</span> References</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<div class="hidden">
+
+</div>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>This document is a write-up of the <em>Optimisation Theory and Applications</em> course taught by Bahman Gharesifared in 2016 at Queen’s University. The vast majority of the content is from Bahman’s notes, with some comments from me (Emma Hansen).</p>
+<section id="examples-of-optimisation-problems" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="examples-of-optimisation-problems"><span class="header-section-number">1.1</span> Examples of Optimisation Problems</h2>
+<div class="example">
+<div class="example-header">
+<p>Example: 150BC – Alexandria’s Problem</p>
+</div>
+<div class="example-container">
+<p><em>figure</em></p>
+<p>find a point <span class="math inline">\(D\in\mathbb{R}^2\)</span> such that <span class="math inline">\(||AD||+||DB||\)</span> is minimised.</p>
+<p>Consider the figure below.</p>
+<p><em>another figure</em></p>
+<p>Claim: this <span class="math inline">\(D\)</span> is the solution.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose otherwise, i.e.&nbsp;let some point <span class="math inline">\(D'\)</span> be the minimiser:</p>
+<p><span class="math display">\[\begin{aligned}
+||AD'|| + ||D'B|| &amp;\geq ||AB'|| \textrm{ (from the claim)} \\
+&amp;= ||AD|| + ||DB'|| \\
+&amp;= ||AD|| + ||DB||
+\end{aligned}\]</span></p>
+<p>Why is this true? Triangle inequality! Thus, <span class="math inline">\(D\)</span> is the minimiser. ■</p>
+</div>
+</div>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example: 850BC – Dido’s Problem</p>
+</div>
+<div class="example-container">
+<p><em>figure</em></p>
+<p>Consider a curve of fixed length <span class="math inline">\(\ell\)</span>. What is the maximum area of land you can enclose using this curve?</p>
+<p>To start, think about what kind of shape you should use.</p>
+<p>Formally, the problem is: <span class="math inline">\(\max_y \ \ J(y) = \int_a^b y(x) dx, \ y\in\mathcal{C}([a,b])\)</span>.</p>
+<p>It turns out the optimal shape is a semicircle, but we will not be able to prove this even at the end of the course.</p>
+</div>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example: 1556 – Tartaglia’s Problem</p>
+</div>
+<div class="example-container">
+<p>This problem is also known as the Cardano-Tartaglia problem.</p>
+<p>Pick two numbers <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> such that:</p>
+<ul>
+<li>they sum to 8: <span class="math inline">\(x+y = 8 \Rightarrow y = (8-x)\)</span></li>
+<li>their product, <span class="math inline">\(xy\)</span>, and difference, <span class="math inline">\(x-y\)</span>, is maximised</li>
+</ul>
+<p>Today this problem is easy to solve (because of calculus): we need to maximise <span class="math inline">\(f(x) = (xy)(x-y) = x(8-x)(x-(8-x)) = -2x^3 + 24x^2 - 64x\)</span>.</p>
+<p>Solution: <span class="math inline">\(x = 4(1-\frac{1}{\sqrt{3}})\)</span>.</p>
+</div>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example: 1954 – Max-flow</p>
+</div>
+<div class="example-container">
+<p>Consider a directed graph <span class="math inline">\(\mathcal{G}(V,E)\)</span>.</p>
+<p><em>figure</em></p>
+<p>Let each edge <span class="math inline">\(ij\)</span> have a capacity <span class="math inline">\(c_{ij}\)</span>.</p>
+<p>We are looking for a map <span class="math inline">\(f:E\rightarrow \mathbb{R}_{\geq 0}\)</span> such that</p>
+<ul>
+<li><span class="math inline">\(f(ij)\leq c_{ij}\)</span></li>
+<li>Flow is conserved at each vertex: incoming = outgoing</li>
+</ul>
+<p>With these conditions, we want to maximise flow across the graph: <span class="math inline">\(\max \ |f|\)</span> over all routes through the graph.</p>
+</div>
+</div>
+</section>
+<section id="notations" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="notations"><span class="header-section-number">1.2</span> Notations</h2>
+<ul>
+<li>For parts of this course, we work with functionals on normed vector spaces. We usually consider functions on subsets of <span class="math inline">\(\mathbb{R}^n\)</span>.</li>
+</ul>
+<p><span class="math display">\[\begin{aligned}
+&amp;f: D\subset\mathbb{R}^n \rightarrow \mathbb{R}\\
+&amp;f: E \rightarrow \mathbb{R}, \ E \textrm{ a normed vector space}
+\end{aligned}\]</span></p>
+<ul>
+<li>We usually assume <span class="math inline">\(f\)</span> is differentiable, specifically Fréchet or Gâteaux differentiable. Nevertheless, we denote gradient (or derivative) of <span class="math inline">\(f\)</span> by <span class="math inline">\(\nabla f\)</span>:</li>
+</ul>
+<p><span class="math display">\[\nabla f = (\frac{\partial f}{\partial x_1},...,\frac{\partial f}{\partial x_n})^T\]</span></p>
+</section>
+<section id="references" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="references"><span class="header-section-number">1.3</span> References</h2>
+<ul>
+<li>Convex Optimisation - <span class="citation" data-cites="Boyd_Vandenberghe_2004">Boyd and Vandenberghe (<a href="#ref-Boyd_Vandenberghe_2004" role="doc-biblioref">2004</a>)</span></li>
+<li>Foundations of Optimisation - <span class="citation" data-cites="Güler_2010">Güler (<a href="#ref-Güler_2010" role="doc-biblioref">2010</a>)</span></li>
+<li>Numerical Optimisation - <span class="citation" data-cites="Nocedal_Wright_2006">Nocedal and Wright (<a href="#ref-Nocedal_Wright_2006" role="doc-biblioref">2006</a>)</span></li>
+</ul>
+</section>
+</section>
+<section id="introduction-to-optimisation" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Introduction to Optimisation</h1>
+<div id="def-localglobaloptimisers" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 1 (Local and Global Minimisers/Maximisers)</strong></span> Let <span class="math inline">\(f:\mathcal{U}\rightarrow\mathbb{R}\)</span>, where <span class="math inline">\(\mathcal{U}\subset\mathbb{R}^n\)</span>. Then <span class="math inline">\(x^*\in\mathcal{U}\)</span> is a:</p>
+<ul>
+<li><strong>local minimiser</strong> if there exists a neighbourhood of <span class="math inline">\(x^*\)</span> such that <span class="math inline">\(f(x^*)\leq f(x)\)</span> for all <span class="math inline">\(x\)</span> in this neighbourhood. If this is true for all <span class="math inline">\(x\in\mathcal{U}\)</span>, <span class="math inline">\(x^*\)</span> is a <strong>global minimiser</strong>.</li>
+<li><strong>local/global maximiser</strong> defined similarly.</li>
+</ul>
+</div>
+<section id="unconstrained-optimisation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="unconstrained-optimisation"><span class="header-section-number">2.1</span> Unconstrained Optimisation</h2>
+<section id="existence-and-uniqueness-of-solutions" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="existence-and-uniqueness-of-solutions"><span class="header-section-number">2.1.1</span> Existence and Uniqueness of Solutions</h3>
+<div id="thm-weierstrass" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 1 (Weierstrass, 1858)</strong></span> Let <span class="math inline">\(K\)</span> be a compact set in a topological space. Let <span class="math inline">\(f:K\rightarrow\mathbb{R}\)</span> be a continuous function. Then, there exists <span class="math inline">\(x^*\in K\)</span> such that <span class="math inline">\(f(x^*)\leq f(x)\)</span> for all <span class="math inline">\(x\in K\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Recall that <span class="math inline">\(K\)</span> is compact if every open cover of <span class="math inline">\(K\)</span> has a finite subcover.</p>
+<p>We prove <a href="#thm-weierstrass" class="quarto-xref">Theorem&nbsp;1</a> in two steps.</p>
+<p>Step 1: We show that <span class="math inline">\(f\)</span> is bounded from below. Let <span class="math inline">\(K_n = \{ x\in K | f(x) &gt; n\}\)</span> (open sets). Then,</p>
+<p><span class="math display">\[ K = \cup_{n=-\infty}^\infty K_n.\]</span></p>
+<p>Since <span class="math inline">\(K\)</span> is compact, there exists a finite subcover <span class="math inline">\(\{K_{n_i}\}_{i=1}^k\)</span></p>
+<p><span class="math display">\[ K = \cup_{i=1}^k K_{n_i}. \]</span></p>
+<p>Let <span class="math inline">\(\tilde{n} = \min\{n_i \mid i=1,...,k\}\)</span>. Then, <span class="math inline">\(K_{\tilde{n}} = K\)</span>.</p>
+<p>By definition of <span class="math inline">\(K_n\)</span>, we now let</p>
+<p><span class="math display">\[f^* = \inf\{ f(x) | x\in K\} = \inf\{f(x) | f(x) &gt;\tilde{n}\} &gt; -\infty. \]</span></p>
+<p>Therefore <span class="math inline">\(f\)</span> is bounded from below.</p>
+<p>Step 2: We show that <span class="math inline">\(f\)</span> has a gloal minimizer. Suppose otherwise and let:</p>
+<ul>
+<li><span class="math inline">\(Y_n = \{x\in K | f(x) &gt; f^* + \frac{1}{n}\}\)</span> (open)</li>
+<li><span class="math inline">\(K = \cup_{n=1}^\infty Y_n\)</span> again. Using compactness and a similar argument as before, there exists <span class="math inline">\(\tilde{n}&gt;1\)</span> such that <span class="math inline">\(K = Y_{\tilde{n}}\)</span>.</li>
+</ul>
+<p>Thus we have that <span class="math inline">\(f(x)&gt;f^* + \frac{1}{\tilde{n}}\)</span> for all <span class="math inline">\(x\in K\)</span>. This, however, contradicts the definition of <span class="math inline">\(f^*\)</span> as the infimum. ■</p>
+</div>
+<p><strong>include figure</strong></p>
+<p>Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in <span class="math inline">\(C^0([0,1])\)</span> is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there eists a minimiser which is not continuous.) Weierstrass theorem doesn’t work well for infinite dimensions.</p>
+<p>We now go about <strong>relaxing compactness</strong>.</p>
+<div id="thm-globalmin" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 2</strong></span> Suppose <span class="math inline">\(F: E\rightarrow\mathbb{R}\)</span> is continuous. If <span class="math inline">\(f\)</span> has a non-empty compact sublevel set, i.e.&nbsp;<span class="math inline">\(\{x\in E | f(x) \leq \alpha\}\)</span> for some <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, then <span class="math inline">\(f\)</span> achieves a <em>global minimum</em>.</p>
+</div>
+<p>This means that if the set of values of a function that are less than <span class="math inline">\(\alpha\)</span> is finite, a minimum exists.</p>
+<p><strong>add figure</strong></p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Pretty straightforward. For an idea, see the figure.</p>
+</div>
+<div id="def-CoerciveFunction" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 2 (Coercive function)</strong></span> A function <span class="math inline">\(f:E\rightarrow\mathbb{R}\)</span> is call coercive if</p>
+<p><span class="math display">\[ ||x||\rightarrow\infty \ \ \Rightarrow \ \ f(x) \rightarrow\infty .\]</span></p>
+<p>Note: here, <span class="math inline">\(E\)</span> is any normed vector space.</p>
+</div>
+<div id="prp-globalmin" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 1</strong></span> If <span class="math inline">\(f:D\rightarrow\mathbb{R}\)</span>, where <span class="math inline">\(D\)</span> is closed and <span class="math inline">\(f\)</span> is continuous, then <span class="math inline">\(f\)</span> achieves a <em>global minimum</em> on <span class="math inline">\(D\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Since <span class="math inline">\(F\)</span> is continuous and <span class="math inline">\(d\)</span> is closed, we have that <span class="math inline">\(\{x\in D | f(x) \leq \alpha\}\)</span>, <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, is closed.</p>
+<p>We claim that this set is also bounded: Suppose otherwise, then there is a sequence <span class="math inline">\(||x_n||\rightarrow\infty\)</span>. Then, using coercivity <span class="math inline">\(|f(x)|\rightarrow\infty\)</span> on this sublevel set, which is a contradiction! Thus, the sublevel set is also bounded.</p>
+<p>By the previous result, since the sublevel set is compact, we have a global minimum. ■</p>
+</div>
+</section>
+<section id="necessary-conditions-of-optimality" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="necessary-conditions-of-optimality"><span class="header-section-number">2.1.2</span> Necessary Conditions of Optimality</h3>
+<p>Consider a <span class="math inline">\(C^1\)</span>-function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb{R}^n\)</span> and suppose tht <span class="math inline">\(x^*\)</span> is a local minimum of <span class="math inline">\(f\)</span> in some open set <span class="math inline">\(D\subset \mathbb{R}^n\)</span>. Note that <span class="math inline">\(x^*\)</span> is in the interior of <span class="math inline">\(d\)</span>.</p>
+<p><strong>figure</strong></p>
+<p>Let <span class="math inline">\(d\)</span> be some vector in <span class="math inline">\(\mathbb{R}^n\)</span>, and <span class="math inline">\(\alpha\in\mathbb{R}\)</span>. Consider:</p>
+<p><span class="math display">\[g(\alpha) = f(x^* + \alpha d).\]</span></p>
+<p>Note that: <span class="math inline">\(\alpha = 0\)</span> is the local minimum of <span class="math inline">\(g\)</span>. Using a first order approximation:</p>
+<p><span class="math display">\[ g(\alpha) = g(0) + g'(0)(\alpha - 0) + \mathcal{O}(\alpha),\]</span></p>
+<p>where <span class="math inline">\(\lim_{\alpha\rightarrow } \frac{\mathcal{O}(\alpha)}{\alpha} = 0\)</span>.</p>
+<div id="lem-lemma" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 1</strong></span> We have that <span class="math inline">\(g'(0) = 0\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose otherwise. Then for <span class="math inline">\(\varepsilon &gt;0\)</span> small enough and <span class="math inline">\(\alpha \neq 0\)</span> with <span class="math inline">\(|\alpha|&lt;\varepsilon\)</span>, we have</p>
+<p><span class="math display">\[\begin{aligned}
+|g'(0) \alpha| &gt; |\mathcal{O}(\alpha)|\\
+\Rightarrow g(\alpha) - g(0) &lt; g'(0) \alpha + |g'(0)\alpha|
+\end{aligned}\]</span></p>
+<p>If we let <span class="math inline">\(\alpha\)</span> have the opposite sign (since <span class="math inline">\(\alpha\)</span> is any number in <span class="math inline">\(\mathbb{R}\)</span>) of <span class="math inline">\(g'(0)\)</span>, then <span class="math inline">\(g(\alpha) &lt; g(0)\)</span>. Which is a contradiction! Thus <span class="math inline">\(g'(0)=0\)</span>. ■</p>
+</div>
+<p>Now, with <span class="math inline">\(g'(0) = 0\)</span>, we consider what this means for <span class="math inline">\(f\)</span>.</p>
+<p><span class="math display">\[\begin{aligned}
+g'(\alpha) &amp;= \nabla f (x^* + \alpha d) \cdot \vec{d} \\
+&amp;= \sum_{i=1}^n \frac{\partial f}{\partial x_i}(x^* + \alpha d) \cdot d_i
+\end{aligned}\]</span></p>
+<p>Then, <span class="math inline">\(g'(0) = \nabla f(x^*) \cdot d = 0\)</span> for all <span class="math inline">\(d\in\mathbb{R}^n\)</span>. Thus, <span class="math inline">\(\nabla f(x^*) = 0\)</span>. This is the <em>first necessary condition</em> of optimality.</p>
+</section>
+<section id="sufficient-conditions-of-optimality" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="sufficient-conditions-of-optimality"><span class="header-section-number">2.1.3</span> Sufficient Conditions of Optimality</h3>
+<p>Consider now the function <span class="math inline">\(f\)</span>, this time in <span class="math inline">\(C^2\)</span>.</p>
+<p><span class="math display">\[g(\alpha) = g(0) + g'(0) \alpha + \frac{1}{2}g''(0)\alpha^2 + \mathcal{O}(\alpha^2),\]</span></p>
+<p>with <span class="math inline">\(\lim_{\alpha\rightarrow 0} \frac{\mathcal{O}(\alpha^2)}{\alpha^2} = 0\)</span>.</p>
+<div id="lem-secondorder" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 2</strong></span> If <span class="math inline">\(x^*\)</span> is a local minimum, then <span class="math inline">\(g''(0) \geq 0\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose otherwise. I.e. <span class="math inline">\(g''(0) &lt; 0\)</span>. Then, or <span class="math inline">\(\alpha\)</span> small enough, we have</p>
+<p><span class="math display">\[\frac{1}{2} |g''(0)|\alpha^2 &gt; \mathcal{O}(\alpha^2). \]</span></p>
+<p>Since we know that <span class="math inline">\(g'(0) = 0 \Rightarrow g(\alpha) - g(0) &lt; \frac{1}{2} g''(0)\alpha^2 + \frac{1}{2}|g''(0)|\alpha^2\)</span> and <span class="math inline">\(\frac{1}{2}g''(0)\alpha^2 &lt;0\)</span>, then $g()- g(0) &lt;0 $, which is contradicts <span class="math inline">\(g(0)\)</span> being the minimiser! ■</p>
+</div>
+<p>Let us compute <span class="math inline">\(g''(0)\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+g''(\alpha) &amp;= \frac{d}{dx} g'(\alpha) \\
+&amp;= \frac{d}{d\alpha} \sum_{i=1}^n \frac{\partial f}{\partial x_i}(x^* + \alpha d) d_i \\
+&amp;= \sum_{i=1}^n \sum_{j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j} (x^* + \alpha d) d_i d_j
+\end{aligned}\]</span></p>
+<p>Then, <span class="math inline">\(g''(0) = \sum_{i,j = 1}^n \frac{\partial^2 f}{\partial x_i \partial x_j} (x^*)d_i d_j = d^T \nabla^2 f(x^*) d\)</span>. And since <span class="math inline">\(g''(0)\geq 0\)</span>, then <span class="math inline">\(d^T \nabla^2 f(x^*) d \geq 0\)</span> for all <span class="math inline">\(d\)</span>, which implies <span class="math inline">\(\nabla^2 f(x^*)\)</span> is symmetric and positive semidefinite.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Symmetric matrices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider an <span class="math inline">\(n\times n\)</span> real symmetric matrix <span class="math inline">\(A\in\mathbb{R}^{n\times n}\)</span>. It is well known and easy to show that <span class="math inline">\(A\)</span> has real eigenvalues, denote these by <span class="math inline">\(\lambda_1,...,\lambda_n\in\mathbb{R}\)</span>, with corresponding eigenvectors <span class="math inline">\(\vec{u}_1,...,\vec{u}_n\)</span> such that <span class="math inline">\(\langle \vec{u}_i, \vec{u}_j\rangle = 0\)</span> when <span class="math inline">\(i\neq j\)</span>, and <span class="math inline">\(||\vec{u}_i|| = 1\)</span>. Let now</p>
+<p><span class="math display">\[ \Lambda = \left[\begin{array}{ccc}
+\lambda_1 &amp; ... &amp; 0 \\
+\vdots &amp; \ddots &amp; \vdots \\
+0 &amp; ... &amp; \lambda_n
+\end{array}\right] = \texttt{diag}(\lambda_1,...,\lambda_n), \ \ U = \left[\vec{u}_1,...,\vec{u}_n \right].\]</span></p>
+<p>Note that <span class="math inline">\(AU = \left[A\vec{u}_1,...,A\vec{u}_n \right] = \left[\lambda_1\vec{u}_1,...,\lambda_n\vec{u}_n \right] = U\Lambda\)</span>.</p>
+<p>Since <span class="math inline">\(U^T U = I_n\)</span> (identity), then <span class="math inline">\(A = A(U U^T) = (AU)U^T = U\Lambda U^T\)</span>. (note: <span class="math inline">\(U\)</span> is non-singular).</p>
+<div id="thm-spectraldecomp" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 3 (Spectral Decomposition of Symmetric Matrices)</strong></span> Let <span class="math inline">\(A\)</span> be a real symmetric matrix. Then, <span class="math inline">\(A\)</span> can be written as</p>
+<p><span class="math display">\[ A = U \Lambda U^T.\]</span></p>
+</div>
+<div id="cor-PSD" class="theorem corollary">
+<p><span class="theorem-title"><strong>Corollary 1</strong></span> <span class="math inline">\(A\)</span> is positive semidefinite if and only if all eigenvalues of <span class="math inline">\(A\)</span> are non-negative. Similarly, positive definite if and only if all eigenvalues are strictly positive.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>By the previous result,</p>
+<p><span class="math display">\[\begin{aligned}
+d^T A d &amp;= d^T U\Lambda U^T d \\
+&amp;= (U^Td)^T \Lambda (U^T d)
+\end{aligned}.\]</span></p>
+<p>Since <span class="math inline">\(U\)</span> is non-singular, we have that <span class="math inline">\(d^T A d\geq 0\)</span> for all <span class="math inline">\(d\)</span> if and only if <span class="math inline">\(d^T \Lambda d\geq 0\)</span> for all <span class="math inline">\(d\)</span>.</p>
+<p><span class="math display">\[ \begin{aligned}
+d^T \Lambda d &amp;= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
+&amp;\Rightarrow \lambda_i \geq 0 \ \forall i.
+\end{aligned}\]</span></p>
+<p>The proof of the second part is similar. ■</p>
+</div>
+</div>
+</div>
+<p>It is easy to see that the necessary conditions we have are not sufficient. For example, take <span class="math inline">\(f: x\mapsto x^3\)</span>. However, if <span class="math inline">\(f\)</span> is in <span class="math inline">\(C^2\)</span> and <span class="math inline">\(\nabla f (X^*) = 0\)</span>, <span class="math inline">\(\nabla^2f(x^*) \prec 0\)</span>, then <span class="math inline">\(x^*\)</span> is a minimiser.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>To show this, note that</p>
+<p><span class="math display">\[f(x^* + \alpha d) = f(x^*) + \frac{1}{2}\alpha^2 d^T\nabla^2 f(x^*) d + ... \.\]</span></p>
+<p>Again, we can choose $small enough to have</p>
+<p><span class="math display">\[ \frac{\alpha^2}{2} d^T \nabla^2 f(x^*) d &gt; |\mathcal{O}(\alpha^2).\]</span></p>
+<p>Since <span class="math inline">\(\nabla^2 f(x^*)\)</span> is positive definite, then <span class="math inline">\(f(x^* + \alpha d) &gt; f(x^*)\)</span> for all <span class="math inline">\(d\)</span>. Thus, <span class="math inline">\(x^*\)</span> is a local minimum! ■</p>
+</div>
+<p>Note that: <span class="math inline">\(\alpha\)</span> depends on <span class="math inline">\(d\)</span>. If <span class="math inline">\(|\alpha| &lt; \varepsilon^*(d)\)</span>, different <span class="math inline">\(d\)</span> will result in different <span class="math inline">\(\varepsilon\)</span>, thus, choose the smallest <span class="math inline">\(\varepsilon\)</span>. Without loss of generality assume <span class="math inline">\(||d|| = 1\)</span>, <span class="math inline">\(\varepsilon^* = \min(\varepsilon(d))\)</span> which results from Weierstrass theorem.</p>
+<p><strong>figure</strong></p>
+<div class="example">
+<div class="example-header">
+<p>Example: Arithmetic-Geometric mean inequality</p>
+</div>
+<div class="example-container">
+<p>We show that: for <span class="math inline">\(x_i&gt;0 \in\mathbb{R} \ \forall i\)</span></p>
+<p><span class="math display">\[ (x_1 \cdot ... \cdot x_n)^{1/n} \leq \frac{1}{n} \sum_{i=1}^n x_i .\]</span></p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(y_i = \ln(x_i)\)</span> and let</p>
+<p><span class="math display">\[ f(y_1,...,y_n) \triangleq \frac{1}{n} \sum_{i=1}^n e^{y_i} - e^{\frac{y_1 + ... + y_n}{n}} \]</span></p>
+<p>(this came from replacing <span class="math inline">\(x_i\)</span> with <span class="math inline">\(e^{y_i}\)</span> in the statement.)</p>
+<p>Note that we want tot show <span class="math inline">\(f(y_1,..,y_n) \geq 0\)</span>. This is the same problem as above. It is enough to show that <span class="math inline">\(f\)</span> acheives its minimum value at zero.</p>
+<p>To do this, use the first order condition of optimality:</p>
+<p><span class="math display">\[ \frac{\partial f}{\partial y_i} = \frac{1}{n} e^{y_i} - \frac{1}{n} e^{\frac{y_1 + ... + y_n}{n}} \ \ \forall i \]</span></p>
+<p>which are zero if and only if $ e^{y_i} = e^{} &nbsp;y_i = $ for all <span class="math inline">\(i\)</span>. (Check this for yourselves).</p>
+<p>This gives a system of linear equations with solution <span class="math inline">\(y_i = \frac{Y}{n}\)</span> for all <span class="math inline">\(i\)</span>. i.e.&nbsp;picked all <span class="math inline">\(y_i\)</span> to be the same for any value of <span class="math inline">\(Y\in\mathbb{R}\)</span>.</p>
+<p>Note that <span class="math inline">\(f\left(\frac{Y}{n},...,\frac{Y}{n}\right) = 0\)</span>.</p>
+<p>We now need to justify that we have a global minimiser. (And, ideally a unique one.)</p>
+<p>We reduce the problem over the set</p>
+<p><span class="math display">\[\{(y_1,...,y_n) | \sum_{i=1}^n y_i = Y\}\]</span></p>
+<p>for some <span class="math inline">\(Y\in\mathbb{R}\)</span>. Using this, and by eliminating <span class="math inline">\(y_n\)</span> (by saying <span class="math inline">\(y_n = Y - y_1 - ... - y_{n-1}\)</span>), define</p>
+<p><span class="math display">\[g(y_1,...,y_{n-1}) = \frac{1}{n}\left( e^{y_1} + ... + e^{y_{n-1}} + e^{Y - y_1 - ... - y_{n-1}}\right) - e^\frac{Y}{n}.\]</span></p>
+<p>It is easy to check now that <span class="math inline">\(g\)</span> has a unique critical point</p>
+<p><span class="math display">\[y_i = \frac{Y}{n}, \ \ i\in\{1,...,n-1\}.\]</span></p>
+<p>The function <span class="math inline">\(g\)</span> is coercive and hence has a global minimum, which has to be</p>
+<p><span class="math display">\[y_i = \frac{Y}{n}, \ \ i\in\{1,...,n-1\}.\]</span> ■</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="constrained-optimisation" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="constrained-optimisation"><span class="header-section-number">2.2</span> Constrained Optimisation</h2>
+<p><strong>figure</strong></p>
+<ul>
+<li>we assume for now that <span class="math inline">\(D\)</span> is not of lower dimension, <span class="math inline">\(D\subseteq \mathbb{R}^n\)</span></li>
+<li><span class="math inline">\(D\)</span> is assumed to be closed and bounded</li>
+</ul>
+<p>We wish to study the minimisers of</p>
+<p><span class="math display">\[f: D\rightarrow \mathbb{R}\]</span></p>
+<p>We can even assume that <span class="math inline">\(f\)</span> has a minimiser in <span class="math inline">\(D\)</span>. This minimiser could be on the boundary.</p>
+<p>Note that we cannot conclude that if</p>
+<p><span class="math display">\[ g(\alpha) = f(x^* + \alpha d),\]</span></p>
+<p>where <span class="math inline">\(d\)</span> is a feasible direction, we have <span class="math inline">\(g'(0) = 0\)</span> (since <span class="math inline">\(\alpha\)</span> is dependent on <span class="math inline">\(d\)</span>). We still have that, for <span class="math inline">\(\alpha&gt;0\)</span> small enough,</p>
+<p><span id="eq-constrained"><span class="math display">\[\begin{aligned}
+&amp; g(\alpha) - g(0) &lt; g'(0)\alpha + |g'(0)|\alpha \\
+\Rightarrow &amp; g(\alpha) - g(0) &lt; \alpha (g'(0) + |g'(0)|).
+\end{aligned} \tag{1}\]</span></span></p>
+<p>Claim: <span class="math inline">\(g'(0)\geq 0\)</span>.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose otherwise (ie. <span class="math inline">\(g'(0)&lt;0\)</span>). By choosing <span class="math inline">\(\alpha&gt;0\)</span> small enough and using <a href="#eq-constrained" class="quarto-xref">Equation&nbsp;1</a> we have</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; g(\alpha) &lt; g(0) \\
+\Rightarrow &amp; g'(0) \geq 0
+\end{aligned}\]</span>■</p>
+</div>
+<p>Recall $g’(0) = f(x^*)d $. (from first order optimality).</p>
+<p>One can also conclude a weaker version of the second order condition of optimality:</p>
+<p><span class="math display">\[d^T \nabla^2 f(x^*) d \geq 0\]</span></p>
+<p>when <span class="math inline">\(\nabla f(x^*)\cdot d = 0\)</span>, which we call the second order condition of optimality.</p>
+<p><strong>figure</strong></p>
+<p>We cannot use <span class="math inline">\(x^* + \alpha d\)</span>! Doing so would take us out of the surface.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Objective
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Minimise <span class="math inline">\(f(x)\)</span> subject to <span class="math inline">\(D\)</span>.</p>
+</div>
+</div>
+<p>This optmisation problem can be written as</p>
+<p><span class="math display">\[\left\{ \begin{array}{ll}
+\min f(x) &amp; \\
+h_i(x) = 0 &amp; i=1,...,m
+\end{array} \right. ,\]</span></p>
+<p>where <span class="math inline">\(D\)</span> is described usin functions <span class="math inline">\(h_i\)</span>.</p>
+<p>What if instead we use some curves, <span class="math inline">\(\gamma(\cdot)\)</span>, passing through <span class="math inline">\(x^*\)</span>, ie. we take <span class="math inline">\(\gamma(0) = x^*\)</span>. Let us take these curves to be at least <span class="math inline">\(C^1\)</span>.</p>
+<p><strong>figure</strong></p>
+<p>Let us define <span class="math inline">\(g(\alpha) = f(\gamma(\alpha))\)</span>. We can now carry the same argument as before, using <span class="math inline">\(g(\alpha) = g(0) + \alpha g'(0) + \mathcal{O}(\alpha)\)</span>, and argue that</p>
+<p><span class="math display">\[\nabla f(\gamma(0))\cdot \gamma'(0) = 0.\]</span></p>
+<p>We need to study this <span class="math inline">\(\gamma'(0)\)</span> more carefully.</p>
+<p>Note that <span class="math inline">\(\gamma'(0)\)</span> lives in the so called tangent space at <span class="math inline">\(x^*\)</span> which we denote by <span class="math inline">\(T_{x^*}D\)</span> (this is a subspace of <span class="math inline">\(\mathbb{R}^n\)</span>). We have not used <span class="math inline">\(h_i(\gamma(\alpha)) = 0 \ \forall i\)</span>, differentiating to get <span class="math inline">\(\nabla h_i(\gamma(\alpha)) \cdot \gamma'(\alpha) = 0\)</span>. Choosing <span class="math inline">\(\alpha = 0\)</span>, we have</p>
+<p><span class="math display">\[\nabla h_i(x^*) \cdot \gamma'(0) = 0\]</span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Assumption
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We assume that <span class="math inline">\(x^*\)</span> is <em>regular</em>. This means that the gradients <span class="math inline">\(\nabla h_i(x^*)\)</span> for <span class="math inline">\(i\in\{1,...,m\}\)</span> are linearly independent.</p>
+</div>
+</div>
+<p>Note that since <span class="math inline">\(x^*\)</span> is regular, it’s also true that any vector <span class="math inline">\(d\in\mathbb{R}^n\)</span> for which <span class="math inline">\(\nabla h_i(x^*) \cdot d = 0\)</span> for all <span class="math inline">\(i\)</span> has to lie in the tangent space <span class="math inline">\(T_{x^*}D\)</span>. (check this on your own)</p>
+<p>In summary, we showed that</p>
+<p><span id="eq-constrainedmin"><span class="math display">\[\nabla f(x^*)\cdot d = 0 \tag{2}\]</span></span></p>
+<p>for all <span class="math inline">\(d\)</span> such that <span class="math inline">\(\nabla h_i(x^*)\cdot d = 0\)</span> for all <span class="math inline">\(i\)</span>.</p>
+<div id="prp-lagrange" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 2</strong></span> If <a href="#eq-constrainedmin" class="quarto-xref">Equation&nbsp;2</a> holds, and <span class="math inline">\(x^*\)</span> is regular, then we have that</p>
+<p><span class="math display">\[\nabla f(x^*) \in \texttt{span}\{\nabla h_i(x^*), \ i\in\{1,...,m\}\}.\]</span></p>
+<p>ie. there exists a <span class="math inline">\(\lambda_i^*\in\mathbb{R}\)</span> such that</p>
+<p><span class="math display">\[\nabla f(x^*) + \lambda_1^* \nabla h_1(x^*) + ... + \lambda_m^* \nabla h_m(x^*) = 0.\]</span></p>
+<p>These <span class="math inline">\(\lambda_i^*\)</span> are called <em>Langrange multipliers</em>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Use contradiction, do on your own.</p>
+</div>
+</section>
+</section>
+<section id="convex-analysis" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Convex Analysis</h1>
+<p><strong>V keep this for later V</strong> Recall: for all <span class="math inline">\(d\in\mathbb{R}^n\)</span> and <span class="math inline">\(\alpha\in\mathbb{R}\)</span> such that <span class="math inline">\(x^* + \alpha d \in D\)</span>, we must have</p>
+<p><span class="math display">\[\langle \nabla f(x^*),d\rangle \geq 0.\]</span></p>
+<p><strong>figure</strong></p>
+<p>this is required for a minimum. if that <span class="math inline">\(\geq\)</span> changes to <span class="math inline">\(&lt;\)</span> for any points defined from <span class="math inline">\(\alpha, \ d\)</span>, then <span class="math inline">\(x^*\)</span> is not a minimum.</p>
+<p><strong>^ keep this for later ^</strong></p>
+<p>We start by discussing affine sets and maps.</p>
+<div id="def-affine_set" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3 (Affine Set - informal)</strong></span> A set <span class="math inline">\(A\subseteq\mathbb{R}^n\)</span> is <em>affine</em> if for all <span class="math inline">\(x,y\in A\)</span>, the full line connecting <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is in <span class="math inline">\(A\)</span>.</p>
+<p><strong>figure</strong></p>
+</div>
+<div id="def-affine_set_forma" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 4 (Affine Set - formal)</strong></span> A set <span class="math inline">\(A\subseteq \mathbb{R}^n\)</span> is <em>affine</em> if and only if for all <span class="math inline">\(x,y\in\ A\)</span> and <span class="math inline">\(t\in\mathbb{R}\)</span>,</p>
+<p><span class="math display">\[ (1-t) x + t y \in A.\]</span></p>
+</div>
+<div id="thm-linearsubspace" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 4</strong></span> <span class="math inline">\(V\subseteq\mathbb{R}^n\)</span> is a linear subspace if and only if <span class="math inline">\(V\)</span> is affine and <span class="math inline">\(0\in V\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\(\Rightarrow\)</span> immediate</p>
+<p><span class="math inline">\(\Leftarrow\)</span> Suppose <span class="math inline">\(V\)</span> is affine and <span class="math inline">\(0\in V\)</span>. Need to check scalar multiplication and vector addition.</p>
+<p>Scalar multiplication: let <span class="math inline">\(\alpha \in\mathbb{R}\)</span>, <span class="math inline">\(u\in V\)</span>, then <span class="math inline">\(\alpha u = \alpha u + (1-\alpha)0 \in V\)</span></p>
+<p>Addition: let <span class="math inline">\(u,w\in V\)</span>. Then, <span class="math inline">\(u + w = 2 (\frac{1}{2}u + \frac{1}{2}w)\)</span>, which is in the form <span class="math inline">\(\alpha u + (1-\alpha)w\)</span>, and is therefore in <span class="math inline">\(V\)</span> since <span class="math inline">\(V\)</span> is affine. Since <span class="math inline">\(V\)</span> is also closed under scalar multiplication, we conclude that <span class="math inline">\(u+w\in V\)</span>. ■</p>
+</div>
+<div id="thm">
+<p>A set <span class="math inline">\(A\in\mathbb{R}^n\)</span> is <em>affine</em> if and only if <span class="math inline">\(A-a\)</span> is a linear subspace for all <span class="math inline">\(a\in\mathbb{R}\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>in text.</p>
+<p><strong>figure</strong></p>
+</div>
+<p>One of the most important examples of an affine set in <span class="math inline">\(\mathbb{R}^n\)</span> is an <span class="math inline">\((n-1)\)</span> dimensional hyperplane. A hyperplane is an <span class="math inline">\((n-1)\)</span> dimensional set.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Analytical description of a Hyperplane
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For any hyperplane <span class="math inline">\(H\subseteq\mathbb{R}^n\)</span>, we have</p>
+<p><span class="math display">\[H = L + a,\]</span></p>
+<p>for some <span class="math inline">\(a\in \mathbb{R}^n\)</span>, where <span class="math inline">\(L\)</span> is an <span class="math inline">\((n-1)\)</span> dimensional linear subspace. So,</p>
+<p><span class="math display">\[\begin{aligned}
+H &amp;= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
+&amp;= \{x+a\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} \\
+&amp;= \{y\in\mathbb{R}^n \mid \langle y-a,b\rangle = 0\} \\
+&amp;= \{y\in\mathbb{R}^n \mid \langle y,b\rangle = \alpha\},
+\end{aligned}\]</span></p>
+<p>for some <span class="math inline">\(\alpha\in\mathbb{R}\)</span>.</p>
+<p>Thus, any <span class="math inline">\((n-1)\)</span> dimensional affine set in <span class="math inline">\(\mathbb{R}^n\)</span> can be written as <span class="math inline">\(\{y\in\mathbb{R}^n \mid \langle y,b\rangle = \alpha \}\)</span> for some <span class="math inline">\(b\in\mathbb{R}^n, \ \alpha\in\mathbb{R}\)</span>.</p>
+</div>
+</div>
+<div id="def-affinemap" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 5 (Affine map)</strong></span> A mapping <span class="math inline">\(F:\mathbb{R}^n\rightarrow \mathbb{R}^n\)</span> is <em>affine</em> if for all <span class="math inline">\(x,y\in\mathbb{R}^n\)</span> and <span class="math inline">\(t\in\mathbb{R}\)</span>,</p>
+<p><span class="math display">\[F((1-t)x + ty) = (1-t) F(x) + t F(y) .\]</span></p>
+</div>
+<p><strong>figure</strong></p>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p>If <span class="math inline">\(A\in M_{n\times m}(\mathbb{R})\)</span> and <span class="math inline">\(b\in\mathbb{R}^n\)</span>, <span class="math inline">\(F(x) = Ax + b\)</span> is affine.</p>
+</div>
+</div>
+<section id="convex-sets" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="convex-sets"><span class="header-section-number">3.1</span> Convex Sets</h2>
+<div id="def-convexset" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6 (Convex set - informal)</strong></span> A set <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is <em>convex</em> is for all <span class="math inline">\(x,y\in S\)</span>, the line segment connecting <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is in <span class="math inline">\(S\)</span>.</p>
+<p><strong>figure</strong></p>
+</div>
+<div id="def-convexsetformal" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7 (Convex set - formal)</strong></span> <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is <em>convex</em> if for all <span class="math inline">\(x,y\in S\)</span> and <span class="math inline">\(\lambda\in[0,1]\)</span>,</p>
+<p><span class="math display">\[(1-\lambda) x + \lambda y\in S.\]</span></p>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Examples</p>
+</div>
+<div class="example-container">
+<ol type="1">
+<li><p><span class="math inline">\(S_1 = \{(x,y)\in\mathbb{R}^2 \mid x^2 + y^2 \leq 1\}\)</span> unit disk is convex. <strong>figure</strong></p></li>
+<li><p><span class="math inline">\(S_2 = \{(x,0)\in\mathbb{R}^2 \mid x\in \mathbb{R}\}\)</span> (x-axis) is affine <span class="math inline">\(\Rightarrow\)</span> convex.</p></li>
+<li><p><span class="math inline">\(S_3 = \{(x,y)\in\mathbb{R}^2 \mid y\geq e^x\}\)</span> is convex. <strong>figure</strong></p></li>
+<li><p><span class="math inline">\(S_4 = \{(x,y)\in\mathbb{R}^2 \mid y \geq\sin(x)\}\)</span> is <strong>not</strong> convex. <strong>figure</strong></p></li>
+</ol>
+</div>
+</div>
+<p>If we are given <span class="math inline">\(m\)</span> real numbers <span class="math inline">\(\lambda_1,...,\lambda_m\)</span> such that <span class="math inline">\(\lambda_i\geq 0\)</span> and <span class="math inline">\(\sum_{i=1}^m \lambda_i = 1\)</span>, then these are called <em>convex coefficients</em>, and a sum</p>
+<p><span class="math display">\[\sum_{i=1}^m \lambda_i x_i\]</span></p>
+<p>is called a <em>convex combination</em> of vectors <span class="math inline">\(x_i\in\mathbb{R}^n\)</span>, <span class="math inline">\(i=1,...,m\)</span>. When:</p>
+<ul>
+<li><span class="math inline">\(m=2\)</span>: line <strong>figure</strong></li>
+<li><span class="math inline">\(m=3\)</span>: surface <strong>figure</strong></li>
+</ul>
+<div id="thm-convexset2" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 5</strong></span> The set <span class="math inline">\(S\subseteq \mathbb{R}^n\)</span> is <em>convex</em> if and only if <span class="math inline">\(S\)</span> contains all convex combinations of its elements.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\(\Leftarrow\)</span> Set <span class="math inline">\(m=2\)</span>, then it follows from the definition.</p>
+<p><span class="math inline">\(\Rightarrow\)</span> By induction on <span class="math inline">\(m\)</span>.</p>
+<p><strong>Base case:</strong> <span class="math inline">\(m=2\)</span>. By definition of convexity, <span class="math inline">\(\lambda x + (1-\lambda)y \in S\)</span>. Let <span class="math inline">\(\lambda_1 = \lambda\)</span>, <span class="math inline">\(\lambda_2 = 1-\lambda\)</span>.</p>
+<p><strong>Inductive step:</strong> Assume true for <span class="math inline">\(2,...,m\)</span> and prove for <span class="math inline">\(m+1\)</span>. Show that a convex combination of <span class="math inline">\(m+1\)</span> elements of <span class="math inline">\(S\)</span> lies in <span class="math inline">\(S\)</span>. Let <span class="math inline">\(x_1,...,x_{m+1}\in S\)</span>, <span class="math inline">\(\lambda_1,...,\lambda_{m+1}\in\mathbb{R}\)</span>, <span class="math inline">\(\lambda_i\geq 0\)</span> and <span class="math inline">\(\sum_{i=1}^{m+1}\lambda_i =1\)</span>.</p>
+<p>Assume <span class="math inline">\(\lambda_{m+1}\neq 0\)</span>, then</p>
+<p><span class="math display">\[ \begin{aligned}
+\sum_{k=1}^{m+1} \lambda_k x_k &amp;= \lambda_{m+1} x_{m+1} + \sum_{k=1}^{m+1} \lambda_k x_k \\
+&amp;= \lambda_{m+1} x_{m+1} + (1-\lambda) \sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k.
+\end{aligned}\]</span></p>
+<p>Need to show <span class="math inline">\(\sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k\)</span> is in <span class="math inline">\(S\)</span>.</p>
+<p>Claim: <span class="math inline">\(\frac{\lambda_k}{1-\lambda_{m+1}}\)</span> are convex coefficients for all <span class="math inline">\(k=1,...,m\)</span>.</p>
+<p><span class="math display">\[\sum_{k=1}^m \frac{\lambda_k}{1-\lambda_{m+1}} = \frac{1}{1-\lambda_{m+1}} \sum_{k=1}^m \lambda_k = \frac{1-\lambda_{m+1}}{1-\lambda_{m+1}} = 1\]</span></p>
+<p>Thus, <span class="math inline">\(\sum_{k=1}^m \frac{\lambda_k}{1-\lambda_{m+1}} x_k\)</span> is a convex combination of <span class="math inline">\(m\)</span> points in <span class="math inline">\(S\)</span>, and is therefore in <span class="math inline">\(S\)</span>.</p>
+<p>Thus, <span class="math inline">\(\lambda_{m+1} x_{m+1} + (1-\lambda) \sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k \in S\)</span>. ■</p>
+</div>
+<p>We now introduce an object called the <em>convex hull</em>. Given a set <span class="math inline">\(X\subseteq\mathbb{R}^n\)</span>, we want to construct a convex set which contains <span class="math inline">\(X\)</span> and is as small as possible. Define</p>
+<p><span class="math display">\[ \texttt{co} \ (X) = \left\lbrace \sum_{k=1}^m \lambda_k x_k \mid x_k\in X, \lambda_k \geq 0, \sum_{k=1}^m \lambda_k = 1, \textnormal{ for all } m \right\rbrace .\]</span></p>
+<p>The convex hull is the set of all convex combinations of elements of <span class="math inline">\(X\)</span>. Imagine fitting an elastic band over the set.</p>
+<p><strong>figure</strong></p>
+<p>Claims:</p>
+<ol type="1">
+<li><span class="math inline">\(\texttt{co} \ (X)\)</span> is a convex set.</li>
+</ol>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(x,y\in\texttt{co} \ (X)\)</span>. Then we can write</p>
+<p><span class="math display">\[ x = \sum_{k+1}^m \lambda_k x_k, \ \ y = \sum_{\ell=1}^p \mu_\ell y_\ell, \]</span></p>
+<p>for some <span class="math inline">\(m,p, \{x_k\}, \{y_k\}\in X\)</span>, convex coefficients <span class="math inline">\(\lambda_1,...,\lambda_m\)</span>, <span class="math inline">\(\mu_1,...,\mu_p\)</span>. Now let <span class="math inline">\(\gamma\in[0,1]\)</span>:</p>
+<p><span class="math display">\[\begin{aligned}
+(1-\gamma)x + \gamma y &amp;= \sum_{k=1}^m (1-\gamma)\lambda_k x_k  + \sum_{\ell=1}^p \gamma\mu_ell y_\ell \\
+&amp;= \sum_{k=1}^{m+p} \alpha_k z_k
+\end{aligned}\]</span></p>
+<p>where</p>
+<p><span class="math display">\[ \begin{aligned}
+&amp;\alpha_k = \left\lbrace\begin{array}{ll}
+(1-\gamma)\lambda_k, &amp; 1\leq k\leq m\\
+\gamma \mu_{k-m}, &amp; m+1 \leq k\leq m+p
+\end{array} \right.  \\
+&amp;z_k = \left\lbrace\begin{array}{ll}
+x_k, &amp; 1\leq k\leq m \\
+y_{k-m}, &amp; m+1\leq k \leq m+p
+\end{array} \right.
+\end{aligned}\]</span></p>
+<p>Note that <span class="math inline">\(\sum_{k=1}^{m+p} \alpha_k = 1\)</span> (prove this on your own). Thus, we have shown <span class="math inline">\((1-\gamma)x + \gamma y \in \texttt{co} \ (X)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\texttt{co} \ (X)\)</span> is a convex set. ■</p>
+</div>
+<ol start="2" type="1">
+<li><span class="math inline">\(\texttt{co} \ (X)\)</span> is minimal in the sense that if <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is convex and <span class="math inline">\(X\subseteq S\)</span>, then <span class="math inline">\(\texttt{co} \ (X) \subseteq S\)</span>.</li>
+</ol>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>If <span class="math inline">\(x\in\texttt{co} \ (X)\)</span> then <span class="math inline">\(x = \sum_{k=1}^m \lambda_k x_k\)</span>, <span class="math inline">\(x_k\in X\)</span> for all <span class="math inline">\(k=1,...,m\)</span>.</p>
+<p><span class="math inline">\(X\subseteq S \Rightarrow\)</span> if <span class="math inline">\(x_k\in X\)</span> then <span class="math inline">\(x_k\in S\)</span>. Then, <span class="math inline">\(\texttt{co} \ (X)\subseteq S\)</span>. ■</p>
+</div>
+<div id="thm-convexhull" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 6</strong></span> If <span class="math inline">\(X\subseteq\mathbb{R}^n\)</span> and <span class="math inline">\(x\in\texttt{co} \ (X)\)</span>, then</p>
+<p><span class="math display">\[ x = \sum_{k=1}^{n+1} \lambda_k x_k \]</span></p>
+<p>for the convex coefficients <span class="math inline">\(\lambda_k\)</span> and points <span class="math inline">\(x_k\in X\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>In text.</p>
+</div>
+<section id="operations-that-preserve-convexity" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="operations-that-preserve-convexity"><span class="header-section-number">3.1.1</span> Operations that Preserve Convexity</h3>
+<ol type="1">
+<li>If <span class="math inline">\(F:\mathbb{R}^n\rightarrow\mathbb{R}^m\)</span> is affine and <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is convex, <span class="math inline">\(F(S)\subseteq\mathbb{R}^m\)</span> is convex.</li>
+</ol>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(y_1, y_2\in F(S)\)</span>. Then, <span class="math inline">\(y_1 = F(x_1)\)</span> and <span class="math inline">\(y_2 = F(x_2)\)</span> for <span class="math inline">\(x_1, x_2\in S\)</span>. Then, for any <span class="math inline">\(\lambda\in[0,1]\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+(1-\lambda) y_1 + \lambda y_2 &amp;= (1-\lambda)F(x_1) + \lambda F(x_2) \\
+&amp;= F((1-\lambda)x_1 + \lambda x_2) \in F(S)
+\end{aligned}\]</span> ■</p>
+</div>
+<ol start="2" type="1">
+<li><p><span class="math inline">\(\cap_{i\in I} S_i\)</span> is convex if <span class="math inline">\(S_i\)</span> are convex for all <span class="math inline">\(i\in I\)</span>. This is not true for unions.</p></li>
+<li><p>Minkowski sum. <span class="math inline">\(S_1 + S_2 + ... + S_m = \{x_1 + x_2 + ... + x_m \mid x_i\in S_i\}\)</span>, the Minkowski sum preserves convexity.</p></li>
+</ol>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p><span class="math inline">\(S_1 = D\)</span> (unit disk) in <span class="math inline">\(\mathbb{R}^2\)</span>, <span class="math inline">\(S_2\)</span> is the <span class="math inline">\(x\)</span>-axis.</p>
+<p><strong>figure</strong></p>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Of Minkowski sum preserving convexity.</p>
+<p>Let <span class="math inline">\(x, y\in S_1 + ... + S_m\)</span> and <span class="math inline">\(S_i\)</span> convex for all <span class="math inline">\(i=1,...,m\)</span>. Then, <span class="math inline">\(x = x_1 + ... + x_m\)</span>, <span class="math inline">\(y = y_1 + ... + y_m\)</span>, <span class="math inline">\(x_i\in s_i\)</span>, <span class="math inline">\(y_i\in S_i\)</span>. For any $</p>
+<p><span class="math display">\[(1-\lambda)x + \lambda y = \underbrace{(1-\lambda) x_1 + \lambda y_1}_{\in S_1} + ... \underbrace{(1-\lambda) x_m + \lambda y_m}_{\in S_m}\]</span></p>
+<p>By convexity, <span class="math inline">\((1-\lambda)x_i + \lambda y_i \in S_i\)</span>. Thus, <span class="math inline">\((1-\lambda)x + \lambda y \in S_1 + ... S_m\)</span>. ■</p>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p>Minkowski sums don’t necessarily preserve set properties.</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; S_1 = \{(x,y)\in\mathbb{R}^ \mid y\geq e^x\} \textnormal{ closed} \\
+&amp; S_2 = x-\textnormal{axis}
+\end{aligned}\]</span></p>
+<p><span class="math inline">\(S_1+S_2 = \{(x,y)\in\mathbb{R}^2 \mid y&gt;0 \}\)</span> is open, but still convex.</p>
+</div>
+</div>
+<div id="def-convexcone" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 8</strong></span> Let <span class="math inline">\(C\)</span> be a set in a vector space <span class="math inline">\(V\)</span>. Then <span class="math inline">\(C\)</span> is called a <em>cone</em> if <span class="math inline">\(t\cdot x\in C\)</span> for all <span class="math inline">\(x\in C\)</span>, <span class="math inline">\(t\geq 0\)</span>. We call <span class="math inline">\(C\)</span> a <em>convex cone</em> is <span class="math inline">\(C\)</span> is additionally convex.</p>
+</div>
+<div id="lem-convexcone" class="theorem lemma">
+<p><span class="theorem-title"><strong>Lemma 3</strong></span> A set <span class="math inline">\(C\)</span> is a convex cone if and only if for all <span class="math inline">\(x, y\in C\)</span> and <span class="math inline">\(t&gt;0\)</span> we have that <span class="math inline">\(tx\in C\)</span> and <span class="math inline">\(x+y\in C\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>If <span class="math inline">\(C\)</span> is a convex cone, then</p>
+<p><span class="math display">\[ x + y = 2\underbrace{\left(\frac{x}{2} + \frac{y}{2}\right)}_{\in C \textnormal{ by convexity}}  \in C\]</span></p>
+<p>Conversely, if <span class="math inline">\(tx\in C\)</span> and <span class="math inline">\(x+y\in C\)</span> for all <span class="math inline">\(x,y\in C\)</span>, then for any <span class="math inline">\(\lambda\in(0,1)\)</span></p>
+<p><span class="math display">\[\lambda x + (1-\lambda)y = \lambda \left(x + \frac{1-\lambda}{\lambda} y \right) \in C.\]</span> ■</p>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p>The cone of symmetric positive definite matrices, denoted <span class="math inline">\(\mathbf{S}\)</span>.</p>
+<p>Note that for <span class="math inline">\(A,B\in \mathbf{S}\)</span>:</p>
+<ul>
+<li><span class="math inline">\(A+B\in \mathbf{S}\)</span>,</li>
+<li><span class="math inline">\(t A\in \mathbf{S}\)</span>, <span class="math inline">\(t&gt;0.\)</span></li>
+</ul>
+<p>Thus, <span class="math inline">\(\mathbf{S}\)</span> is a convex cone.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="convex-functions" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="convex-functions"><span class="header-section-number">3.2</span> Convex Functions</h2>
+<div id="def-convexfunction" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9</strong></span> For <span class="math inline">\(f:V\rightarrow\mathbb{R}\)</span>, <span class="math inline">\(V\)</span> a vector space, we say that <span class="math inline">\(f\)</span> is a <em>convex function</em> if</p>
+<p><span class="math display">\[f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y),\]</span></p>
+<p>where <span class="math inline">\(0\leq\lambda \leq 1\)</span>.</p>
+</div>
+<p>What convexity tells us is that the values of the function are below the line between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
+<p><strong>figure</strong></p>
+<div id="def-epigraph" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 10</strong></span> For a function <span class="math inline">\(f:V\rightarrow\mathbb{R}\)</span> the <em>epigraph</em> of <span class="math inline">\(f\)</span> is defined to be</p>
+<p><span class="math display">\[ \texttt{epi}(f) = \{(x,\alpha) \mid x\in V, \alpha \in \mathbb{R}, f(x) \leq \alpha\}.\]</span></p>
+</div>
+<div id="prp-epigraph" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 3</strong></span> The function <span class="math inline">\(f\)</span> is convex if and only if <span class="math inline">\(\texttt{epi}(f)\)</span> is convex.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose that <span class="math inline">\(f\)</span> is convex. Let <span class="math inline">\((x_1,\alpha_1), (x_2,\alpha_2)\in\texttt{epi}(f)\)</span>. For <span class="math inline">\(\lambda\in[0,1]\)</span> we have:</p>
+<p><span class="math display">\[\begin{aligned}
+f(\lambda x_1 + (1-\lambda)x_2) &amp;\leq \lambda f(x_1) + (1-\lambda) f(x_2) \\
+&amp;\leq \underbrace{\lambda \alpha_1 + (1-\lambda)\alpha_2}_{\alpha} \\
+&amp;\leq \alpha
+\end{aligned}\]</span></p>
+<p>Then, <span class="math inline">\(\lambda(x_1,\alpha_1) + (1-\lambda)(x_2,\alpha_2) = (\lambda x_1 + (1-\lambda)x_2, \alpha) \in \texttt{epi}(f)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\texttt{epi}(f)\)</span> is convex.</p>
+<p>For the other direction, suppose that <span class="math inline">\(\texttt{epi}(f)\)</span> is convex. Then, for all <span class="math inline">\(x_1, x_2\in V\)</span>, <span class="math inline">\(\lambda\in[0,1]\)</span> we have</p>
+<p><span class="math display">\[\lambda (x_1, f(x_1)) + (1-\lambda)(x_2, f(x_2)) \in \texttt{epi}(f). \]</span></p>
+<p>Hence, by definition of epigraph,</p>
+<p><span class="math display">\[f(\lambda x_1 + (1-\lambda)x_2) \leq \lambda f(x_1) + (1-\lambda) f(x_2),\]</span></p>
+<p>which means that <span class="math inline">\(f\)</span> is convex. ■</p>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Examples</p>
+</div>
+<div class="example-container">
+<ol type="1">
+<li><span class="math inline">\(f: x\mapsto e^x\)</span></li>
+<li><span class="math inline">\(f: x\mapsto -\log(x)\)</span>, <span class="math inline">\(x\in\mathbb{R}\)</span> positive</li>
+<li><span class="math inline">\(f: x\mapsto \langle a, Ax\rangle + \langle b,x\rangle\)</span> where <span class="math inline">\(A\in\mathcal{M}^n\)</span> is symmetric positive definite and <span class="math inline">\(b\)</span> is a vector in <span class="math inline">\(\mathbb{R}^n\)</span>.</li>
+</ol>
+<p>are convex functions.</p>
+</div>
+</div>
+<div id="thm-jensens" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 7 (Jensen’s inequality)</strong></span> Let <span class="math inline">\(f:C\rightarrow\mathbb{R}\)</span> be a convex function and <span class="math inline">\(\lambda_i \in[0,1]\)</span>, <span class="math inline">\(\sum_{i=1}^n \lambda_i = 1\)</span>. Then,</p>
+<p><span class="math display">\[ f(\sum_{i=1}^n \lambda_i x_i) \leq \sum_{i=1}^n \lambda_i f(x_i), \ x_i\in C.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Note that <span class="math inline">\((x_i,f(x_i))\in\texttt{epi}(f)\)</span>. Since <span class="math inline">\(f\)</span> is convex, <span class="math inline">\(\texttt{epi}(f)\)</span> is a convex set. Thus</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; \sum_{i=1}^n \lambda_i (x_i,f(x_i)) \in\texttt{epi}(f) \\
+\Rightarrow &amp; \left(\sum_{i=1}^n \lambda_i x_i, \sum_{i=1}^n \lambda_i f(x_i) \right) \in\texttt{epi}(f)\\
+\Rightarrow &amp; f\left(\sum_{i=1}^n \lambda_i x_i\right) \leq \sum_{i=1}^n \lambda_i f(x_i)
+\end{aligned}\]</span> ■</p>
+</div>
+<p>Note that we can easily conclude the arithmetic geometric mean inequality using this: take <span class="math inline">\(\ln(\cdot)\)</span>, which is a <em>concave function</em> (ie. the negative of a convex function),</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; \ln\left(\frac{1}{2} x + \frac{1}{2}y\right) \geq \frac{1}{2}\ln(x) + \frac{1}{2}\ln(y), \ x,y&gt;0 \\
+\Rightarrow &amp; \ln\left(\frac{1}{2} x + \frac{1}{2}y\right) \geq \ln((xy)^{1/2}) \\
+\Rightarrow &amp; \frac{1}{2} (x + y) \geq \sqrt(xy)
+\end{aligned}\]</span></p>
+<section id="conditions-of-convexity" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="conditions-of-convexity"><span class="header-section-number">3.2.1</span> Conditions of Convexity</h3>
+<div id="thm-firstorderconv" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 8 (First order condition of convexity)</strong></span> Given <span class="math inline">\(C\subseteq\mathbb{R}^n\)</span> convex, <span class="math inline">\(f:C\rightarrow\mathbb{R}\)</span> continuously differentiable, we have that <span class="math inline">\(f\)</span> is convex if and only if</p>
+<p><span class="math display">\[ \langle \nabla f(x), y-x\rangle \leq f(y) - f(x), \ \ \forall x,y\in C.\]</span></p>
+</div>
+<p><strong>figure</strong></p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\(\Rightarrow\)</span>. Assume that <span class="math inline">\(f\)</span> is convex. Then for <span class="math inline">\(\alpha\in(0,1)\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+f(x+ \alpha(y-x)) &amp;= f((1-\alpha)x + \alpha y) \\
+&amp;\leq (1-\alpha) f(x) + \alpha f(x).
+\end{aligned}\]</span></p>
+<p>Hence,</p>
+<p><span class="math display">\[ \frac{f(x + \alpha(y-x)) - f(x)}{\alpha} \leq f(y) - f(x).\]</span></p>
+<p>Taking the limit <span class="math inline">\(\alpha\rightarrow 0\)</span> results in</p>
+<p><span class="math display">\[\langle \nabla f(x), y-x\rangle \leq f(y) - f(x), \]</span></p>
+<p>which is the expression given in the theorem. Note, <span class="math inline">\(\langle \nabla f(x), y-x\rangle\)</span> is the directional derivative of <span class="math inline">\(f\)</span> in the direction <span class="math inline">\(y-x\)</span>, as a result of the limit.</p>
+<p><span class="math inline">\(\Leftarrow\)</span>. Now suppose <span class="math inline">\(\langle \nabla f(x), y-x\rangle \leq f(y) - f(x)\)</span>, for all <span class="math inline">\(x,y\in C\)</span>. Let <span class="math inline">\(x_\alpha = (1-\alpha)x + \alpha y\)</span> where <span class="math inline">\(\alpha\in(0,1)\)</span>. Consider</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; (1-\alpha) &amp; f(x) \geq f(x_\alpha) + \langle \nabla f(x_\alpha), x- x_\alpha\rangle \\
++ &amp; &amp; \\
+&amp; \alpha &amp; f(y)\geq f(x_\alpha) + \langle \nabla f(x_\alpha),y-x_\alpha\rangle .
+\end{aligned}\]</span></p>
+<p>Expanding and simplifying results in</p>
+<p><span class="math display">\[ \begin{aligned}
+&amp;(1-\alpha) f(x) + \alpha f(y) \geq f(x_\alpha) + \langle \nabla f(x_\alpha), \underbrace{(1-\alpha)x + \alpha y - x_\alpha}_{=0}\rangle \\
+\Rightarrow &amp;(1-\alpha) f(x) + \alpha f(y) \geq f(x_\alpha) \\
+\Rightarrow &amp; (1-\alpha) f(x) + \alpha f(y) \geq f((1-\alpha)x + \alpha y),
+\end{aligned}\]</span></p>
+<p>which holds for all <span class="math inline">\(x,y\in C\)</span>, <span class="math inline">\(\alpha\in\mathbb{R}\)</span>. Thus, <span class="math inline">\(f\)</span> is convex. ■</p>
+</div>
+<p>Note, a function can also be <em>strictly convex</em>. Strict convexity is when <a href="#def-convexfunction" class="quarto-xref">Definition&nbsp;9</a> holds for <span class="math inline">\(x\neq y\)</span>, ie.</p>
+<p><span class="math display">\[ f((1-\alpha)x + \alpha y) &lt; (1-\alpha) f(x) + \alpha f(y).\]</span></p>
+<div id="thm-secondorderconv" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 9 (Second order condition of convexity)</strong></span> Let <span class="math inline">\(C\subseteq\mathbb{R}^n\)</span>, and suppose <span class="math inline">\(f:C\rightarrow\mathbb{R}\)</span> is twice continuously differentiable. Then, <span class="math inline">\(f\)</span> is convex if and only if the Hessian of <span class="math inline">\(f\)</span> at <span class="math inline">\(x\)</span> is positive semidefinite for all <span class="math inline">\(x\in C\)</span>, ie.</p>
+<p><span class="math display">\[\nabla^2 f(x) \succeq 0 \ \forall x\in C.\]</span></p>
+<p>Moreover, if <span class="math inline">\(\nabla^2 f(x)\)</span> is strictly positive definite at every <span class="math inline">\(x\in C\)</span>, then <span class="math inline">\(f\)</span> is strictly convex. For concavity, the opposite holds.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\(\Rightarrow\)</span>. Suppose <span class="math inline">\(f\)</span> is convex, by <a href="#thm-firstorderconv" class="quarto-xref">Theorem&nbsp;8</a></p>
+<p><span class="math display">\[ f(x) + \langle \nabla f(x) ,\alpha d\rangle \leq f(x + \alpha d), \]</span></p>
+<p>for all <span class="math inline">\(d\in\mathbb{R}^n\)</span>, <span class="math inline">\(\alpha &gt;0\)</span>. Fix <span class="math inline">\(x\)</span> and consider the Taylor expansion of <span class="math inline">\(f(x+ \alpha d)\)</span> where <span class="math inline">\(d\)</span> is the variable</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; f(x) + \langle \nabla f(x) ,\alpha d\rangle \leq f(x) \langle \nabla f(x) + \alpha d\rangle + \frac{\alpha^2}{2} d^T \nabla^2 f(x) d + \mathcal{O}(\alpha^2) \\
+\Rightarrow &amp; \frac{1}{2} d^T \nabla^2 f(x) d + \frac{\mathcal{O}(\alpha^2)}{\alpha^2}  \geq 0.
+\end{aligned}\]</span></p>
+<p>Taking <span class="math inline">\(\alpha\rightarrow 0\)</span>, we conclude that</p>
+<p><span class="math display">\[\nabla^2 f(x) \succeq 0.\]</span></p>
+<p><span class="math inline">\(\Leftarrow\)</span>. Now, suppose <span class="math inline">\(\nabla^2 f(x) \succeq 0\)</span>. Then, by the mean value theorem, we know that there exists <span class="math inline">\(z = x+\lambda y\)</span> where <span class="math inline">\(0\leq \lambda\leq 1\)</span> such that</p>
+<p><span class="math display">\[ f(y) = f(x) + \langle \nabla f(x), y-x\rangle + \frac{1}{2}\langle \nabla^2 f(z)(y-x), y-x\rangle .\]</span></p>
+<p>Since <span class="math inline">\(\nabla^2 f(z) \succeq 0\)</span>, we have</p>
+<p><span class="math display">\[ f(y) \geq f(x) + \langle \nabla f(x), y-x\rangle, \]</span></p>
+<p>which is the first order condition of convexity. Therefore, <span class="math inline">\(f\)</span> is convex. ■</p>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p>A function that is strictly convex, but has <span class="math inline">\(\nabla^2 f(x) \nsucc 0\)</span>, is <span class="math inline">\(f(x) = x^4\)</span>. <span class="math inline">\(\nabla^2 f(x) = 12x^2 = 0\)</span> at <span class="math inline">\(x=0\)</span>, it is not strictly positive definite. Thus, the converse does not hold in the second part of <a href="#thm-secondorderconv" class="quarto-xref">Theorem&nbsp;9</a>.</p>
+</div>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p>Let <span class="math inline">\(f(x) =  \frac{1}{2} x^T A x + \langle b,x\rangle\)</span>, <span class="math inline">\(A\in\mathcal{M}_n(\mathbb{R})\)</span> symmetric and <span class="math inline">\(b\in\mathbb{R}^n\)</span>. Then, <span class="math inline">\(f\)</span> is convex if and only if <span class="math inline">\(\nabla^2 f(x) \succeq 0\)</span>, that is</p>
+<p><span class="math display">\[\nabla^2 f(x) = A \succeq 0,\]</span></p>
+<p>ie. <span class="math inline">\(f\)</span> is convex if and only if <span class="math inline">\(A\)</span> is positive semidefinite.</p>
+</div>
+</div>
+<div id="prp-convexlinearcomp" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 4</strong></span> A function <span class="math inline">\(f:\mathbb{R}^n \rightarrow \mathbb{R}\)</span> is convex if and only if <span class="math inline">\(g:\mathbb{R}\rightarrow\mathbb{R}\)</span> given by</p>
+<p><span class="math display">\[ g(t) = f(x + yt)\]</span></p>
+<p>is convex for all <span class="math inline">\(x,y\in\mathbb{R}^n\)</span>.</p>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p>Let <span class="math inline">\(f:S^n_{&gt;0} \rightarrow\mathbb{R}\)</span>, <span class="math inline">\(f(X) = \log\det X\)</span>.</p>
+<p>Claim: <span class="math inline">\(f\)</span> is concave.</p>
+<p>Let <span class="math inline">\(g(t) = \log\det(Z + tY)\)</span>, <span class="math inline">\(Z,Y\in S^n_{&gt;0}\)</span>.</p>
+<p><span class="math display">\[\begin{aligned}
+g(t) &amp;= \log\det(Z + tY) \\
+&amp;= \log\det(Z^{1/2}(I + tZ^{-1/2}YZ^{-1/2})Z^{1/2}) \\
+&amp;= \log\det(Z) + \log\det(I + tZ^{-1/2}YZ^{-1/2}).
+\end{aligned}\]</span></p>
+<p>Let <span class="math inline">\(\lambda_1,...,\lambda_n\)</span> be the eigenvalues of <span class="math inline">\(Z^{-1/2}Y Z^{-1/2}\)</span>. Then</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; g(t) = \log\det(Z) + \sum_{i=1}^n \log(1 + t\lambda_i)\\
+&amp; g'(t) = \sum_{i=1}^n \frac{\lambda_i}{1 + t\lambda_i} \\
+&amp; g''(t) = \sum_{i=1}^n \frac{-\lambda_{i}^2}{(1+t\lambda_i)^2} \leq 0
+\end{aligned}\]</span></p>
+<p>Thus, <span class="math inline">\(g\)</span> is concave.</p>
+</div>
+</div>
+<p>We now note that convex functions have convex sublevel sets. This is, given <span class="math inline">\(f:\mathbb{R}^n\rightarrow\mathbb{R}\)</span> convex,</p>
+<p><span class="math display">\[S_\alpha = \{x \mid f(x) \leq \alpha \}\]</span></p>
+<p>is convex.</p>
+<p>But what about the converse?</p>
+<p><strong>figure</strong></p>
+<p>We can see that the sublevel sets <span class="math inline">\(S_\alpha\)</span> are convex, but clearly <span class="math inline">\(f\)</span> is not.</p>
+<div id="def-quasiconv" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11</strong></span> Any function that has convex sublevel sets is called <em>quasi-convex</em>. Similarly, <em>quasi-concave</em> functions have convex superlevel sets.</p>
+</div>
+<p>Note that all convex functions are also quasi-convex.</p>
+</section>
+</section>
+<section id="separation-of-convex-sets" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="separation-of-convex-sets"><span class="header-section-number">3.3</span> Separation of Convex Sets</h2>
+<p>ends at separating hyperplane proposition</p>
+</section>
+</section>
+<section id="convex-optimisation" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Convex Optimisation</h1>
+<section id="conjugate-functions" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="conjugate-functions"><span class="header-section-number">4.1</span> Conjugate Functions</h2>
+</section>
+<section id="duality-theory" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="duality-theory"><span class="header-section-number">4.2</span> Duality Theory</h2>
+</section>
+<section id="nonlinear-programming" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="nonlinear-programming"><span class="header-section-number">4.3</span> Nonlinear Programming</h2>
+<section id="conditions-for-optimality" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="conditions-for-optimality"><span class="header-section-number">4.3.1</span> Conditions for Optimality</h3>
+</section>
+<section id="nlp-and-duality" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="nlp-and-duality"><span class="header-section-number">4.3.2</span> NLP and Duality</h3>
+</section>
+</section>
+</section>
+<section id="algorithms-for-optimisation" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Algorithms for Optimisation</h1>
+<section id="gradient-methods---first-order" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="gradient-methods---first-order"><span class="header-section-number">5.1</span> Gradient Methods - First Order</h2>
+</section>
+<section id="gradient-methods---second-order" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="gradient-methods---second-order"><span class="header-section-number">5.2</span> Gradient Methods - Second Order</h2>
+</section>
+</section>
+<section id="extras" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Extras</h1>
+<section id="minimising-polynomials" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="minimising-polynomials"><span class="header-section-number">6.1</span> Minimising Polynomials</h2>
+</section>
+</section>
+<section id="references-1" class="level1" data-number="7">
+
+
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">7 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Boyd_Vandenberghe_2004" class="csl-entry" role="listitem">
+Boyd, Stephen P., and Lieven Vandenberghe. 2004. <em>Convex Optimization</em>. Cambridge, UK ; New York: Cambridge University Press.
+</div>
+<div id="ref-Güler_2010" class="csl-entry" role="listitem">
+Güler, Osman. 2010. <em>Foundations of Optimization</em>. Vol. 258. Graduate Texts in Mathematics. New York, NY: Springer New York. <a href="https://doi.org/10.1007/978-0-387-68407-9">https://doi.org/10.1007/978-0-387-68407-9</a>.
+</div>
+<div id="ref-Nocedal_Wright_2006" class="csl-entry" role="listitem">
+Nocedal, Jorge, and Stephen J. Wright. 2006. <em>Numerical Optimization</em>. Springer Series in Operations Research and Financial Engineering. Springer New York. <a href="https://doi.org/10.1007/978-0-387-40065-5">https://doi.org/10.1007/978-0-387-40065-5</a>.
+</div>
+</div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

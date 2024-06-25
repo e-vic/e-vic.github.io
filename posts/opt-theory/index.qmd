@@ -1,0 +1,1118 @@
+---
+title: Optimisation Theory and Applications
+authors:
+  - name: Bahman Gharesifared
+    affiliation: Queen's University
+    roles: course instructor
+    corresponding: false
+  - name: Emma Hansen
+    affiliation: N/A
+    roles: scribe
+    corresponding: true	
+bibliography: references.bib
+
+format:
+  html:
+    theme: callout_example.scss
+    toc: true
+    toc-location: left
+    number-sections: true
+    number-depth: 3
+---
+
+::: hidden
+\renewcommand{\qed}{\hfill\blacksquare}
+\newcommand{\co}{\texttt{co} \ }
+\newcommand{\epi}{\texttt{epi}}
+:::
+
+# Introduction
+
+This document is a write-up of the *Optimisation Theory and Applications* course taught by Bahman Gharesifared in 2016 at Queen's University. The vast majority of the content is from Bahman's notes, with some comments from me (Emma Hansen).
+
+## Examples of Optimisation Problems
+
+::: {.example}
+:::: {.example-header}
+Example: 150BC -- Alexandria's Problem
+::::
+:::: {.example-container}
+
+*figure*
+
+find a point $D\in\mathbb{R}^2$ such that $||AD||+||DB||$ is minimised.
+
+Consider the figure below.
+
+*another figure*
+
+Claim: this $D$ is the solution.
+
+:::: {.proof}
+Suppose otherwise, i.e. let some point $D'$ be the minimiser:
+
+$$\begin{aligned}
+||AD'|| + ||D'B|| &\geq ||AB'|| \textrm{ (from the claim)} \\
+&= ||AD|| + ||DB'|| \\
+&= ||AD|| + ||DB||
+\end{aligned}$$
+
+Why is this true? Triangle inequality! Thus, $D$ is the minimiser. ■
+::::
+::::
+:::
+
+::: {.example}
+:::: {.example-header}
+Example: 850BC -- Dido's Problem
+::::
+:::: {.example-container}
+
+*figure*
+
+Consider a curve of fixed length $\ell$. What is the maximum area of land you can enclose using this curve?
+
+To start, think about what kind of shape you should use.
+
+Formally, the problem is: $\max_y \ \ J(y) = \int_a^b y(x) dx, \ y\in\mathcal{C}([a,b])$.
+
+It turns out the optimal shape is a semicircle, but we will not be able to prove this even at the end of the course.
+::::
+:::
+
+::: {.example}
+:::: {.example-header}
+Example: 1556 -- Tartaglia's Problem
+::::
+:::: {.example-container}
+
+This problem is also known as the Cardano-Tartaglia problem.
+
+Pick two numbers $x$ and $y$ such that:
+
+-   they sum to 8: $x+y = 8 \Rightarrow y = (8-x)$
+-   their product, $xy$, and difference, $x-y$, is maximised
+
+Today this problem is easy to solve (because of calculus): we need to maximise $f(x) = (xy)(x-y) = x(8-x)(x-(8-x)) = -2x^3 + 24x^2 - 64x$.
+
+Solution: $x = 4(1-\frac{1}{\sqrt{3}})$.
+::::
+:::
+
+::: {.example}
+:::: {.example-header}
+Example: 1954 -- Max-flow
+::::
+:::: {.example-container}
+
+Consider a directed graph $\mathcal{G}(V,E)$.
+
+*figure*
+
+Let each edge $ij$ have a capacity $c_{ij}$.
+
+We are looking for a map $f:E\rightarrow \mathbb{R}_{\geq 0}$ such that
+
+-   $f(ij)\leq c_{ij}$
+-   Flow is conserved at each vertex: incoming = outgoing
+
+With these conditions, we want to maximise flow across the graph: $\max \ |f|$ over all routes through the graph.
+::::
+:::
+
+## Notations
+
+-   For parts of this course, we work with functionals on normed vector spaces. We usually consider functions on subsets of $\mathbb{R}^n$.
+
+$$\begin{aligned}
+&f: D\subset\mathbb{R}^n \rightarrow \mathbb{R}\\
+&f: E \rightarrow \mathbb{R}, \ E \textrm{ a normed vector space}
+\end{aligned}$$
+
+-   We usually assume $f$ is differentiable, specifically Fréchet or Gâteaux differentiable. Nevertheless, we denote gradient (or derivative) of $f$ by $\nabla f$:
+
+$$\nabla f = (\frac{\partial f}{\partial x_1},...,\frac{\partial f}{\partial x_n})^T$$
+
+## References
+
+-   Convex Optimisation - @Boyd_Vandenberghe_2004
+-   Foundations of Optimisation - @Güler_2010
+-   Numerical Optimisation - @Nocedal_Wright_2006
+
+# Introduction to Optimisation
+
+::: {#def-localglobaloptimisers}
+## Local and Global Minimisers/Maximisers
+
+Let $f:\mathcal{U}\rightarrow\mathbb{R}$, where $\mathcal{U}\subset\mathbb{R}^n$. Then $x^*\in\mathcal{U}$ is a:
+
+-   **local minimiser** if there exists a neighbourhood of $x^*$ such that $f(x^*)\leq f(x)$ for all $x$ in this neighbourhood. If this is true for all $x\in\mathcal{U}$, $x^*$ is a **global minimiser**.
+-   **local/global maximiser** defined similarly.
+:::
+
+## Unconstrained Optimisation
+
+### Existence and Uniqueness of Solutions
+
+::: {#thm-weierstrass}
+## Weierstrass, 1858
+
+Let $K$ be a compact set in a topological space. Let $f:K\rightarrow\mathbb{R}$ be a continuous function. Then, there exists $x^*\in K$ such that $f(x^*)\leq f(x)$ for all $x\in K$.
+:::
+
+::: proof
+Recall that $K$ is compact if every open cover of $K$ has a finite subcover.
+
+We prove @thm-weierstrass in two steps.
+
+Step 1: We show that $f$ is bounded from below. Let $K_n = \{ x\in K | f(x) > n\}$ (open sets). Then,
+
+$$ K = \cup_{n=-\infty}^\infty K_n.$$
+
+Since $K$ is compact, there exists a finite subcover $\{K_{n_i}\}_{i=1}^k$
+
+$$ K = \cup_{i=1}^k K_{n_i}. $$
+
+Let $\tilde{n} = \min\{n_i \mid i=1,...,k\}$. Then, $K_{\tilde{n}} = K$.
+
+By definition of $K_n$, we now let
+
+$$f^* = \inf\{ f(x) | x\in K\} = \inf\{f(x) | f(x) >\tilde{n}\} > -\infty. $$
+
+Therefore $f$ is bounded from below.
+
+Step 2: We show that $f$ has a gloal minimizer. Suppose otherwise and let:
+
+-   $Y_n = \{x\in K | f(x) > f^* + \frac{1}{n}\}$ (open)
+-   $K = \cup_{n=1}^\infty Y_n$ again. Using compactness and a similar argument as before, there exists $\tilde{n}>1$ such that $K = Y_{\tilde{n}}$.
+
+Thus we have that $f(x)>f^* + \frac{1}{\tilde{n}}$ for all $x\in K$. This, however, contradicts the definition of $f^*$ as the infimum. ■
+:::
+
+**include figure**
+
+Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in $C^0([0,1])$ is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there eists a minimiser which is not continuous.) Weierstrass theorem doesn't work well for infinite dimensions.
+
+We now go about **relaxing compactness**.
+
+::: {#thm-globalmin}
+Suppose $F: E\rightarrow\mathbb{R}$ is continuous. If $f$ has a non-empty compact sublevel set, i.e. $\{x\in E | f(x) \leq \alpha\}$ for some $\alpha\in\mathbb{R}$, then $f$ achieves a *global minimum*.
+:::
+
+This means that if the set of values of a function that are less than $\alpha$ is finite, a minimum exists.
+
+**add figure**
+
+::: proof
+Pretty straightforward. For an idea, see the figure.
+:::
+
+::: {#def-CoerciveFunction}
+## Coercive function
+
+A function $f:E\rightarrow\mathbb{R}$ is call coercive if
+
+$$ ||x||\rightarrow\infty \ \ \Rightarrow \ \ f(x) \rightarrow\infty .$$
+
+Note: here, $E$ is any normed vector space.
+:::
+
+::: {#prp-globalmin}
+If $f:D\rightarrow\mathbb{R}$, where $D$ is closed and $f$ is continuous, then $f$ achieves a *global minimum* on $D$.
+:::
+
+::: proof
+Since $F$ is continuous and $d$ is closed, we have that $\{x\in D | f(x) \leq \alpha\}$, $\alpha\in\mathbb{R}$, is closed.
+
+We claim that this set is also bounded: Suppose otherwise, then there is a sequence $||x_n||\rightarrow\infty$. Then, using coercivity $|f(x)|\rightarrow\infty$ on this sublevel set, which is a contradiction! Thus, the sublevel set is also bounded.
+
+By the previous result, since the sublevel set is compact, we have a global minimum. ■
+:::
+
+### Necessary Conditions of Optimality
+
+Consider a $C^1$-function $f$ on $\mathbb{R}^n$ and suppose tht $x^*$ is a local minimum of $f$ in some open set $D\subset \mathbb{R}^n$. Note that $x^*$ is in the interior of $d$.
+
+**figure**
+
+Let $d$ be some vector in $\mathbb{R}^n$, and $\alpha\in\mathbb{R}$. Consider:
+
+$$g(\alpha) = f(x^* + \alpha d).$$
+
+Note that: $\alpha = 0$ is the local minimum of $g$. Using a first order approximation:
+
+$$ g(\alpha) = g(0) + g'(0)(\alpha - 0) + \mathcal{O}(\alpha),$$
+
+where $\lim_{\alpha\rightarrow } \frac{\mathcal{O}(\alpha)}{\alpha} = 0$.
+
+::: {#lem-lemma}
+We have that $g'(0) = 0$.
+:::
+
+::: proof
+Suppose otherwise. Then for $\varepsilon >0$ small enough and $\alpha \neq 0$ with $|\alpha|<\varepsilon$, we have
+
+$$\begin{aligned}
+|g'(0) \alpha| > |\mathcal{O}(\alpha)|\\
+\Rightarrow g(\alpha) - g(0) < g'(0) \alpha + |g'(0)\alpha|
+\end{aligned}$$
+
+If we let $\alpha$ have the opposite sign (since $\alpha$ is any number in $\mathbb{R}$) of $g'(0)$, then $g(\alpha) < g(0)$. Which is a contradiction! Thus $g'(0)=0$. ■
+:::
+
+Now, with $g'(0) = 0$, we consider what this means for $f$.
+
+$$\begin{aligned}
+g'(\alpha) &= \nabla f (x^* + \alpha d) \cdot \vec{d} \\
+&= \sum_{i=1}^n \frac{\partial f}{\partial x_i}(x^* + \alpha d) \cdot d_i
+\end{aligned}$$
+
+Then, $g'(0) = \nabla f(x^*) \cdot d = 0$ for all $d\in\mathbb{R}^n$. Thus, $\nabla f(x^*) = 0$. This is the *first necessary condition* of optimality.
+
+### Sufficient Conditions of Optimality
+
+Consider now the function $f$, this time in $C^2$.
+
+$$g(\alpha) = g(0) + g'(0) \alpha + \frac{1}{2}g''(0)\alpha^2 + \mathcal{O}(\alpha^2),$$
+
+with $\lim_{\alpha\rightarrow 0} \frac{\mathcal{O}(\alpha^2)}{\alpha^2} = 0$.
+
+::: {#lem-secondorder}
+If $x^*$ is a local minimum, then $g''(0) \geq 0$.
+:::
+
+::: proof
+Suppose otherwise. I.e. $g''(0) < 0$. Then, or $\alpha$ small enough, we have
+
+$$\frac{1}{2} |g''(0)|\alpha^2 > \mathcal{O}(\alpha^2). $$
+
+Since we know that $g'(0) = 0 \Rightarrow g(\alpha) - g(0) < \frac{1}{2} g''(0)\alpha^2 + \frac{1}{2}|g''(0)|\alpha^2$ and $\frac{1}{2}g''(0)\alpha^2 <0$, then \$g(\alpha)- g(0) \<0 \$, which is contradicts $g(0)$ being the minimiser! ■
+:::
+
+Let us compute $g''(0)$:
+
+$$\begin{aligned}
+g''(\alpha) &= \frac{d}{dx} g'(\alpha) \\
+&= \frac{d}{d\alpha} \sum_{i=1}^n \frac{\partial f}{\partial x_i}(x^* + \alpha d) d_i \\
+&= \sum_{i=1}^n \sum_{j=1}^n \frac{\partial^2 f}{\partial x_i \partial x_j} (x^* + \alpha d) d_i d_j
+\end{aligned}$$
+
+Then, $g''(0) = \sum_{i,j = 1}^n \frac{\partial^2 f}{\partial x_i \partial x_j} (x^*)d_i d_j = d^T \nabla^2 f(x^*) d$. And since $g''(0)\geq 0$, then $d^T \nabla^2 f(x^*) d \geq 0$ for all $d$, which implies $\nabla^2 f(x^*)$ is symmetric and positive semidefinite.
+
+
+::: callout-tip
+# Symmetric matrices
+
+Consider an $n\times n$ real symmetric matrix $A\in\mathbb{R}^{n\times n}$. It is well known and easy to show that $A$ has real eigenvalues, denote these by $\lambda_1,...,\lambda_n\in\mathbb{R}$, with corresponding eigenvectors $\vec{u}_1,...,\vec{u}_n$ such that $\langle \vec{u}_i, \vec{u}_j\rangle = 0$ when $i\neq j$, and $||\vec{u}_i|| = 1$. Let now
+
+$$ \Lambda = \left[\begin{array}{ccc}
+\lambda_1 & ... & 0 \\
+\vdots & \ddots & \vdots \\
+0 & ... & \lambda_n
+\end{array}\right] = \texttt{diag}(\lambda_1,...,\lambda_n), \ \ U = \left[\vec{u}_1,...,\vec{u}_n \right].$$
+
+Note that $AU = \left[A\vec{u}_1,...,A\vec{u}_n \right] = \left[\lambda_1\vec{u}_1,...,\lambda_n\vec{u}_n \right] = U\Lambda$.
+
+Since $U^T U = I_n$ (identity), then $A = A(U U^T) = (AU)U^T = U\Lambda U^T$. (note: $U$ is non-singular).
+
+::: {#thm-spectraldecomp}
+# Spectral Decomposition of Symmetric Matrices
+
+Let $A$ be a real symmetric matrix. Then, $A$ can be written as
+
+$$ A = U \Lambda U^T.$$
+:::
+
+::: {#cor-PSD}
+$A$ is positive semidefinite if and only if all eigenvalues of $A$ are non-negative. Similarly, positive definite if and only if all eigenvalues are strictly positive.
+:::
+
+::: proof
+By the previous result,
+
+$$\begin{aligned} 
+d^T A d &= d^T U\Lambda U^T d \\
+&= (U^Td)^T \Lambda (U^T d)
+\end{aligned}.$$
+
+Since $U$ is non-singular, we have that $d^T A d\geq 0$ for all $d$ if and only if $d^T \Lambda d\geq 0$ for all $d$.
+
+$$ \begin{aligned}
+d^T \Lambda d &= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
+&\Rightarrow \lambda_i \geq 0 \ \forall i.
+\end{aligned}$$
+
+The proof of the second part is similar. ■
+:::
+:::
+
+It is easy to see that the necessary conditions we have are not sufficient. For example, take $f: x\mapsto x^3$. However, if $f$ is in $C^2$ and $\nabla f (X^*) = 0$, $\nabla^2f(x^*) \prec 0$, then $x^*$ is a minimiser.
+
+::: proof
+To show this, note that
+
+$$f(x^* + \alpha d) = f(x^*) + \frac{1}{2}\alpha^2 d^T\nabla^2 f(x^*) d + ... \.$$
+
+Again, we can choose \$\alpha small enough to have
+
+$$ \frac{\alpha^2}{2} d^T \nabla^2 f(x^*) d > |\mathcal{O}(\alpha^2).$$
+
+Since $\nabla^2 f(x^*)$ is positive definite, then $f(x^* + \alpha d) > f(x^*)$ for all $d$. Thus, $x^*$ is a local minimum! ■
+:::
+
+Note that: $\alpha$ depends on $d$. If $|\alpha| < \varepsilon^*(d)$, different $d$ will result in different $\varepsilon$, thus, choose the smallest $\varepsilon$. Without loss of generality assume $||d|| = 1$, $\varepsilon^* = \min(\varepsilon(d))$ which results from Weierstrass theorem.
+
+**figure**
+
+::: {.example}
+:::: {.example-header}
+Example: Arithmetic-Geometric mean inequality
+::::
+:::: {.example-container}
+We show that: for $x_i>0 \in\mathbb{R} \ \forall i$
+
+$$ (x_1 \cdot ... \cdot x_n)^{1/n} \leq \frac{1}{n} \sum_{i=1}^n x_i .$$
+
+::::: {.proof}
+Let $y_i = \ln(x_i)$ and let 
+
+$$ f(y_1,...,y_n) \triangleq \frac{1}{n} \sum_{i=1}^n e^{y_i} - e^{\frac{y_1 + ... + y_n}{n}} $$
+
+(this came from replacing $x_i$ with $e^{y_i}$ in the statement.)
+
+Note that we want tot show $f(y_1,..,y_n) \geq 0$. This is the same problem as above. It is enough to show that $f$ acheives its minimum value at zero. 
+
+To do this, use the first order condition of optimality:
+
+$$ \frac{\partial f}{\partial y_i} = \frac{1}{n} e^{y_i} - \frac{1}{n} e^{\frac{y_1 + ... + y_n}{n}} \ \ \forall i $$
+
+which are zero if and only if $ e^{y_i} = e^{\frac{y_1 + ... + y_n}{n}} \ \Rightarrow y_i = \frac{y_1 + ... + y_n}{n}$ for all $i$. (Check this for yourselves).
+
+This gives a system of linear equations with solution $y_i = \frac{Y}{n}$ for all $i$. i.e. picked all $y_i$ to be the same for any value of $Y\in\mathbb{R}$.
+
+Note that $f\left(\frac{Y}{n},...,\frac{Y}{n}\right) = 0$. 
+
+We now need to justify that we have a global minimiser. (And, ideally a unique one.)
+
+We reduce the problem over the set 
+
+$$\{(y_1,...,y_n) | \sum_{i=1}^n y_i = Y\}$$
+
+for some $Y\in\mathbb{R}$. Using this, and by eliminating $y_n$ (by saying $y_n = Y - y_1 - ... - y_{n-1}$), define
+
+$$g(y_1,...,y_{n-1}) = \frac{1}{n}\left( e^{y_1} + ... + e^{y_{n-1}} + e^{Y - y_1 - ... - y_{n-1}}\right) - e^\frac{Y}{n}.$$
+
+It is easy to check now that $g$ has a unique critical point
+
+$$y_i = \frac{Y}{n}, \ \ i\in\{1,...,n-1\}.$$
+
+The function $g$ is coercive and hence has a global minimum, which has to be 
+
+$$y_i = \frac{Y}{n}, \ \ i\in\{1,...,n-1\}.$$ ■
+:::::
+::::
+:::
+
+## Constrained Optimisation
+
+**figure**
+
+- we assume for now that $D$ is not of lower dimension, $D\subseteq \mathbb{R}^n$
+- $D$ is assumed to be closed and bounded
+
+We wish to study the minimisers of 
+
+$$f: D\rightarrow \mathbb{R}$$ 
+
+We can even assume that $f$ has a minimiser in $D$. This minimiser could be on the boundary. 
+
+Note that we cannot conclude that if 
+
+$$ g(\alpha) = f(x^* + \alpha d),$$
+
+where $d$ is a feasible direction, we have $g'(0) = 0$ (since $\alpha$ is dependent on $d$). We still have that, for $\alpha>0$ small enough,
+
+$$\begin{aligned}
+& g(\alpha) - g(0) < g'(0)\alpha + |g'(0)|\alpha \\
+\Rightarrow & g(\alpha) - g(0) < \alpha (g'(0) + |g'(0)|).
+\end{aligned}$$ {#eq-constrained}
+
+Claim: $g'(0)\geq 0$.
+
+::: {.proof}
+Suppose otherwise (ie. $g'(0)<0$). By choosing $\alpha>0$ small enough and using @eq-constrained we have
+
+$$\begin{aligned}
+& g(\alpha) < g(0) \\
+\Rightarrow & g'(0) \geq 0
+\end{aligned}$$■
+
+:::
+
+Recall $g'(0) = \nabla f(x^*)\cdot d \geq 0 $. (from first order optimality). 
+
+One can also conclude a weaker version of the second order condition of optimality:
+
+$$d^T \nabla^2 f(x^*) d \geq 0$$
+
+when $\nabla f(x^*)\cdot d = 0$, which we call the second order condition of optimality. 
+
+**figure**
+
+We cannot use $x^* + \alpha d$! Doing so would take us out of the surface. 
+
+::: callout-warning
+# Objective
+Minimise $f(x)$ subject to $D$.  
+:::
+
+This optmisation problem can be written as 
+
+$$\left\{ \begin{array}{ll}
+\min f(x) & \\
+h_i(x) = 0 & i=1,...,m 
+\end{array} \right. ,$$
+
+where $D$ is described usin functions $h_i$.
+
+What if instead we use some curves, $\gamma(\cdot)$, passing through $x^*$, ie. we take $\gamma(0) = x^*$. Let us take these curves to be at least $C^1$.
+
+**figure**
+
+Let us define $g(\alpha) = f(\gamma(\alpha))$. We can now carry the same argument as before, using $g(\alpha) = g(0) + \alpha g'(0) + \mathcal{O}(\alpha)$, and argue that 
+
+$$\nabla f(\gamma(0))\cdot \gamma'(0) = 0.$$
+
+We need to study this $\gamma'(0)$ more carefully.
+
+Note that $\gamma'(0)$ lives in the so called tangent space at $x^*$ which we denote by $T_{x^*}D$ (this is a subspace of $\mathbb{R}^n$). We have not used $h_i(\gamma(\alpha)) = 0 \ \forall i$, differentiating to get $\nabla h_i(\gamma(\alpha)) \cdot \gamma'(\alpha) = 0$. Choosing $\alpha = 0$, we have
+
+$$\nabla h_i(x^*) \cdot \gamma'(0) = 0$$
+
+::: callout-warning
+# Assumption
+
+We assume that $x^*$ is *regular*. This means that the gradients $\nabla h_i(x^*)$ for $i\in\{1,...,m\}$ are linearly independent. 
+:::
+
+Note that since $x^*$ is regular, it's also true that any vector $d\in\mathbb{R}^n$ for which $\nabla h_i(x^*) \cdot d = 0$ for all $i$ has to lie in the tangent space $T_{x^*}D$. (check this on your own)
+
+In summary, we showed that 
+
+$$\nabla f(x^*)\cdot d = 0$$ {#eq-constrainedmin}
+
+for all $d$ such that $\nabla h_i(x^*)\cdot d = 0$ for all $i$. 
+
+::: {#prp-lagrange}
+If @eq-constrainedmin holds, and $x^*$ is regular, then we have that 
+
+$$\nabla f(x^*) \in \texttt{span}\{\nabla h_i(x^*), \ i\in\{1,...,m\}\}.$$
+
+ie. there exists a $\lambda_i^*\in\mathbb{R}$ such that 
+
+$$\nabla f(x^*) + \lambda_1^* \nabla h_1(x^*) + ... + \lambda_m^* \nabla h_m(x^*) = 0.$$
+
+These $\lambda_i^*$ are called *Langrange multipliers*.
+:::
+::: {.proof}
+Use contradiction, do on your own. 
+:::
+
+
+# Convex Analysis
+
+
+**V keep this for later V**
+Recall: for all $d\in\mathbb{R}^n$  and $\alpha\in\mathbb{R}$ such that $x^* + \alpha d \in D$, we must have 
+
+$$\langle \nabla f(x^*),d\rangle \geq 0.$$
+
+**figure**
+
+this is required for a minimum. if that $\geq$ changes to $<$ for any points defined from $\alpha, \ d$, then $x^*$ is not a minimum. 
+
+**^ keep this for later ^**
+
+We start by discussing affine sets and maps. 
+
+::: {#def-affine_set}
+# Affine Set - informal
+A set $A\subseteq\mathbb{R}^n$ is *affine* if for all $x,y\in A$, the full line connecting $x$ and $y$ is in $A$.
+
+**figure**
+:::
+
+::: {#def-affine_set_forma}
+# Affine Set - formal
+A set $A\subseteq \mathbb{R}^n$ is *affine* if and only if for all $x,y\in\ A$ and $t\in\mathbb{R}$,
+
+$$ (1-t) x + t y \in A.$$
+
+:::
+
+::: {#thm-linearsubspace}
+$V\subseteq\mathbb{R}^n$ is a linear subspace if and only if $V$ is affine and $0\in V$. 
+:::
+::: {.proof}
+$\Rightarrow$ immediate
+
+$\Leftarrow$ Suppose $V$ is affine and $0\in V$. Need to check scalar multiplication and vector addition. 
+
+Scalar multiplication: let $\alpha \in\mathbb{R}$, $u\in V$, then $\alpha u = \alpha u + (1-\alpha)0 \in V$
+
+Addition: let $u,w\in V$. Then, $u + w = 2 (\frac{1}{2}u + \frac{1}{2}w)$, which is in the form $\alpha u + (1-\alpha)w$, and is therefore in $V$ since $V$ is affine. Since $V$ is also closed under scalar multiplication, we conclude that $u+w\in V$. ■
+:::
+
+::: {#thm}
+A set $A\in\mathbb{R}^n$ is *affine* if and only if $A-a$ is a linear subspace for all $a\in\mathbb{R}$.
+:::
+::: {.proof}
+in text.
+
+**figure**
+:::
+
+One of the most important examples of an affine set in $\mathbb{R}^n$ is an $(n-1)$ dimensional hyperplane. A hyperplane is an $(n-1)$ dimensional set. 
+
+
+::: callout-tip
+# Analytical description of a Hyperplane
+
+For any hyperplane $H\subseteq\mathbb{R}^n$, we have
+
+$$H = L + a,$$
+
+for some $a\in \mathbb{R}^n$, where $L$ is an $(n-1)$ dimensional linear subspace. So,
+
+$$\begin{aligned}
+H &= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
+&= \{x+a\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} \\
+&= \{y\in\mathbb{R}^n \mid \langle y-a,b\rangle = 0\} \\
+&= \{y\in\mathbb{R}^n \mid \langle y,b\rangle = \alpha\},
+\end{aligned}$$
+
+for some $\alpha\in\mathbb{R}$.
+
+Thus, any $(n-1)$ dimensional affine set in $\mathbb{R}^n$ can be written as $\{y\in\mathbb{R}^n \mid \langle y,b\rangle = \alpha \}$ for some $b\in\mathbb{R}^n, \ \alpha\in\mathbb{R}$.
+:::
+
+::: {#def-affinemap}
+# Affine map
+A mapping $F:\mathbb{R}^n\rightarrow \mathbb{R}^n$ is *affine* if for all $x,y\in\mathbb{R}^n$ and $t\in\mathbb{R}$,
+
+$$F((1-t)x + ty) = (1-t) F(x) + t F(y) .$$
+:::
+
+**figure**
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+If $A\in M_{n\times m}(\mathbb{R})$ and $b\in\mathbb{R}^n$, $F(x) = Ax + b$ is affine.
+::::
+:::
+
+## Convex Sets
+
+::: {#def-convexset}
+# Convex set - informal
+A set $S\subseteq\mathbb{R}^n$ is *convex* is for all $x,y\in S$, the line segment connecting $x$ and $y$ is in $S$.
+
+**figure**
+:::
+
+::: {#def-convexsetformal}
+# Convex set - formal
+$S\subseteq\mathbb{R}^n$ is *convex* if for all $x,y\in S$ and $\lambda\in[0,1]$,
+
+$$(1-\lambda) x + \lambda y\in S.$$
+:::
+
+::: {.example}
+:::: {.example-header}
+Examples
+::::
+:::: {.example-container}
+1. $S_1 = \{(x,y)\in\mathbb{R}^2 \mid x^2 + y^2 \leq 1\}$ unit disk is convex. **figure**
+
+2. $S_2 = \{(x,0)\in\mathbb{R}^2 \mid x\in \mathbb{R}\}$ (x-axis) is affine $\Rightarrow$ convex.
+
+3. $S_3 = \{(x,y)\in\mathbb{R}^2 \mid y\geq e^x\}$ is convex. **figure**
+
+4. $S_4 = \{(x,y)\in\mathbb{R}^2 \mid y \geq\sin(x)\}$ is **not** convex. **figure**
+::::
+:::
+
+If we are given $m$ real numbers $\lambda_1,...,\lambda_m$ such that $\lambda_i\geq 0$ and $\sum_{i=1}^m \lambda_i = 1$, then these are called *convex coefficients*, and a sum
+
+$$\sum_{i=1}^m \lambda_i x_i$$
+
+is called a *convex combination* of vectors $x_i\in\mathbb{R}^n$, $i=1,...,m$. When:
+
+- $m=2$: line **figure**
+- $m=3$: surface **figure**
+
+::: {#thm-convexset2}
+The set $S\subseteq \mathbb{R}^n$ is *convex* if and only if $S$ contains all convex combinations of its elements.  
+:::
+::: {.proof}
+$\Leftarrow$ Set $m=2$, then it follows from the definition.
+
+$\Rightarrow$ By induction on $m$. 
+
+**Base case:** $m=2$. By definition of convexity, $\lambda x + (1-\lambda)y \in S$. Let $\lambda_1 = \lambda$, $\lambda_2 = 1-\lambda$.
+
+**Inductive step:** Assume true for $2,...,m$ and prove for $m+1$. Show that a convex combination of $m+1$ elements of $S$ lies in $S$. Let $x_1,...,x_{m+1}\in S$, $\lambda_1,...,\lambda_{m+1}\in\mathbb{R}$, $\lambda_i\geq 0$ and $\sum_{i=1}^{m+1}\lambda_i =1$. 
+
+Assume $\lambda_{m+1}\neq 0$, then 
+
+$$ \begin{aligned}
+\sum_{k=1}^{m+1} \lambda_k x_k &= \lambda_{m+1} x_{m+1} + \sum_{k=1}^{m+1} \lambda_k x_k \\
+&= \lambda_{m+1} x_{m+1} + (1-\lambda) \sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k.
+\end{aligned}$$
+
+Need to show $\sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k$ is in $S$. 
+
+Claim: $\frac{\lambda_k}{1-\lambda_{m+1}}$ are convex coefficients for all $k=1,...,m$.
+
+$$\sum_{k=1}^m \frac{\lambda_k}{1-\lambda_{m+1}} = \frac{1}{1-\lambda_{m+1}} \sum_{k=1}^m \lambda_k = \frac{1-\lambda_{m+1}}{1-\lambda_{m+1}} = 1$$
+
+Thus, $\sum_{k=1}^m \frac{\lambda_k}{1-\lambda_{m+1}} x_k$ is a convex combination of $m$ points in $S$, and is therefore in $S$.
+
+Thus, $\lambda_{m+1} x_{m+1} + (1-\lambda) \sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k \in S$. ■
+:::
+
+We now introduce an object called the *convex hull*. Given a set $X\subseteq\mathbb{R}^n$, we want to construct a convex set which contains $X$ and is as small as possible. Define
+
+$$ \co(X) = \left\lbrace \sum_{k=1}^m \lambda_k x_k \mid x_k\in X, \lambda_k \geq 0, \sum_{k=1}^m \lambda_k = 1, \textnormal{ for all } m \right\rbrace .$$
+
+The convex hull is the set of all convex combinations of elements of $X$. Imagine fitting an elastic band over the set. 
+
+**figure**
+
+Claims:
+
+1. $\co(X)$ is a convex set. 
+
+::: {.proof}
+Let $x,y\in\co(X)$. Then we can write 
+
+$$ x = \sum_{k+1}^m \lambda_k x_k, \ \ y = \sum_{\ell=1}^p \mu_\ell y_\ell, $$
+
+for some $m,p, \{x_k\}, \{y_k\}\in X$, convex coefficients $\lambda_1,...,\lambda_m$, $\mu_1,...,\mu_p$. Now let $\gamma\in[0,1]$:
+
+$$\begin{aligned}
+(1-\gamma)x + \gamma y &= \sum_{k=1}^m (1-\gamma)\lambda_k x_k  + \sum_{\ell=1}^p \gamma\mu_ell y_\ell \\
+&= \sum_{k=1}^{m+p} \alpha_k z_k 
+\end{aligned}$$
+
+where 
+
+$$ \begin{aligned}
+&\alpha_k = \left\lbrace\begin{array}{ll}
+(1-\gamma)\lambda_k, & 1\leq k\leq m\\
+\gamma \mu_{k-m}, & m+1 \leq k\leq m+p
+\end{array} \right.  \\
+&z_k = \left\lbrace\begin{array}{ll}
+x_k, & 1\leq k\leq m \\
+y_{k-m}, & m+1\leq k \leq m+p
+\end{array} \right.
+\end{aligned}$$
+
+Note that $\sum_{k=1}^{m+p} \alpha_k = 1$ (prove this on your own). Thus, we have shown $(1-\gamma)x + \gamma y \in \co(X)$ $\Rightarrow$ $\co(X)$ is a convex set. ■
+:::
+
+2. $\co(X)$ is minimal in the sense that if $S\subseteq\mathbb{R}^n$ is convex and $X\subseteq S$, then $\co(X) \subseteq S$.
+
+::: {.proof}
+If $x\in\co(X)$ then $x = \sum_{k=1}^m \lambda_k x_k$, $x_k\in X$ for all $k=1,...,m$. 
+
+$X\subseteq S \Rightarrow$ if $x_k\in X$ then $x_k\in S$. Then, $\co(X)\subseteq S$. ■
+:::
+
+::: {#thm-convexhull}
+If $X\subseteq\mathbb{R}^n$ and $x\in\co(X)$, then
+
+$$ x = \sum_{k=1}^{n+1} \lambda_k x_k $$
+
+for the convex coefficients $\lambda_k$ and points $x_k\in X$. 
+:::
+::: {.proof}
+In text.
+:::
+
+### Operations that Preserve Convexity
+
+1. If $F:\mathbb{R}^n\rightarrow\mathbb{R}^m$ is affine and $S\subseteq\mathbb{R}^n$ is convex, $F(S)\subseteq\mathbb{R}^m$ is convex. 
+
+::: {.proof}
+Let $y_1, y_2\in F(S)$. Then, $y_1 = F(x_1)$ and $y_2 = F(x_2)$ for $x_1, x_2\in S$. Then, for any $\lambda\in[0,1]$
+
+$$\begin{aligned}
+(1-\lambda) y_1 + \lambda y_2 &= (1-\lambda)F(x_1) + \lambda F(x_2) \\
+&= F((1-\lambda)x_1 + \lambda x_2) \in F(S)
+\end{aligned}$$ ■ 
+:::
+
+2. $\cap_{i\in I} S_i$ is convex if $S_i$ are convex for all $i\in I$. This is not true for unions.
+
+3. Minkowski sum. $S_1 + S_2 + ... + S_m = \{x_1 + x_2 + ... + x_m \mid x_i\in S_i\}$, the Minkowski sum preserves convexity. 
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+$S_1 = D$ (unit disk) in $\mathbb{R}^2$, $S_2$ is the $x$-axis.
+
+**figure**
+::::
+:::
+
+::: {.proof}
+Of Minkowski sum preserving convexity.
+
+Let $x, y\in S_1 + ... + S_m$ and $S_i$ convex for all $i=1,...,m$. Then, $x = x_1 + ... + x_m$, $y = y_1 + ... + y_m$, $x_i\in s_i$, $y_i\in S_i$. For any $\lambda\in[0,1]
+
+$$(1-\lambda)x + \lambda y = \underbrace{(1-\lambda) x_1 + \lambda y_1}_{\in S_1} + ... \underbrace{(1-\lambda) x_m + \lambda y_m}_{\in S_m}$$
+
+By convexity, $(1-\lambda)x_i + \lambda y_i \in S_i$. Thus, $(1-\lambda)x + \lambda y \in S_1 + ... S_m$. ■
+:::
+
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+Minkowski sums don't necessarily preserve set properties. 
+
+$$\begin{aligned}
+& S_1 = \{(x,y)\in\mathbb{R}^ \mid y\geq e^x\} \textnormal{ closed} \\
+& S_2 = x-\textnormal{axis}
+\end{aligned}$$
+
+$S_1+S_2 = \{(x,y)\in\mathbb{R}^2 \mid y>0 \}$ is open, but still convex. 
+::::
+:::
+
+::: {#def-convexcone}
+Let $C$ be a set in a vector space $V$. Then $C$ is called a *cone* if $t\cdot x\in C$ for all $x\in C$, $t\geq 0$. We call $C$ a *convex cone* is $C$ is additionally convex.
+:::
+
+::: {#lem-convexcone}
+A set $C$ is a convex cone if and only if for all $x, y\in C$ and $t>0$ we have that $tx\in C$ and $x+y\in C$.
+:::
+::: {.proof}
+If $C$ is a convex cone, then 
+
+$$ x + y = 2\underbrace{\left(\frac{x}{2} + \frac{y}{2}\right)}_{\in C \textnormal{ by convexity}}  \in C$$
+
+Conversely, if $tx\in C$ and $x+y\in C$ for all $x,y\in C$, then for any $\lambda\in(0,1)$
+
+$$\lambda x + (1-\lambda)y = \lambda \left(x + \frac{1-\lambda}{\lambda} y \right) \in C.$$
+■
+:::
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container} 
+The cone of symmetric positive definite matrices, denoted $\mathbf{S}$.
+
+Note that for $A,B\in \mathbf{S}$:
+
+- $A+B\in \mathbf{S}$,
+- $t A\in \mathbf{S}$, $t>0.$
+
+Thus, $\mathbf{S}$ is a convex cone. 
+::::
+:::
+
+
+## Convex Functions
+
+::: {#def-convexfunction}
+For $f:V\rightarrow\mathbb{R}$, $V$ a vector space, we say that $f$ is a *convex function* if
+
+$$f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y),$$
+
+where $0\leq\lambda \leq 1$.
+:::
+
+What convexity tells us is that the values of the function are below the line between $x$ and $y$. 
+
+**figure**
+
+
+::: {#def-epigraph}
+For a function $f:V\rightarrow\mathbb{R}$ the *epigraph* of $f$ is defined to be 
+
+$$ \epi(f) = \{(x,\alpha) \mid x\in V, \alpha \in \mathbb{R}, f(x) \leq \alpha\}.$$
+:::
+
+::: {#prp-epigraph}
+The function $f$ is convex if and only if $\epi(f)$ is convex.
+:::
+::: {.proof}
+Suppose that $f$ is convex. Let $(x_1,\alpha_1), (x_2,\alpha_2)\in\epi(f)$. For $\lambda\in[0,1]$ we have:
+
+$$\begin{aligned}
+f(\lambda x_1 + (1-\lambda)x_2) &\leq \lambda f(x_1) + (1-\lambda) f(x_2) \\
+&\leq \underbrace{\lambda \alpha_1 + (1-\lambda)\alpha_2}_{\alpha} \\
+&\leq \alpha
+\end{aligned}$$
+
+Then, $\lambda(x_1,\alpha_1) + (1-\lambda)(x_2,\alpha_2) = (\lambda x_1 + (1-\lambda)x_2, \alpha) \in \epi(f)$ $\Rightarrow$ $\epi(f)$ is convex. 
+
+For the other direction, suppose that $\epi(f)$ is convex. Then, for all $x_1, x_2\in V$, $\lambda\in[0,1]$ we have 
+
+$$\lambda (x_1, f(x_1)) + (1-\lambda)(x_2, f(x_2)) \in \epi(f). $$
+
+Hence, by definition of epigraph,
+
+$$f(\lambda x_1 + (1-\lambda)x_2) \leq \lambda f(x_1) + (1-\lambda) f(x_2),$$
+
+which means that $f$ is convex. ■
+:::
+
+::: {.example}
+:::: {.example-header}
+Examples
+::::
+:::: {.example-container}
+1. $f: x\mapsto e^x$
+2. $f: x\mapsto -\log(x)$, $x\in\mathbb{R}$ positive
+3. $f: x\mapsto \langle a, Ax\rangle + \langle b,x\rangle$ where $A\in\mathcal{M}^n$ is symmetric positive definite and $b$ is a vector in $\mathbb{R}^n$.
+
+are convex functions.
+::::
+:::
+
+::: {#thm-jensens}
+# Jensen's inequality
+
+Let $f:C\rightarrow\mathbb{R}$ be a convex function and $\lambda_i \in[0,1]$, $\sum_{i=1}^n \lambda_i = 1$. Then,
+
+$$ f(\sum_{i=1}^n \lambda_i x_i) \leq \sum_{i=1}^n \lambda_i f(x_i), \ x_i\in C.$$
+:::
+::: {.proof}
+Note that $(x_i,f(x_i))\in\epi(f)$. Since $f$ is convex, $\epi(f)$ is a convex set. Thus
+
+$$\begin{aligned}
+& \sum_{i=1}^n \lambda_i (x_i,f(x_i)) \in\epi(f) \\
+\Rightarrow & \left(\sum_{i=1}^n \lambda_i x_i, \sum_{i=1}^n \lambda_i f(x_i) \right) \in\epi(f)\\
+\Rightarrow & f\left(\sum_{i=1}^n \lambda_i x_i\right) \leq \sum_{i=1}^n \lambda_i f(x_i)
+\end{aligned}$$
+■
+:::
+
+Note that we can easily conclude the arithmetic geometric mean inequality using this: take $\ln(\cdot)$, which is a *concave function* (ie. the negative of a convex function),
+
+$$\begin{aligned}
+& \ln\left(\frac{1}{2} x + \frac{1}{2}y\right) \geq \frac{1}{2}\ln(x) + \frac{1}{2}\ln(y), \ x,y>0 \\
+\Rightarrow & \ln\left(\frac{1}{2} x + \frac{1}{2}y\right) \geq \ln((xy)^{1/2}) \\
+\Rightarrow & \frac{1}{2} (x + y) \geq \sqrt(xy)
+\end{aligned}$$
+
+
+### Conditions of Convexity
+
+::: {#thm-firstorderconv}
+# First order condition of convexity
+
+Given $C\subseteq\mathbb{R}^n$ convex, $f:C\rightarrow\mathbb{R}$ continuously differentiable, we have that $f$ is convex if and only if
+
+$$ \langle \nabla f(x), y-x\rangle \leq f(y) - f(x), \ \ \forall x,y\in C.$$
+:::
+
+**figure**
+
+::: {.proof}
+$\Rightarrow$. Assume that $f$ is convex. Then for $\alpha\in(0,1)$
+
+$$\begin{aligned}
+f(x+ \alpha(y-x)) &= f((1-\alpha)x + \alpha y) \\
+&\leq (1-\alpha) f(x) + \alpha f(x).
+\end{aligned}$$
+
+Hence, 
+
+$$ \frac{f(x + \alpha(y-x)) - f(x)}{\alpha} \leq f(y) - f(x).$$
+
+Taking the limit $\alpha\rightarrow 0$ results in 
+
+$$\langle \nabla f(x), y-x\rangle \leq f(y) - f(x), $$
+
+which is the expression given in the theorem. Note, $\langle \nabla f(x), y-x\rangle$ is the directional derivative of $f$ in the direction $y-x$, as a result of the limit. 
+
+$\Leftarrow$. Now suppose $\langle \nabla f(x), y-x\rangle \leq f(y) - f(x)$, for all $x,y\in C$. Let $x_\alpha = (1-\alpha)x + \alpha y$ where $\alpha\in(0,1)$. Consider 
+
+$$\begin{aligned}
+& (1-\alpha) & f(x) \geq f(x_\alpha) + \langle \nabla f(x_\alpha), x- x_\alpha\rangle \\
++ & & \\
+& \alpha & f(y)\geq f(x_\alpha) + \langle \nabla f(x_\alpha),y-x_\alpha\rangle .
+\end{aligned}$$
+
+Expanding and simplifying results in 
+
+$$ \begin{aligned}
+&(1-\alpha) f(x) + \alpha f(y) \geq f(x_\alpha) + \langle \nabla f(x_\alpha), \underbrace{(1-\alpha)x + \alpha y - x_\alpha}_{=0}\rangle \\
+\Rightarrow &(1-\alpha) f(x) + \alpha f(y) \geq f(x_\alpha) \\
+\Rightarrow & (1-\alpha) f(x) + \alpha f(y) \geq f((1-\alpha)x + \alpha y),
+\end{aligned}$$ 
+
+which holds for all $x,y\in C$, $\alpha\in\mathbb{R}$. Thus, $f$ is convex. ■
+:::
+
+Note, a function can also be *strictly convex*. Strict convexity is when @def-convexfunction holds for $x\neq y$, ie. 
+
+$$ f((1-\alpha)x + \alpha y) < (1-\alpha) f(x) + \alpha f(y).$$
+
+::: {#thm-secondorderconv}
+# Second order condition of convexity
+
+Let $C\subseteq\mathbb{R}^n$, and suppose $f:C\rightarrow\mathbb{R}$ is twice continuously differentiable. Then, $f$ is convex if and only if the Hessian of $f$ at $x$ is positive semidefinite for all $x\in C$, ie.
+
+$$\nabla^2 f(x) \succeq 0 \ \forall x\in C.$$
+
+Moreover, if $\nabla^2 f(x)$ is strictly positive definite at every $x\in C$, then $f$ is strictly convex. For concavity, the opposite holds. 
+:::
+::: {.proof}
+$\Rightarrow$. Suppose $f$ is convex, by @thm-firstorderconv
+
+$$ f(x) + \langle \nabla f(x) ,\alpha d\rangle \leq f(x + \alpha d), $$
+
+for all $d\in\mathbb{R}^n$, $\alpha >0$. Fix $x$ and consider the Taylor expansion of $f(x+ \alpha d)$ where $d$ is the variable
+
+$$\begin{aligned}
+& f(x) + \langle \nabla f(x) ,\alpha d\rangle \leq f(x) \langle \nabla f(x) + \alpha d\rangle + \frac{\alpha^2}{2} d^T \nabla^2 f(x) d + \mathcal{O}(\alpha^2) \\
+\Rightarrow & \frac{1}{2} d^T \nabla^2 f(x) d + \frac{\mathcal{O}(\alpha^2)}{\alpha^2}  \geq 0.
+\end{aligned}$$
+
+Taking $\alpha\rightarrow 0$, we conclude that 
+
+$$\nabla^2 f(x) \succeq 0.$$
+
+
+$\Leftarrow$. Now, suppose $\nabla^2 f(x) \succeq 0$. Then, by the mean value theorem, we know that there exists $z = x+\lambda y$ where $0\leq \lambda\leq 1$ such that
+
+$$ f(y) = f(x) + \langle \nabla f(x), y-x\rangle + \frac{1}{2}\langle \nabla^2 f(z)(y-x), y-x\rangle .$$
+
+Since $\nabla^2 f(z) \succeq 0$, we have 
+
+$$ f(y) \geq f(x) + \langle \nabla f(x), y-x\rangle, $$
+
+which is the first order condition of convexity. Therefore, $f$ is convex. ■
+:::
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+A function that is strictly convex, but has $\nabla^2 f(x) \nsucc 0$, is $f(x) = x^4$. $\nabla^2 f(x) = 12x^2 = 0$ at $x=0$, it is not strictly positive definite. Thus, the converse does not hold in the second part of @thm-secondorderconv.
+::::
+:::
+
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+Let $f(x) =  \frac{1}{2} x^T A x + \langle b,x\rangle$, $A\in\mathcal{M}_n(\mathbb{R})$ symmetric and $b\in\mathbb{R}^n$. Then, $f$ is convex if and only if  $\nabla^2 f(x) \succeq 0$, that is
+
+$$\nabla^2 f(x) = A \succeq 0,$$
+
+ie. $f$ is convex if and only if $A$ is positive semidefinite. 
+::::
+:::
+
+
+::: {#prp-convexlinearcomp}
+A function $f:\mathbb{R}^n \rightarrow \mathbb{R}$ is convex if and only if  $g:\mathbb{R}\rightarrow\mathbb{R}$ given by
+
+$$ g(t) = f(x + yt)$$
+
+is convex for all $x,y\in\mathbb{R}^n$.
+:::
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+Let $f:S^n_{>0} \rightarrow\mathbb{R}$, $f(X) = \log\det X$.
+
+Claim: $f$ is concave. 
+
+Let $g(t) = \log\det(Z + tY)$, $Z,Y\in S^n_{>0}$.
+
+$$\begin{aligned}
+g(t) &= \log\det(Z + tY) \\
+&= \log\det(Z^{1/2}(I + tZ^{-1/2}YZ^{-1/2})Z^{1/2}) \\
+&= \log\det(Z) + \log\det(I + tZ^{-1/2}YZ^{-1/2}).
+\end{aligned}$$
+
+Let $\lambda_1,...,\lambda_n$ be the eigenvalues of $Z^{-1/2}Y Z^{-1/2}$. Then
+
+$$\begin{aligned}
+& g(t) = \log\det(Z) + \sum_{i=1}^n \log(1 + t\lambda_i)\\
+& g'(t) = \sum_{i=1}^n \frac{\lambda_i}{1 + t\lambda_i} \\
+& g''(t) = \sum_{i=1}^n \frac{-\lambda_{i}^2}{(1+t\lambda_i)^2} \leq 0
+\end{aligned}$$
+
+Thus, $g$ is concave. 
+::::
+:::
+
+We now note that convex functions have convex sublevel sets. This is, given $f:\mathbb{R}^n\rightarrow\mathbb{R}$ convex,
+
+$$S_\alpha = \{x \mid f(x) \leq \alpha \}$$
+
+is convex.
+
+But what about the converse?
+
+**figure**
+
+We can see that the sublevel sets $S_\alpha$ are convex, but clearly $f$ is not. 
+
+::: {#def-quasiconv}
+Any function that has convex sublevel sets is called *quasi-convex*. Similarly, *quasi-concave* functions have convex superlevel sets.
+:::
+
+Note that all convex functions are also quasi-convex.
+
+
+## Separation of Convex Sets
+
+ends at separating hyperplane proposition
+
+# Convex Optimisation
+
+## Conjugate Functions
+
+## Duality Theory
+
+## Nonlinear Programming
+
+### Conditions for Optimality
+
+### NLP and Duality
+
+# Algorithms for Optimisation
+
+## Gradient Methods - First Order
+
+## Gradient Methods - Second Order
+
+# Extras
+
+## Minimising Polynomials
+
+# References

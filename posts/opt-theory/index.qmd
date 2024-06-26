@@ -13,6 +13,8 @@ number-sections: true
 number-depth: 3
 # image: PLACEHOLDER #this will be the image that shows up in the toc
 categories: [notes, optimisation]
+abstract: |
+  This is a write up of my notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifared in 2016 at Queen's University.
 ---
 ::: {.hidden}
 $$

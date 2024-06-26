@@ -6,6 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Bahman Gharesifared">
+<meta name="author" content="Emma Hansen">
+<meta name="dcterms.date" content="2024-07-01">
 
 <title>Notes - Optimisation Theory and Applications</title>
 <style>
@@ -86,6 +89,12 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -176,6 +185,12 @@ window.Quarto = {
   <div class="quarto-title-meta">
 
         
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 1, 2024</p>
+      </div>
+    </div>
     
       
     </div>
@@ -250,9 +265,6 @@ window.Quarto = {
 
 
 
-<div class="hidden">
-
-</div>
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>This document is a write-up of the <em>Optimisation Theory and Applications</em> course taught by Bahman Gharesifared in 2016 at Queen’s University. The vast majority of the content is from Bahman’s notes, with some comments from me (Emma Hansen).</p>
@@ -738,15 +750,15 @@ H &amp;= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
 <p>Thus, <span class="math inline">\(\lambda_{m+1} x_{m+1} + (1-\lambda) \sum_{k=1}^{m} \frac{\lambda_k}{1-\lambda_{m+1}} x_k \in S\)</span>. ■</p>
 </div>
 <p>We now introduce an object called the <em>convex hull</em>. Given a set <span class="math inline">\(X\subseteq\mathbb{R}^n\)</span>, we want to construct a convex set which contains <span class="math inline">\(X\)</span> and is as small as possible. Define</p>
-<p><span class="math display">\[ \texttt{co} \ (X) = \left\lbrace \sum_{k=1}^m \lambda_k x_k \mid x_k\in X, \lambda_k \geq 0, \sum_{k=1}^m \lambda_k = 1, \textnormal{ for all } m \right\rbrace .\]</span></p>
+<p><span class="math display">\[ \co(X) = \left\lbrace \sum_{k=1}^m \lambda_k x_k \mid x_k\in X, \lambda_k \geq 0, \sum_{k=1}^m \lambda_k = 1, \textnormal{ for all } m \right\rbrace .\]</span></p>
 <p>The convex hull is the set of all convex combinations of elements of <span class="math inline">\(X\)</span>. Imagine fitting an elastic band over the set.</p>
 <p><strong>figure</strong></p>
 <p>Claims:</p>
 <ol type="1">
-<li><span class="math inline">\(\texttt{co} \ (X)\)</span> is a convex set.</li>
+<li><span class="math inline">\(\co(X)\)</span> is a convex set.</li>
 </ol>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(x,y\in\texttt{co} \ (X)\)</span>. Then we can write</p>
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(x,y\in\co(X)\)</span>. Then we can write</p>
 <p><span class="math display">\[ x = \sum_{k+1}^m \lambda_k x_k, \ \ y = \sum_{\ell=1}^p \mu_\ell y_\ell, \]</span></p>
 <p>for some <span class="math inline">\(m,p, \{x_k\}, \{y_k\}\in X\)</span>, convex coefficients <span class="math inline">\(\lambda_1,...,\lambda_m\)</span>, <span class="math inline">\(\mu_1,...,\mu_p\)</span>. Now let <span class="math inline">\(\gamma\in[0,1]\)</span>:</p>
 <p><span class="math display">\[\begin{aligned}
@@ -764,17 +776,17 @@ x_k, &amp; 1\leq k\leq m \\
 y_{k-m}, &amp; m+1\leq k \leq m+p
 \end{array} \right.
 \end{aligned}\]</span></p>
-<p>Note that <span class="math inline">\(\sum_{k=1}^{m+p} \alpha_k = 1\)</span> (prove this on your own). Thus, we have shown <span class="math inline">\((1-\gamma)x + \gamma y \in \texttt{co} \ (X)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\texttt{co} \ (X)\)</span> is a convex set. ■</p>
+<p>Note that <span class="math inline">\(\sum_{k=1}^{m+p} \alpha_k = 1\)</span> (prove this on your own). Thus, we have shown <span class="math inline">\((1-\gamma)x + \gamma y \in \co(X)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\co(X)\)</span> is a convex set. ■</p>
 </div>
 <ol start="2" type="1">
-<li><span class="math inline">\(\texttt{co} \ (X)\)</span> is minimal in the sense that if <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is convex and <span class="math inline">\(X\subseteq S\)</span>, then <span class="math inline">\(\texttt{co} \ (X) \subseteq S\)</span>.</li>
+<li><span class="math inline">\(\co(X)\)</span> is minimal in the sense that if <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is convex and <span class="math inline">\(X\subseteq S\)</span>, then <span class="math inline">\(\co(X) \subseteq S\)</span>.</li>
 </ol>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>If <span class="math inline">\(x\in\texttt{co} \ (X)\)</span> then <span class="math inline">\(x = \sum_{k=1}^m \lambda_k x_k\)</span>, <span class="math inline">\(x_k\in X\)</span> for all <span class="math inline">\(k=1,...,m\)</span>.</p>
-<p><span class="math inline">\(X\subseteq S \Rightarrow\)</span> if <span class="math inline">\(x_k\in X\)</span> then <span class="math inline">\(x_k\in S\)</span>. Then, <span class="math inline">\(\texttt{co} \ (X)\subseteq S\)</span>. ■</p>
+<p><span class="proof-title"><em>Proof</em>. </span>If <span class="math inline">\(x\in\co(X)\)</span> then <span class="math inline">\(x = \sum_{k=1}^m \lambda_k x_k\)</span>, <span class="math inline">\(x_k\in X\)</span> for all <span class="math inline">\(k=1,...,m\)</span>.</p>
+<p><span class="math inline">\(X\subseteq S \Rightarrow\)</span> if <span class="math inline">\(x_k\in X\)</span> then <span class="math inline">\(x_k\in S\)</span>. Then, <span class="math inline">\(\co(X)\subseteq S\)</span>. ■</p>
 </div>
 <div id="thm-convexhull" class="theorem">
-<p><span class="theorem-title"><strong>Theorem 6</strong></span> If <span class="math inline">\(X\subseteq\mathbb{R}^n\)</span> and <span class="math inline">\(x\in\texttt{co} \ (X)\)</span>, then</p>
+<p><span class="theorem-title"><strong>Theorem 6</strong></span> If <span class="math inline">\(X\subseteq\mathbb{R}^n\)</span> and <span class="math inline">\(x\in\co(X)\)</span>, then</p>
 <p><span class="math display">\[ x = \sum_{k=1}^{n+1} \lambda_k x_k \]</span></p>
 <p>for the convex coefficients <span class="math inline">\(\lambda_k\)</span> and points <span class="math inline">\(x_k\in X\)</span>.</p>
 </div>
@@ -864,21 +876,21 @@ y_{k-m}, &amp; m+1\leq k \leq m+p
 <p><strong>figure</strong></p>
 <div id="def-epigraph" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 10</strong></span> For a function <span class="math inline">\(f:V\rightarrow\mathbb{R}\)</span> the <em>epigraph</em> of <span class="math inline">\(f\)</span> is defined to be</p>
-<p><span class="math display">\[ \texttt{epi}(f) = \{(x,\alpha) \mid x\in V, \alpha \in \mathbb{R}, f(x) \leq \alpha\}.\]</span></p>
+<p><span class="math display">\[ \epi(f) = \{(x,\alpha) \mid x\in V, \alpha \in \mathbb{R}, f(x) \leq \alpha\}.\]</span></p>
 </div>
 <div id="prp-epigraph" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 3</strong></span> The function <span class="math inline">\(f\)</span> is convex if and only if <span class="math inline">\(\texttt{epi}(f)\)</span> is convex.</p>
+<p><span class="theorem-title"><strong>Proposition 3</strong></span> The function <span class="math inline">\(f\)</span> is convex if and only if <span class="math inline">\(\epi(f)\)</span> is convex.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Suppose that <span class="math inline">\(f\)</span> is convex. Let <span class="math inline">\((x_1,\alpha_1), (x_2,\alpha_2)\in\texttt{epi}(f)\)</span>. For <span class="math inline">\(\lambda\in[0,1]\)</span> we have:</p>
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose that <span class="math inline">\(f\)</span> is convex. Let <span class="math inline">\((x_1,\alpha_1), (x_2,\alpha_2)\in\epi(f)\)</span>. For <span class="math inline">\(\lambda\in[0,1]\)</span> we have:</p>
 <p><span class="math display">\[\begin{aligned}
 f(\lambda x_1 + (1-\lambda)x_2) &amp;\leq \lambda f(x_1) + (1-\lambda) f(x_2) \\
 &amp;\leq \underbrace{\lambda \alpha_1 + (1-\lambda)\alpha_2}_{\alpha} \\
 &amp;\leq \alpha
 \end{aligned}\]</span></p>
-<p>Then, <span class="math inline">\(\lambda(x_1,\alpha_1) + (1-\lambda)(x_2,\alpha_2) = (\lambda x_1 + (1-\lambda)x_2, \alpha) \in \texttt{epi}(f)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\texttt{epi}(f)\)</span> is convex.</p>
-<p>For the other direction, suppose that <span class="math inline">\(\texttt{epi}(f)\)</span> is convex. Then, for all <span class="math inline">\(x_1, x_2\in V\)</span>, <span class="math inline">\(\lambda\in[0,1]\)</span> we have</p>
-<p><span class="math display">\[\lambda (x_1, f(x_1)) + (1-\lambda)(x_2, f(x_2)) \in \texttt{epi}(f). \]</span></p>
+<p>Then, <span class="math inline">\(\lambda(x_1,\alpha_1) + (1-\lambda)(x_2,\alpha_2) = (\lambda x_1 + (1-\lambda)x_2, \alpha) \in \epi(f)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\epi(f)\)</span> is convex.</p>
+<p>For the other direction, suppose that <span class="math inline">\(\epi(f)\)</span> is convex. Then, for all <span class="math inline">\(x_1, x_2\in V\)</span>, <span class="math inline">\(\lambda\in[0,1]\)</span> we have</p>
+<p><span class="math display">\[\lambda (x_1, f(x_1)) + (1-\lambda)(x_2, f(x_2)) \in \epi(f). \]</span></p>
 <p>Hence, by definition of epigraph,</p>
 <p><span class="math display">\[f(\lambda x_1 + (1-\lambda)x_2) \leq \lambda f(x_1) + (1-\lambda) f(x_2),\]</span></p>
 <p>which means that <span class="math inline">\(f\)</span> is convex. ■</p>
@@ -901,10 +913,10 @@ f(\lambda x_1 + (1-\lambda)x_2) &amp;\leq \lambda f(x_1) + (1-\lambda) f(x_2) \\
 <p><span class="math display">\[ f(\sum_{i=1}^n \lambda_i x_i) \leq \sum_{i=1}^n \lambda_i f(x_i), \ x_i\in C.\]</span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Note that <span class="math inline">\((x_i,f(x_i))\in\texttt{epi}(f)\)</span>. Since <span class="math inline">\(f\)</span> is convex, <span class="math inline">\(\texttt{epi}(f)\)</span> is a convex set. Thus</p>
+<p><span class="proof-title"><em>Proof</em>. </span>Note that <span class="math inline">\((x_i,f(x_i))\in\epi(f)\)</span>. Since <span class="math inline">\(f\)</span> is convex, <span class="math inline">\(\epi(f)\)</span> is a convex set. Thus</p>
 <p><span class="math display">\[\begin{aligned}
-&amp; \sum_{i=1}^n \lambda_i (x_i,f(x_i)) \in\texttt{epi}(f) \\
-\Rightarrow &amp; \left(\sum_{i=1}^n \lambda_i x_i, \sum_{i=1}^n \lambda_i f(x_i) \right) \in\texttt{epi}(f)\\
+&amp; \sum_{i=1}^n \lambda_i (x_i,f(x_i)) \in\epi(f) \\
+\Rightarrow &amp; \left(\sum_{i=1}^n \lambda_i x_i, \sum_{i=1}^n \lambda_i f(x_i) \right) \in\epi(f)\\
 \Rightarrow &amp; f\left(\sum_{i=1}^n \lambda_i x_i\right) \leq \sum_{i=1}^n \lambda_i f(x_i)
 \end{aligned}\]</span> ■</p>
 </div>
@@ -1469,6 +1481,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="e-vic/e-vic.github.io" data-repo-id="R_kgDOMOCiIQ" data-category="General" data-category-id="DIC_kwDOMOCiIc4CgYjG" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
 </div> <!-- /content -->
 
 

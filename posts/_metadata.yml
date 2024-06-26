@@ -6,3 +6,11 @@ freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
+comments: 
+  hypothesis: true
+  giscus: 
+    repo: e-vic/e-vic.github.io
+
+format:
+  html:
+    theme: ../callout_example.scss

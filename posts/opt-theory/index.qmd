@@ -1,30 +1,18 @@
 ---
-title: Optimisation Theory and Applications
-authors:
+title: "Optimisation Theory and Applications"
+author:
   - name: Bahman Gharesifared
     affiliation: Queen's University
-    roles: course instructor
-    corresponding: false
   - name: Emma Hansen
     affiliation: N/A
-    roles: scribe
-    corresponding: true	
 bibliography: references.bib
-
-format:
-  html:
-    theme: callout_example.scss
-    toc: true
-    toc-location: left
-    number-sections: true
-    number-depth: 3
+date: July 2024
+toc: true
+toc-location: left
+number-sections: true
+number-depth: 3
 ---
 
-::: hidden
-\renewcommand{\qed}{\hfill\blacksquare}
-\newcommand{\co}{\texttt{co} \ }
-\newcommand{\epi}{\texttt{epi}}
-:::
 
 # Introduction
 

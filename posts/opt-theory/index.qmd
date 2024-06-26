@@ -11,8 +11,15 @@ toc: true
 toc-location: left
 number-sections: true
 number-depth: 3
+# image: PLACEHOLDER #this will be the image that shows up in the toc
+categories: [notes, optimisation]
 ---
-
+::: {.hidden}
+$$
+\newcommand{\co}{\texttt{co} \ }
+\newcommand{\epi}{\texttt{epi}}
+$$
+:::
 
 # Introduction
 

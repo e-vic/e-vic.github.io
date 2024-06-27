@@ -11,6 +11,6 @@ comments:
   giscus: 
     repo: e-vic/e-vic.github.io
 
-format:
-  html:
-    theme: ../callout_example.scss
+# format:
+#   html:
+#     theme: ../callout_example.scss

@@ -7,9 +7,9 @@ author:
     affiliation: N/A
 bibliography: references.bib
 date: July 2024
-format:
-  html:
-    theme: callout_example.scss
+# format:
+#   html:
+#     theme: callout_example.scss
 toc: true
 toc-location: left
 number-sections: true

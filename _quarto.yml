@@ -13,7 +13,9 @@ website:
 
 format:
   html:
-    theme: minty
+    theme: 
+      - callout_example.scss
+      - minty
     css: styles.css
 
 

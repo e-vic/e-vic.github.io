@@ -7,20 +7,24 @@ author:
     affiliation: N/A
 bibliography: references.bib
 date: July 2024
+format:
+  html:
+    theme: callout_example.scss
 toc: true
 toc-location: left
 number-sections: true
 number-depth: 3
-# image: PLACEHOLDER #this will be the image that shows up in the toc
 categories: [notes, optimisation]
 abstract: |
   This is a write up of my notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifared in 2016 at Queen's University.
 ---
-::: {.hidden}
-$$
+
+::: hidden
 \newcommand{\co}{\texttt{co} \ }
 \newcommand{\epi}{\texttt{epi}}
-$$
+\newcommand{\im}{\textnormal{Im}}
+\newcommand{\ri}{\textnormal{ri}}
+\newcommand{\aff}{\textnormal{aff}}
 :::
 
 # Introduction
@@ -1085,8 +1089,192 @@ Any function that has convex sublevel sets is called *quasi-convex*. Similarly, 
 
 Note that all convex functions are also quasi-convex.
 
+::: {#prp-convexglobalmin}
+Let $f:C\rightarrow\mathbb{R}$ be a convex function, where $C\subseteq\mathbb{R}^n$ is convex. Then any local minimum of $f$ is a global minimum.
+:::
+::: {.proof}
+Let $x^*$ be a local minimimiser of $f$, and let
+
+$$ x_\lambda = (1-\lambda)x^* + \lambda x,$$
+
+where $x\in C$. Then $f(x^*)\leq f(x_\lambda)$ for $\lambda$ small enough, so
+
+$$ f(x^*) \leq f((1-\lambda)x^* + \lambda x) \leq (1-\lambda)f(x^*) + \lambda f(x)$$
+
+Thus, $f(x^*)\leq f(x)$ independantly of $\lambda$ and for all $x$. Which confirms $x^*$ is a global minimiser. 
+
+If additionally we assume strict convexity of $f$, then the global minimiser, if it exists, is unique.
+
+Suppose otherwise: suppose $x_1^*$ and $x_2^*$ are both global minimisers, $x_1^*\neq x_2^*$. Then
+
+$$f(\lambda x_1^* + (1-\lambda)x_2^*) < \lambda f(x_1^*) + (1-\lambda)f(x_2^*). $$
+
+Since $x_1^*$ and $x_2^*$ are both global minimisers, $f(x_1^*) = f(x_2^*) \triangleq F^*$. Then
+
+$$f(\lambda x_1^* + (1-\lambda)x_2^*) < F^*, $$
+
+which is a contradiction. ■
+:::
+
+::: {#thm-variational}
+# Variational Inequality
+Let $f:C\rightarrow\mathbb{R}$, $C\subseteq\mathbb{R}^n$ is convex, and $f$ is continuously differentiable. Suppose $x^*\in C$ is a minimiser of $f$. Then
+
+$$ \langle \nabla f(x^*) , x-x^*\rangle \geq 0 $$ {#eq-variational}
+
+holds for all $x\in C$. Moreover, if $f$ is convex, and $x^*$ satisfies @eq-variational, then $x^*$ is a global minimiser of $f$. 
+:::
+::: {.proof}
+We have already seen the first part. For the second statement, suppose the variational inequality . Using the first order conditions of convexity
+
+$$ f(x) \geq f(x^*)+ \underbrace{\langle \nabla f(x^*),x-x^*\rangle}_{\geq 0}$$
+
+for all $x\in C$, then $f(x) \geq f(x^*)$, and $x^*$ is a global minimiser. ■
+:::
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+Consider 
+
+$$\begin{aligned}
+\min & f(x) \\
+\texttt{st} & Ax = b,
+\end{aligned}$$
+
+where $f$ is convex and differentiable, $A\in\mathcal{M}_n(\mathbb{R})$, $b\in\mathbb{R}^n$
+
+Let $C = \{x\in\mathbb{R}^n \mid Ax = b\}$. This is a convex set. By the variational inequality
+
+$$ \langle \nabla f(x^*), x - x^* \rangle \geq 0, \ \ \forall x\in C$$
+
+for $x^*$ a solution to the optimisation problem. Since $Ax^* = b$, we can rewrite this as
+
+$$ \langle \nabla f(x^*), z\rangle \geq 0$$
+
+for all $z\in\ker(A)$. Hence,
+
+$$\langle \nabla f(x^*),z \rangle = 0, \ \ z\in\ker(A).$$
+
+Recall that $\ker(A)^\perp = \im(A^T)$, thus $\nabla f(x^*)\in \im(A^T)$ OR $P_{\ker(A)} \nabla f(x^*) = 0$ (project $f$ into the kernel).
+::::
+:::
+
+Recall the projection mapping. Consider a set $C\in\mathbb{R}^n$ non-empty, closed, and convex. The projection map $P_C$ takes a point $x$ and finds a point in $C$ that is closest (in Euclidean distance) to $x$.
+
+**figure**
+
+::: {#thm-projection}
+Take $C$ as above. We have the following, where $z\in C$ and $x\in\mathbb{R}^n$,
+
+$$ \langle x- P_C(x), z - P_c(x)\rangle \leq 0$$
+
+**figure**
+:::
+::: {.proof}
+Note that $x^* = P_C(x)$ is a solution to 
+
+$$\min_{z\in C} \frac{1}{2} ||z-x||^2 .$$
+
+This function is coercive $\Rightarrow$ $x^*$ exists. We can use @thm-variational. For all $z\in C$
+
+$$\begin{aligned}
+&\langle x^*-x,z-x^*\rangle\geq 0 \\
+\Rightarrow & \langle x-x^*,z-x^*\rangle \leq 0 \\
+\Rightarrow & \langle x-P_C(x), z-P_C(x)\rangle \leq 0.
+\end{aligned}$$
+■
+:::
+
+This result holds true for Hilbert spaces. To show the existence of a minimiser we take a minimising sequence $\{x_n\}_{n=1}^\infty$,
+
+$$||x-x_n|| \rightarrow d\in\inf\{||x-z||, z\in C\}$$.
+
+Note that Hilbert spaces are complete, and hence if we show that this sequence is Cauchy then it is convergent. 
+
+$$\begin{aligned}
+||x_n-x_m||^2 &= ||(x-x_n) - (x-x_m)||^2 \\
+&= 2(||x-x_n||^2 + ||x-x_m||^2) - ||(x-x_n) + (x-x_m)||^2 \ \ (\textnormal{by the parallelogram law}) \\
+&= 2(||x-x_n||^2 + ||x-x_m||^2) - 4||x - \frac{x_n+x_m}{2}||^2 \\
+&\leq 2(||x-x_n|^2 + ||x-x_m||^2) - 4d^2.
+\end{aligned}$$
+
+For all $\varepsilon >0$, there exists $N$ large enough such that $n,m>N$ then 
+
+$$2(\underbrace{||x-x_n||^2}{\rightarrow d^2} + \underbrace{||x-x_M||^2}{\rightarrow d^2}) - 4d^2 \rightarrow 0.$$
+
+So, $||x_n - x_m||^2 \leq 0$. Therefore this is a Cauchy sequence, and the rest follows. 
+
+::: {#prp-projectionnonexpansive}
+Let $C\subset\mathbb{R}$ be non-empty, closed, and convex. Then the projection map $P_C:\mathbb{R}^n\rightarrow C$ is *non-expansive*.
+
+i.e. $||P_C(y) - P_C(x)|| \leq ||y-x||$ for all $x,y\in\mathbb{R}^n$. Consequently, $P_C$ is continuous.
+:::
+::: {.proof}
+Recall that 
+
+$$\begin{aligned}
+& \langle x-P_C(x), P_C(y) - P_C(x)\rangle \leq 0\\
+-&\underline{\langle y-P_c(y),P_C(x) - P_C(y)\rangle \leq 0} \\
+& \langle x-y + P_C(y)-P_C(x), P_C(y) - P_C(x)\rangle \leq 0 \\
+\Rightarrow & \langle x-y,P_C(y)-P_C(x)\rangle + ||P_C(y) - P_C(x)||^2 \leq 0 \\
+\Rightarrow & ||P_C(y) - P_C(x)||^2 \leq \langle y-x,P_C(y)-P_C(x)\rangle \\
+\Rightarrow & ||P_C(y) - P_C(x)||^2 \leq ||y-x|| \ ||P_C(y) - P_C(x)|| \ \ (\textnormal{by Cauchy Schwarz}).
+\end{aligned}$$
+■
+:::
 
 ## Separation of Convex Sets
+
+Recall that we denote by $H_{(a,\alpha)}$ the hyperplane ($a\in\mathbb{R}n$, $\alpha\in\mathbb{R})
+
+$$ H_{(a,\alpha)} = \{x\in\mathbb{R}^n \mid \langle a,x\rangle = \alpha \} .$$
+
+We also use 
+
+$$ H_{(a,\alpha)}^+ = \{x\in\mathbb{R}^n \mid \langle a,x\rangle > \alpha \}, $$
+
+and 
+
+$$H_{(a,\alpha)}^- = \{x\in\mathbb{R}^n \mid \langle a,x\rangle < \alpha \}.$$
+
+::: {#def-separatinghyperplanes}
+Let $C_1$ and $C_2$ be two non-empty sets in $\mathbb{R}^n$$. Then a hyperplane $H_{(a,\alpha)}$ is called:
+
+- *Separating hyperplane* for $C_1$ and $C_2$ if $C_1$ is contained in $\bar{H}^+$ ($H^+$ closure) and $C_2$ in $\bar{H}^-$.
+- *Strictly separating* hyperplane for $C_1$ and $C_2$ is $C_1$ is contained in $H^+$ and $C_2$ in $H^-$.
+- *Strongly separating* for $C_1$ and $C_2$ if there exists $\alpha_1,\alpha_2\in\mathbb{R}$ with $\alpha_1 > \alpha > \alpha_2$ such that $C_1 \subset \bar{H}^+_{(a,\alpha_1)}$ and $C_2\subset \bar{H}^-_{(a,\alpha_2)}$.
+- *Properly separating* for $C_1$ and $C_2$ if $H$ is a separating hyperplane and not both $C_1$ and $C_2$ are contained in $H$.
+- *Supporting hyperplane* of $C_1$ at point $\bar{x}\in\bar{C}_1$ if $\bar{x} \in H$ and $H$ separates $\{\bar{x}\}$ and $C_1$.
+:::
+
+Recall that for a set $S\subseteq\mathbb{R}^n$, the relative interior of $S$ is 
+
+$$\ri(S) = \{x\in S\mid \exists \varepsilon > 0, B_\varepsilon(x) \cap \aff(S) \subset S\},$$
+
+where $\aff(S)$ is the affine hull of $S$.
+
+::: {#thm-supportinghyperplane}
+Let $C\in\mathbb{R}^n$ be a non-empty, convex set, and let $\bar{x}\in\bar{C}\backslash\ri(C)$. Then, there exists a supporting hyperplane to $C$ at $\bar{x}$, i.e. there exists a vector $a\in\mathbb{R}^n$ such that 
+
+$$\langle a,x\rangle \geq \langle a,\bar{x}\rangle$$
+
+for all $x\in C$. 
+
+**figure**
+:::
+::: {.proof}
+**figure**
+
+Consider a sequence $\{x_k\}_{k=1}^\infty$ where $x_k\in C$ approaching $\bar{x}$.
+
+**figure**
+
+This sequence gives  $\{\hat{x}_k\}_{k=1}^\infty$ where 
+
+
 
 ends at separating hyperplane proposition
 

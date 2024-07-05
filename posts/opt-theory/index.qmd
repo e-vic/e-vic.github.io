@@ -14,9 +14,11 @@ toc: true
 toc-location: left
 number-sections: true
 number-depth: 3
+fig-cap-location: bottom
 categories: [notes, optimisation]
 abstract: |
   This is a write up of my notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifared in 2016 at Queen's University.
+image: figures/Picture10.jpg
 ---
 
 ::: hidden
@@ -39,13 +41,13 @@ Example: 150BC -- Alexandria's Problem
 ::::
 :::: {.example-container}
 
-*figure*
+![](figures/Picture1.jpg){width=40% fig-align="center"}
 
-find a point $D\in\mathbb{R}^2$ such that $||AD||+||DB||$ is minimised.
+Find a point $D\in\mathbb{R}^2$ such that $||AD||+||DB||$ is minimised.
 
 Consider the figure below.
 
-*another figure*
+![](figures/Picture2.jpg){width=40% fig-align="center"}
 
 Claim: this $D$ is the solution.
 
@@ -69,7 +71,7 @@ Example: 850BC -- Dido's Problem
 ::::
 :::: {.example-container}
 
-*figure*
+![](figures/Picture4.jpg){width=40% fig-align="center"}
 
 Consider a curve of fixed length $\ell$. What is the maximum area of land you can enclose using this curve?
 
@@ -108,7 +110,7 @@ Example: 1954 -- Max-flow
 
 Consider a directed graph $\mathcal{G}(V,E)$.
 
-*figure*
+![](figures/Picture6.jpg){width=60% fig-align="center"}
 
 Let each edge $ij$ have a capacity $c_{ij}$.
 
@@ -187,10 +189,11 @@ Step 2: We show that $f$ has a gloal minimizer. Suppose otherwise and let:
 -   $Y_n = \{x\in K | f(x) > f^* + \frac{1}{n}\}$ (open)
 -   $K = \cup_{n=1}^\infty Y_n$ again. Using compactness and a similar argument as before, there exists $\tilde{n}>1$ such that $K = Y_{\tilde{n}}$.
 
+:::: {.column-margin}
+![](figures/Picture5.jpg){width=80%}
+::::
 Thus we have that $f(x)>f^* + \frac{1}{\tilde{n}}$ for all $x\in K$. This, however, contradicts the definition of $f^*$ as the infimum. ■
 :::
-
-**include figure**
 
 Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in $C^0([0,1])$ is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there eists a minimiser which is not continuous.) Weierstrass theorem doesn't work well for infinite dimensions.
 
@@ -202,7 +205,9 @@ Suppose $F: E\rightarrow\mathbb{R}$ is continuous. If $f$ has a non-empty compac
 
 This means that if the set of values of a function that are less than $\alpha$ is finite, a minimum exists.
 
-**add figure**
+::: {.column-margin}
+![](figures/Picture7.jpg){width=80%}
+:::
 
 ::: proof
 Pretty straightforward. For an idea, see the figure.
@@ -234,7 +239,7 @@ By the previous result, since the sublevel set is compact, we have a global mini
 
 Consider a $C^1$-function $f$ on $\mathbb{R}^n$ and suppose tht $x^*$ is a local minimum of $f$ in some open set $D\subset \mathbb{R}^n$. Note that $x^*$ is in the interior of $d$.
 
-**figure**
+![](figures/Picture8.jpg){width=40% fig-align="center"}
 
 Let $d$ be some vector in $\mathbb{R}^n$, and $\alpha\in\mathbb{R}$. Consider:
 
@@ -363,7 +368,7 @@ Since $\nabla^2 f(x^*)$ is positive definite, then $f(x^* + \alpha d) > f(x^*)$ 
 
 Note that: $\alpha$ depends on $d$. If $|\alpha| < \varepsilon^*(d)$, different $d$ will result in different $\varepsilon$, thus, choose the smallest $\varepsilon$. Without loss of generality assume $||d|| = 1$, $\varepsilon^* = \min(\varepsilon(d))$ which results from Weierstrass theorem.
 
-**figure**
+![](figures/Picture9.jpg){width=40% fig-align="center"}
 
 ::: {.example}
 :::: {.example-header}
@@ -416,7 +421,7 @@ $$y_i = \frac{Y}{n}, \ \ i\in\{1,...,n-1\}.$$ ■
 
 ## Constrained Optimisation
 
-**figure**
+![](figures/Picture10.jpg){width=40% fig-align="center"}
 
 - we assume for now that $D$ is not of lower dimension, $D\subseteq \mathbb{R}^n$
 - $D$ is assumed to be closed and bounded
@@ -438,7 +443,10 @@ $$\begin{aligned}
 \Rightarrow & g(\alpha) - g(0) < \alpha (g'(0) + |g'(0)|).
 \end{aligned}$$ {#eq-constrained}
 
-Claim: $g'(0)\geq 0$.
+::: {.callout-warning}
+# Claim
+$g'(0)\geq 0$.
+:::
 
 ::: {.proof}
 Suppose otherwise (ie. $g'(0)<0$). By choosing $\alpha>0$ small enough and using @eq-constrained we have
@@ -458,7 +466,7 @@ $$d^T \nabla^2 f(x^*) d \geq 0$$
 
 when $\nabla f(x^*)\cdot d = 0$, which we call the second order condition of optimality. 
 
-**figure**
+![](figures/Picture11.jpg){width=100%}
 
 We cannot use $x^* + \alpha d$! Doing so would take us out of the surface. 
 
@@ -478,7 +486,7 @@ where $D$ is described usin functions $h_i$.
 
 What if instead we use some curves, $\gamma(\cdot)$, passing through $x^*$, ie. we take $\gamma(0) = x^*$. Let us take these curves to be at least $C^1$.
 
-**figure**
+![](figures/Picture12.jpg){width=20%}
 
 Let us define $g(\alpha) = f(\gamma(\alpha))$. We can now carry the same argument as before, using $g(\alpha) = g(0) + \alpha g'(0) + \mathcal{O}(\alpha)$, and argue that 
 
@@ -521,26 +529,15 @@ Use contradiction, do on your own.
 
 
 # Convex Analysis
-
-
-**V keep this for later V**
-Recall: for all $d\in\mathbb{R}^n$  and $\alpha\in\mathbb{R}$ such that $x^* + \alpha d \in D$, we must have 
-
-$$\langle \nabla f(x^*),d\rangle \geq 0.$$
-
-**figure**
-
-this is required for a minimum. if that $\geq$ changes to $<$ for any points defined from $\alpha, \ d$, then $x^*$ is not a minimum. 
-
-**^ keep this for later ^**
-
 We start by discussing affine sets and maps. 
 
 ::: {#def-affine_set}
 # Affine Set - informal
 A set $A\subseteq\mathbb{R}^n$ is *affine* if for all $x,y\in A$, the full line connecting $x$ and $y$ is in $A$.
 
-**figure**
+:::: {.column-margin}
+![](figures/Picture14.jpg){width=80%}
+::::
 :::
 
 ::: {#def-affine_set_forma}
@@ -568,10 +565,10 @@ Addition: let $u,w\in V$. Then, $u + w = 2 (\frac{1}{2}u + \frac{1}{2}w)$, which
 A set $A\in\mathbb{R}^n$ is *affine* if and only if $A-a$ is a linear subspace for all $a\in\mathbb{R}$.
 :::
 ::: {.proof}
-in text.
-
-**figure**
+In text [@Güler_2010].
 :::
+
+![](figures/Picture15.png){width=50% fig-align="center"}
 
 One of the most important examples of an affine set in $\mathbb{R}^n$ is an $(n-1)$ dimensional hyperplane. A hyperplane is an $(n-1)$ dimensional set. 
 
@@ -604,7 +601,7 @@ A mapping $F:\mathbb{R}^n\rightarrow \mathbb{R}^n$ is *affine* if for all $x,y\i
 $$F((1-t)x + ty) = (1-t) F(x) + t F(y) .$$
 :::
 
-**figure**
+![](figures/Picture31.jpg){width=60% fig-align="center"}
 
 ::: {.example}
 :::: {.example-header}
@@ -621,7 +618,11 @@ If $A\in M_{n\times m}(\mathbb{R})$ and $b\in\mathbb{R}^n$, $F(x) = Ax + b$ is a
 # Convex set - informal
 A set $S\subseteq\mathbb{R}^n$ is *convex* is for all $x,y\in S$, the line segment connecting $x$ and $y$ is in $S$.
 
-**figure**
+:::: {layout-ncol=2}
+![Convex.](figures/Picture16.jpg){width=42%}
+
+![Not convex.](figures/Picture17.jpg){width=40%}
+::::
 :::
 
 ::: {#def-convexsetformal}
@@ -636,13 +637,13 @@ $$(1-\lambda) x + \lambda y\in S.$$
 Examples
 ::::
 :::: {.example-container}
-1. $S_1 = \{(x,y)\in\mathbb{R}^2 \mid x^2 + y^2 \leq 1\}$ unit disk is convex. **figure**
+1. $S_1 = \{(x,y)\in\mathbb{R}^2 \mid x^2 + y^2 \leq 1\}$ unit disk is convex. ![](figures/Picture18.jpg){width=20%}
 
 2. $S_2 = \{(x,0)\in\mathbb{R}^2 \mid x\in \mathbb{R}\}$ (x-axis) is affine $\Rightarrow$ convex.
 
-3. $S_3 = \{(x,y)\in\mathbb{R}^2 \mid y\geq e^x\}$ is convex. **figure**
+3. $S_3 = \{(x,y)\in\mathbb{R}^2 \mid y\geq e^x\}$ is convex. ![](figures/Picture19.jpg){width=20%}
 
-4. $S_4 = \{(x,y)\in\mathbb{R}^2 \mid y \geq\sin(x)\}$ is **not** convex. **figure**
+4. $S_4 = \{(x,y)\in\mathbb{R}^2 \mid y \geq\sin(x)\}$ is **not** convex. ![](figures/Picture20.jpg){width=20%}
 ::::
 :::
 
@@ -652,8 +653,8 @@ $$\sum_{i=1}^m \lambda_i x_i$$
 
 is called a *convex combination* of vectors $x_i\in\mathbb{R}^n$, $i=1,...,m$. When:
 
-- $m=2$: line **figure**
-- $m=3$: surface **figure**
+- $m=2$: line ![](figures/Picture32.jpg){width=20%}
+- $m=3$: surface ![](figures/Picture21.jpg){width=20%}
 
 ::: {#thm-convexset2}
 The set $S\subseteq \mathbb{R}^n$ is *convex* if and only if $S$ contains all convex combinations of its elements.  
@@ -691,13 +692,18 @@ $$ \co(X) = \left\lbrace \sum_{k=1}^m \lambda_k x_k \mid x_k\in X, \lambda_k \ge
 
 The convex hull is the set of all convex combinations of elements of $X$. Imagine fitting an elastic band over the set. 
 
-**figure**
+![](figures/Picture33.jpg){width=40% fig-align="center"}
 
-Claims:
+::: {.callout-warning}
+# Claims
 
 1. $\co(X)$ is a convex set. 
 
-::: {.proof}
+2. $\co(X)$ is minimal in the sense that if $S\subseteq\mathbb{R}^n$ is convex and $X\subseteq S$, then $\co(X) \subseteq S$.
+:::
+
+:::: {.proof}
+# of 1
 Let $x,y\in\co(X)$. Then we can write 
 
 $$ x = \sum_{k+1}^m \lambda_k x_k, \ \ y = \sum_{\ell=1}^p \mu_\ell y_\ell, $$
@@ -723,15 +729,14 @@ y_{k-m}, & m+1\leq k \leq m+p
 \end{aligned}$$
 
 Note that $\sum_{k=1}^{m+p} \alpha_k = 1$ (prove this on your own). Thus, we have shown $(1-\gamma)x + \gamma y \in \co(X)$ $\Rightarrow$ $\co(X)$ is a convex set. ■
-:::
+::::
 
-2. $\co(X)$ is minimal in the sense that if $S\subseteq\mathbb{R}^n$ is convex and $X\subseteq S$, then $\co(X) \subseteq S$.
-
-::: {.proof}
+:::: {.proof}
+# of 2
 If $x\in\co(X)$ then $x = \sum_{k=1}^m \lambda_k x_k$, $x_k\in X$ for all $k=1,...,m$. 
 
 $X\subseteq S \Rightarrow$ if $x_k\in X$ then $x_k\in S$. Then, $\co(X)\subseteq S$. ■
-:::
+::::
 
 ::: {#thm-convexhull}
 If $X\subseteq\mathbb{R}^n$ and $x\in\co(X)$, then
@@ -741,7 +746,7 @@ $$ x = \sum_{k=1}^{n+1} \lambda_k x_k $$
 for the convex coefficients $\lambda_k$ and points $x_k\in X$. 
 :::
 ::: {.proof}
-In text.
+In text [@Güler_2010].
 :::
 
 ### Operations that Preserve Convexity
@@ -768,7 +773,7 @@ Example
 :::: {.example-container}
 $S_1 = D$ (unit disk) in $\mathbb{R}^2$, $S_2$ is the $x$-axis.
 
-**figure**
+![](figures/Picture22.jpg){width=50% fig-align="center"}
 ::::
 :::
 
@@ -844,9 +849,10 @@ $$f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y),$$
 where $0\leq\lambda \leq 1$.
 :::
 
+::: {.column-margin}
+![](figures/Picture23.jpg){width=90%}
+:::
 What convexity tells us is that the values of the function are below the line between $x$ and $y$. 
-
-**figure**
 
 
 ::: {#def-epigraph}
@@ -929,8 +935,9 @@ Given $C\subseteq\mathbb{R}^n$ convex, $f:C\rightarrow\mathbb{R}$ continuously d
 
 $$ \langle \nabla f(x), y-x\rangle \leq f(y) - f(x), \ \ \forall x,y\in C.$$
 :::
-
-**figure**
+::: {.column-margin}
+![](figures/Picture24.jpg){width=100%}
+:::
 
 ::: {.proof}
 $\Rightarrow$. Assume that $f$ is convex. Then for $\alpha\in(0,1)$
@@ -972,6 +979,8 @@ which holds for all $x,y\in C$, $\alpha\in\mathbb{R}$. Thus, $f$ is convex. ■
 Note, a function can also be *strictly convex*. Strict convexity is when @def-convexfunction holds for $x\neq y$, ie. 
 
 $$ f((1-\alpha)x + \alpha y) < (1-\alpha) f(x) + \alpha f(y).$$
+
+![](figures/Picture26.jpg){width=60% fig-align="center"}
 
 ::: {#thm-secondorderconv}
 # Second order condition of convexity
@@ -1077,9 +1086,9 @@ $$S_\alpha = \{x \mid f(x) \leq \alpha \}$$
 
 is convex.
 
-But what about the converse?
+But what about the converse? Consider
 
-**figure**
+![](figures/Picture25.jpg){width=40% fig-align="center"}
 
 We can see that the sublevel sets $S_\alpha$ are convex, but clearly $f$ is not. 
 
@@ -1164,14 +1173,16 @@ Recall that $\ker(A)^\perp = \im(A^T)$, thus $\nabla f(x^*)\in \im(A^T)$ OR $P_{
 
 Recall the projection mapping. Consider a set $C\in\mathbb{R}^n$ non-empty, closed, and convex. The projection map $P_C$ takes a point $x$ and finds a point in $C$ that is closest (in Euclidean distance) to $x$.
 
-**figure**
+![](figures/Picture27.jpg){width=30% fig-align="center"}
 
 ::: {#thm-projection}
 Take $C$ as above. We have the following, where $z\in C$ and $x\in\mathbb{R}^n$,
 
 $$ \langle x- P_C(x), z - P_c(x)\rangle \leq 0$$
 
-**figure**
+:::: {.column-margin}
+![](figures/Picture28.jpg){width=90%}
+::::
 :::
 ::: {.proof}
 Note that $x^* = P_C(x)$ is a solution to 
@@ -1190,16 +1201,17 @@ $$\begin{aligned}
 
 This result holds true for Hilbert spaces. To show the existence of a minimiser we take a minimising sequence $\{x_n\}_{n=1}^\infty$,
 
-$$||x-x_n|| \rightarrow d\in\inf\{||x-z||, z\in C\}$$.
+$$||x-x_n|| \rightarrow d\in\inf\{||x-z||, z\in C\}.$$
 
 Note that Hilbert spaces are complete, and hence if we show that this sequence is Cauchy then it is convergent. 
 
 $$\begin{aligned}
 ||x_n-x_m||^2 &= ||(x-x_n) - (x-x_m)||^2 \\
-&= 2(||x-x_n||^2 + ||x-x_m||^2) - ||(x-x_n) + (x-x_m)||^2 \ \ (\textnormal{by the parallelogram law}) \\
+&= 2(||x-x_n||^2 + ||x-x_m||^2) - ||(x-x_n) + (x-x_m)||^2  \\
 &= 2(||x-x_n||^2 + ||x-x_m||^2) - 4||x - \frac{x_n+x_m}{2}||^2 \\
 &\leq 2(||x-x_n|^2 + ||x-x_m||^2) - 4d^2.
-\end{aligned}$$
+\end{aligned}$$ [By the parallelogram law.]{.aside}
+
 
 For all $\varepsilon >0$, there exists $N$ large enough such that $n,m>N$ then 
 
@@ -1221,8 +1233,9 @@ $$\begin{aligned}
 & \langle x-y + P_C(y)-P_C(x), P_C(y) - P_C(x)\rangle \leq 0 \\
 \Rightarrow & \langle x-y,P_C(y)-P_C(x)\rangle + ||P_C(y) - P_C(x)||^2 \leq 0 \\
 \Rightarrow & ||P_C(y) - P_C(x)||^2 \leq \langle y-x,P_C(y)-P_C(x)\rangle \\
-\Rightarrow & ||P_C(y) - P_C(x)||^2 \leq ||y-x|| \ ||P_C(y) - P_C(x)|| \ \ (\textnormal{by Cauchy Schwarz}).
-\end{aligned}$$
+\Rightarrow & ||P_C(y) - P_C(x)||^2 \leq ||y-x|| \ ||P_C(y) - P_C(x)|| .
+\end{aligned}$$ [By Cauchy Schwarz.]{.aside}
+
 ■
 :::
 
@@ -1259,26 +1272,132 @@ where $\aff(S)$ is the affine hull of $S$.
 ::: {#thm-supportinghyperplane}
 Let $C\in\mathbb{R}^n$ be a non-empty, convex set, and let $\bar{x}\in\bar{C}\backslash\ri(C)$. Then, there exists a supporting hyperplane to $C$ at $\bar{x}$, i.e. there exists a vector $a\in\mathbb{R}^n$ such that 
 
+:::: {.column-margin}
+![The supporting hyperplanes are in green.](figures/Picture29.jpg){width=80% fig-align="left"}
+::::
 $$\langle a,x\rangle \geq \langle a,\bar{x}\rangle$$
 
 for all $x\in C$. 
 
-**figure**
 :::
 ::: {.proof}
-**figure**
-
 Consider a sequence $\{x_k\}_{k=1}^\infty$ where $x_k\in C$ approaching $\bar{x}$.
 
-**figure**
+![](figures/Picture30.jpg){width=40% fig-align="center"}
 
-This sequence gives  $\{\hat{x}_k\}_{k=1}^\infty$ where 
+This sequence gives $\{\hat{x}_k\}_{k=1}^\infty$ where $\hat{x}_k = P_{\bar{C}}(x_k)$. Note that
 
+$$ \langle \hat{x}_k - x_k, x - \hat{x}_k\rangle \geq 0 \ \ \forall x\in\bar{C}.$$ {#eq-supphypseries}
 
+We have that 
 
-ends at separating hyperplane proposition
+$$ \begin{aligned}
+\langle \hat{x}_k - x_k, x\rangle & \geq \langle \hat{x}_k - x_k, \hat{x}_k\rangle \\
+& = \langle \hat{x}_k - x_k, \hat{x}_k - x_k\rangle + \langle \hat{x}_k - x_k, x_k\rangle \\
+& \geq \langle \hat{x}_k - x_k, x_k \rangle .
+\end{aligned}$$
+
+Let $\alpha_k = \frac{\hat{x}_k - x_k}{|| \hat{x}_k - x_k||}$, then $\langle \alpha_k,x\rangle \geq \langle \alpha_k, x_k\rangle$. The sequence $\{\alpha_k\}_{k=1}^\infty$ is bounded and has a convergent subsequence. Then, taking the limit, 
+
+$$\langle \alpha, x\rangle \geq \langle \alpha, \bar{x}\rangle, $$
+
+which proves the result. ■
+:::
+
+Note that the sequence $\{P_{\bar{C}(x_k)\}_{k=1}^\infty$ is convergent to $P_{\bar{C}(\bar{x})} = \bar{x}$ since $P_{\bar{C}}$ is continuous. We could have taken the limit directly from @eq-supphypseries.
+
+::: {#thm-separatinghyperplane}
+Let $C_1$ and $C_2$ be two disjoint, non-empty, convex subsets of $\mathbb{R}^n$. Then, there exists a hyperplane that separates $C_1$ and $C_2$. I.e. there exists a vector $a\in\mathbb{R}^n$ such that 
+
+$$ \langle a,x_2\rangle \geq \langle a,x_1\rangle \ \ \forall x_1\in C_1, \ x_2\in C_2.$$
+:::
+::: {.proof}
+Consider the convex set 
+
+$$ C = C_2 - C_1 = \{x = x_2 - x_1 \mid x_1\in C_1, \ x_2\in C_2\}. $$
+
+This set is convex. Since $C_1 \cap C_2 = \emptyset$, we conclude that $0\notin C$. Now, by an extension of @thm-supportinghyperplane, we conclude that there exists a vector $a\neq 0$ passing through 0 such that 
+
+$$\langle a,x\rangle \geq \langle a,0\rangle = 0, \ \forall x\in C$$
+
+i.e. $\langle a,x_2\rangle \geq \langle a,x_1\rangle$ for all $x_1\in C_1$ and $x_2\in C_2$. ■
+:::
+
+::: {#thm-strongseparation}
+Let $C_1$ and $C_2$ be two non-empty, disjoint, convex sets in $\mathbb{R}^n$. Suppose that the set $C_2-C_1$ is closed. Then, there exists a hyperplane that separates $C_1$ and $C_2$ strongly. 
+:::
+::: {.proof}
+Since $C_1$ and $C_2$ are disjoint, 0 is not in $C_2-C_1$. 
+
+![](figures/Picture34.jpg){width=40% fig-align="center"}
+
+Let then $\bar{x}_2-\bar{x}_1$ be the vector of minimum norm over $C$ which is well defined. 
+
+Let $a=\frac{\bar{x}_2-\bar{x}_1}{2}$ and $\bar{x} = \frac{\bar{x}_2+\bar{x}_1}{2}$. Note that $a\neq 0$. 
+
+We claim that the hyperplane $H_{(a,\alpha)}$ given by
+
+$$ H_{(a,\alpha)} = \{x\in\mathbb{R}^n \mid \langle a,x\rangle = \alpha \triangleq \langle a, \bar{x}\rangle \}$$
+
+strongly separates $C_1$ and $C_2$. Finish the proof on your own, show $\langle a,x_1\rangle < \beta < \langle a, x_2\rangle$ (similar to the previous proof). ■
+:::
+
+::: {#thm-properseparation}
+Two non-empty convex sets $C_1$, $C_2$ can be properly separated if $\ri (C_1)$ and $\ri (C_2)$ are disjoint. 
+:::
+
+::: {#prp-separatinghyperplane}
+Let $C\subset\mathbb{R}^n$ be non-empty and convex, and let $A$ be an affine set such that $\ri(C) \cap A = \emptyset$. Then, there exists a hyperplane $H$ separating $A$ and $C$ such that $A\subseteq H$.
+:::
+::: {.proof}
+Existence of a hyperplane $H$ is clear. If $H$ includes $A$, we are done. Otherwise, there exists $x\in A\backslash H$. 
+
+:::: {.column-margin}
+![](figures/Picture35.jpg){width=90% fig-align="center"}
+::::
+
+The affine set $A$ and $H$ must be disjoint, otherwise $y\in A\cap H$ and the line between $x$ and $y$ intersects both $\bar{H}^+$ and $\bar{H}^-$, which is not possible since, since $H$ is separating. Thus, $A$ has to be "parallel" to $H$. Hence, we can shift the hyperplane $H$ to a new one $\tilde{H}$ that includes $A$. ■
+:::
 
 # Convex Optimisation
+
+**V keep this for later V**
+Recall: for all $d\in\mathbb{R}^n$  and $\alpha\in\mathbb{R}$ such that $x^* + \alpha d \in D$, we must have 
+
+$$\langle \nabla f(x^*),d\rangle \geq 0.$$
+
+![](figures/Picture13.jpg){width=40%}
+
+this is required for a minimum. if that $\geq$ changes to $<$ for any points defined from $\alpha, \ d$, then $x^*$ is not a minimum. 
+
+**^ keep this for later ^**
+
+::: {#thm-systemlinearinequalities}
+Consider a system of linear inequalities 
+
+$$ \ell_i(x) < \alpha_i $$ {#eq-inequalitysystem}
+
+where $\ell_i:\mathbb{R}^n \rightarrow\mathbb{R}$ is linear for all $i\in\{1,...,m\}$. Then, there exists *no solution* to @eq-inequalitysystem if and only if there exists a set of non-negative scalars $\{\lambda_i\}_{i=1}^m$ not all zero such that
+
+$$ \begin{aligned}
+& \sum_{i=1}^m \lambda_i \ell_i(x) = 0 \ \forall x, \\
+& \sum_{i=1}^m \lambda_i \alpha_i \leq 0.
+\end{aligned}$$
+:::
+::: {.proof}
+We first show that if there is a solution to @eq-inequalitysystem then such scalars cannot exist. Suppose otherwise, then $\sum_{i=1}^m \lambda_i\ell_i(x) = 0$ and $\sum_{i=1}^m \lambda_i\alpha_i \leq 0$. But since there is a solution to @eq-inequalitysystem, we also have
+
+$$\sum_{i=1}^m \lambda_i (\alpha_i - \ell_i(x)) > 0.$$
+
+Which contradicts our assumption. Thus, no such scalars $\lambda_i$ exist.
+
+Now for the other side. Define 
+
+$$\begin{aligned}
+& A = \{y\in\mathbb{R}^n \mid \exists x\in\mathbb{R}^n, y_i = \ell_i(x) - \alpha_i, i=1,...,m\}, \\
+& K = \{y\in\mathbb{R}^n \mid y_i<0, i=1,...,m\}.
+\end{aligned}$$
+:::
 
 ## Conjugate Functions
 

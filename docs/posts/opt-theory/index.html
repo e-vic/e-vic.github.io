@@ -129,7 +129,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -269,7 +269,7 @@ window.Quarto = {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
 
@@ -288,10 +288,18 @@ window.Quarto = {
 <p>Example: 150BC – Alexandria’s Problem</p>
 </div>
 <div class="example-container">
-<p><em>figure</em></p>
-<p>find a point <span class="math inline">\(D\in\mathbb{R}^2\)</span> such that <span class="math inline">\(||AD||+||DB||\)</span> is minimised.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Find a point <span class="math inline">\(D\in\mathbb{R}^2\)</span> such that <span class="math inline">\(||AD||+||DB||\)</span> is minimised.</p>
 <p>Consider the figure below.</p>
-<p><em>another figure</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <p>Claim: this <span class="math inline">\(D\)</span> is the solution.</p>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Suppose otherwise, i.e.&nbsp;let some point <span class="math inline">\(D'\)</span> be the minimiser:</p>
@@ -309,7 +317,11 @@ window.Quarto = {
 <p>Example: 850BC – Dido’s Problem</p>
 </div>
 <div class="example-container">
-<p><em>figure</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture4.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <p>Consider a curve of fixed length <span class="math inline">\(\ell\)</span>. What is the maximum area of land you can enclose using this curve?</p>
 <p>To start, think about what kind of shape you should use.</p>
 <p>Formally, the problem is: <span class="math inline">\(\max_y \ \ J(y) = \int_a^b y(x) dx, \ y\in\mathcal{C}([a,b])\)</span>.</p>
@@ -337,7 +349,11 @@ window.Quarto = {
 </div>
 <div class="example-container">
 <p>Consider a directed graph <span class="math inline">\(\mathcal{G}(V,E)\)</span>.</p>
-<p><em>figure</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture6.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 <p>Let each edge <span class="math inline">\(ij\)</span> have a capacity <span class="math inline">\(c_{ij}\)</span>.</p>
 <p>We are looking for a map <span class="math inline">\(f:E\rightarrow \mathbb{R}_{\geq 0}\)</span> such that</p>
 <ul>
@@ -371,7 +387,7 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="introduction-to-optimisation" class="level1" data-number="2">
+<section id="introduction-to-optimisation" class="level1 page-columns page-full" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Introduction to Optimisation</h1>
 <div id="def-localglobaloptimisers" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 1 (Local and Global Minimisers/Maximisers)</strong></span> Let <span class="math inline">\(f:\mathcal{U}\rightarrow\mathbb{R}\)</span>, where <span class="math inline">\(\mathcal{U}\subset\mathbb{R}^n\)</span>. Then <span class="math inline">\(x^*\in\mathcal{U}\)</span> is a:</p>
@@ -380,14 +396,14 @@ window.Quarto = {
 <li><strong>local/global maximiser</strong> defined similarly.</li>
 </ul>
 </div>
-<section id="unconstrained-optimisation" class="level2" data-number="2.1">
+<section id="unconstrained-optimisation" class="level2 page-columns page-full" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="unconstrained-optimisation"><span class="header-section-number">2.1</span> Unconstrained Optimisation</h2>
-<section id="existence-and-uniqueness-of-solutions" class="level3" data-number="2.1.1">
+<section id="existence-and-uniqueness-of-solutions" class="level3 page-columns page-full" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="existence-and-uniqueness-of-solutions"><span class="header-section-number">2.1.1</span> Existence and Uniqueness of Solutions</h3>
 <div id="thm-weierstrass" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 1 (Weierstrass, 1858)</strong></span> Let <span class="math inline">\(K\)</span> be a compact set in a topological space. Let <span class="math inline">\(f:K\rightarrow\mathbb{R}\)</span> be a continuous function. Then, there exists <span class="math inline">\(x^*\in K\)</span> such that <span class="math inline">\(f(x^*)\leq f(x)\)</span> for all <span class="math inline">\(x\in K\)</span>.</p>
 </div>
-<div class="proof">
+<div class="proof page-columns page-full">
 <p><span class="proof-title"><em>Proof</em>. </span>Recall that <span class="math inline">\(K\)</span> is compact if every open cover of <span class="math inline">\(K\)</span> has a finite subcover.</p>
 <p>We prove <a href="#thm-weierstrass" class="quarto-xref">Theorem&nbsp;1</a> in two steps.</p>
 <p>Step 1: We show that <span class="math inline">\(f\)</span> is bounded from below. Let <span class="math inline">\(K_n = \{ x\in K | f(x) &gt; n\}\)</span> (open sets). Then,</p>
@@ -403,17 +419,21 @@ window.Quarto = {
 <li><span class="math inline">\(Y_n = \{x\in K | f(x) &gt; f^* + \frac{1}{n}\}\)</span> (open)</li>
 <li><span class="math inline">\(K = \cup_{n=1}^\infty Y_n\)</span> again. Using compactness and a similar argument as before, there exists <span class="math inline">\(\tilde{n}&gt;1\)</span> such that <span class="math inline">\(K = Y_{\tilde{n}}\)</span>.</li>
 </ul>
-<p>Thus we have that <span class="math inline">\(f(x)&gt;f^* + \frac{1}{\tilde{n}}\)</span> for all <span class="math inline">\(x\in K\)</span>. This, however, contradicts the definition of <span class="math inline">\(f^*\)</span> as the infimum. ■</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="figures/Picture5.jpg" class="img-fluid" style="width:80.0%"></p>
+</div></div><p>Thus we have that <span class="math inline">\(f(x)&gt;f^* + \frac{1}{\tilde{n}}\)</span> for all <span class="math inline">\(x\in K\)</span>. This, however, contradicts the definition of <span class="math inline">\(f^*\)</span> as the infimum. ■</p>
 </div>
-<p><strong>include figure</strong></p>
 <p>Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in <span class="math inline">\(C^0([0,1])\)</span> is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there eists a minimiser which is not continuous.) Weierstrass theorem doesn’t work well for infinite dimensions.</p>
 <p>We now go about <strong>relaxing compactness</strong>.</p>
 <div id="thm-globalmin" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 2</strong></span> Suppose <span class="math inline">\(F: E\rightarrow\mathbb{R}\)</span> is continuous. If <span class="math inline">\(f\)</span> has a non-empty compact sublevel set, i.e.&nbsp;<span class="math inline">\(\{x\in E | f(x) \leq \alpha\}\)</span> for some <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, then <span class="math inline">\(f\)</span> achieves a <em>global minimum</em>.</p>
 </div>
 <p>This means that if the set of values of a function that are less than <span class="math inline">\(\alpha\)</span> is finite, a minimum exists.</p>
-<p><strong>add figure</strong></p>
-<div class="proof">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="figures/Picture7.jpg" class="img-fluid" style="width:80.0%"></p>
+</div></div><div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Pretty straightforward. For an idea, see the figure.</p>
 </div>
 <div id="def-CoerciveFunction" class="theorem definition">
@@ -433,7 +453,11 @@ window.Quarto = {
 <section id="necessary-conditions-of-optimality" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="necessary-conditions-of-optimality"><span class="header-section-number">2.1.2</span> Necessary Conditions of Optimality</h3>
 <p>Consider a <span class="math inline">\(C^1\)</span>-function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb{R}^n\)</span> and suppose tht <span class="math inline">\(x^*\)</span> is a local minimum of <span class="math inline">\(f\)</span> in some open set <span class="math inline">\(D\subset \mathbb{R}^n\)</span>. Note that <span class="math inline">\(x^*\)</span> is in the interior of <span class="math inline">\(d\)</span>.</p>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture8.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <p>Let <span class="math inline">\(d\)</span> be some vector in <span class="math inline">\(\mathbb{R}^n\)</span>, and <span class="math inline">\(\alpha\in\mathbb{R}\)</span>. Consider:</p>
 <p><span class="math display">\[g(\alpha) = f(x^* + \alpha d).\]</span></p>
 <p>Note that: <span class="math inline">\(\alpha = 0\)</span> is the local minimum of <span class="math inline">\(g\)</span>. Using a first order approximation:</p>
@@ -526,7 +550,11 @@ d^T \Lambda d &amp;= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
 <p>Since <span class="math inline">\(\nabla^2 f(x^*)\)</span> is positive definite, then <span class="math inline">\(f(x^* + \alpha d) &gt; f(x^*)\)</span> for all <span class="math inline">\(d\)</span>. Thus, <span class="math inline">\(x^*\)</span> is a local minimum! ■</p>
 </div>
 <p>Note that: <span class="math inline">\(\alpha\)</span> depends on <span class="math inline">\(d\)</span>. If <span class="math inline">\(|\alpha| &lt; \varepsilon^*(d)\)</span>, different <span class="math inline">\(d\)</span> will result in different <span class="math inline">\(\varepsilon\)</span>, thus, choose the smallest <span class="math inline">\(\varepsilon\)</span>. Without loss of generality assume <span class="math inline">\(||d|| = 1\)</span>, <span class="math inline">\(\varepsilon^* = \min(\varepsilon(d))\)</span> which results from Weierstrass theorem.</p>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture9.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <div class="example">
 <div class="example-header">
 <p>Example: Arithmetic-Geometric mean inequality</p>
@@ -560,7 +588,11 @@ d^T \Lambda d &amp;= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
 </section>
 <section id="constrained-optimisation" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="constrained-optimisation"><span class="header-section-number">2.2</span> Constrained Optimisation</h2>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture10.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <ul>
 <li>we assume for now that <span class="math inline">\(D\)</span> is not of lower dimension, <span class="math inline">\(D\subseteq \mathbb{R}^n\)</span></li>
 <li><span class="math inline">\(D\)</span> is assumed to be closed and bounded</li>
@@ -575,7 +607,19 @@ d^T \Lambda d &amp;= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
 &amp; g(\alpha) - g(0) &lt; g'(0)\alpha + |g'(0)|\alpha \\
 \Rightarrow &amp; g(\alpha) - g(0) &lt; \alpha (g'(0) + |g'(0)|).
 \end{aligned} \tag{1}\]</span></span></p>
-<p>Claim: <span class="math inline">\(g'(0)\geq 0\)</span>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Claim
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(g'(0)\geq 0\)</span>.</p>
+</div>
+</div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Suppose otherwise (ie. <span class="math inline">\(g'(0)&lt;0\)</span>). By choosing <span class="math inline">\(\alpha&gt;0\)</span> small enough and using <a href="#eq-constrained" class="quarto-xref">Equation&nbsp;1</a> we have</p>
 <p><span class="math display">\[\begin{aligned}
@@ -587,7 +631,7 @@ d^T \Lambda d &amp;= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
 <p>One can also conclude a weaker version of the second order condition of optimality:</p>
 <p><span class="math display">\[d^T \nabla^2 f(x^*) d \geq 0\]</span></p>
 <p>when <span class="math inline">\(\nabla f(x^*)\cdot d = 0\)</span>, which we call the second order condition of optimality.</p>
-<p><strong>figure</strong></p>
+<p><img src="figures/Picture11.jpg" class="img-fluid" style="width:100.0%"></p>
 <p>We cannot use <span class="math inline">\(x^* + \alpha d\)</span>! Doing so would take us out of the surface.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -609,7 +653,7 @@ h_i(x) = 0 &amp; i=1,...,m
 \end{array} \right. ,\]</span></p>
 <p>where <span class="math inline">\(D\)</span> is described usin functions <span class="math inline">\(h_i\)</span>.</p>
 <p>What if instead we use some curves, <span class="math inline">\(\gamma(\cdot)\)</span>, passing through <span class="math inline">\(x^*\)</span>, ie. we take <span class="math inline">\(\gamma(0) = x^*\)</span>. Let us take these curves to be at least <span class="math inline">\(C^1\)</span>.</p>
-<p><strong>figure</strong></p>
+<p><img src="figures/Picture12.jpg" class="img-fluid" style="width:20.0%"></p>
 <p>Let us define <span class="math inline">\(g(\alpha) = f(\gamma(\alpha))\)</span>. We can now carry the same argument as before, using <span class="math inline">\(g(\alpha) = g(0) + \alpha g'(0) + \mathcal{O}(\alpha)\)</span>, and argue that</p>
 <p><span class="math display">\[\nabla f(\gamma(0))\cdot \gamma'(0) = 0.\]</span></p>
 <p>We need to study this <span class="math inline">\(\gamma'(0)\)</span> more carefully.</p>
@@ -644,18 +688,15 @@ Assumption
 </div>
 </section>
 </section>
-<section id="convex-analysis" class="level1" data-number="3">
+<section id="convex-analysis" class="level1 page-columns page-full" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Convex Analysis</h1>
-<p><strong>V keep this for later V</strong> Recall: for all <span class="math inline">\(d\in\mathbb{R}^n\)</span> and <span class="math inline">\(\alpha\in\mathbb{R}\)</span> such that <span class="math inline">\(x^* + \alpha d \in D\)</span>, we must have</p>
-<p><span class="math display">\[\langle \nabla f(x^*),d\rangle \geq 0.\]</span></p>
-<p><strong>figure</strong></p>
-<p>this is required for a minimum. if that <span class="math inline">\(\geq\)</span> changes to <span class="math inline">\(&lt;\)</span> for any points defined from <span class="math inline">\(\alpha, \ d\)</span>, then <span class="math inline">\(x^*\)</span> is not a minimum.</p>
-<p><strong>^ keep this for later ^</strong></p>
 <p>We start by discussing affine sets and maps.</p>
-<div id="def-affine_set" class="theorem definition">
+<div id="def-affine_set" class="theorem definition page-columns page-full">
 <p><span class="theorem-title"><strong>Definition 3 (Affine Set - informal)</strong></span> A set <span class="math inline">\(A\subseteq\mathbb{R}^n\)</span> is <em>affine</em> if for all <span class="math inline">\(x,y\in A\)</span>, the full line connecting <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is in <span class="math inline">\(A\)</span>.</p>
-<p><strong>figure</strong></p>
-</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="figures/Picture14.jpg" class="img-fluid" style="width:80.0%"></p>
+</div></div></div>
 <div id="def-affine_set_forma" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 4 (Affine Set - formal)</strong></span> A set <span class="math inline">\(A\subseteq \mathbb{R}^n\)</span> is <em>affine</em> if and only if for all <span class="math inline">\(x,y\in\ A\)</span> and <span class="math inline">\(t\in\mathbb{R}\)</span>,</p>
 <p><span class="math display">\[ (1-t) x + t y \in A.\]</span></p>
@@ -673,8 +714,12 @@ Assumption
 <p>A set <span class="math inline">\(A\in\mathbb{R}^n\)</span> is <em>affine</em> if and only if <span class="math inline">\(A-a\)</span> is a linear subspace for all <span class="math inline">\(a\in\mathbb{R}\)</span>.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>in text.</p>
-<p><strong>figure</strong></p>
+<p><span class="proof-title"><em>Proof</em>. </span>In text <span class="citation" data-cites="Güler_2010">(<a href="#ref-Güler_2010" role="doc-biblioref">Güler 2010</a>)</span>.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture15.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
 </div>
 <p>One of the most important examples of an affine set in <span class="math inline">\(\mathbb{R}^n\)</span> is an <span class="math inline">\((n-1)\)</span> dimensional hyperplane. A hyperplane is an <span class="math inline">\((n-1)\)</span> dimensional set.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -704,7 +749,11 @@ H &amp;= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
 <p><span class="theorem-title"><strong>Definition 5 (Affine map)</strong></span> A mapping <span class="math inline">\(F:\mathbb{R}^n\rightarrow \mathbb{R}^n\)</span> is <em>affine</em> if for all <span class="math inline">\(x,y\in\mathbb{R}^n\)</span> and <span class="math inline">\(t\in\mathbb{R}\)</span>,</p>
 <p><span class="math display">\[F((1-t)x + ty) = (1-t) F(x) + t F(y) .\]</span></p>
 </div>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture31.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 <div class="example">
 <div class="example-header">
 <p>Example</p>
@@ -717,7 +766,29 @@ H &amp;= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
 <h2 data-number="3.1" class="anchored" data-anchor-id="convex-sets"><span class="header-section-number">3.1</span> Convex Sets</h2>
 <div id="def-convexset" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 6 (Convex set - informal)</strong></span> A set <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is <em>convex</em> is for all <span class="math inline">\(x,y\in S\)</span>, the line segment connecting <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> is in <span class="math inline">\(S\)</span>.</p>
-<p><strong>figure</strong></p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture16.jpg" class="img-fluid figure-img" style="width:42.0%"></p>
+<figcaption>Convex.</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture17.jpg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>Not convex.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="def-convexsetformal" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 7 (Convex set - formal)</strong></span> <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is <em>convex</em> if for all <span class="math inline">\(x,y\in S\)</span> and <span class="math inline">\(\lambda\in[0,1]\)</span>,</p>
@@ -729,10 +800,10 @@ H &amp;= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
 </div>
 <div class="example-container">
 <ol type="1">
-<li><p><span class="math inline">\(S_1 = \{(x,y)\in\mathbb{R}^2 \mid x^2 + y^2 \leq 1\}\)</span> unit disk is convex. <strong>figure</strong></p></li>
+<li><p><span class="math inline">\(S_1 = \{(x,y)\in\mathbb{R}^2 \mid x^2 + y^2 \leq 1\}\)</span> unit disk is convex. <img src="figures/Picture18.jpg" class="img-fluid" style="width:20.0%"></p></li>
 <li><p><span class="math inline">\(S_2 = \{(x,0)\in\mathbb{R}^2 \mid x\in \mathbb{R}\}\)</span> (x-axis) is affine <span class="math inline">\(\Rightarrow\)</span> convex.</p></li>
-<li><p><span class="math inline">\(S_3 = \{(x,y)\in\mathbb{R}^2 \mid y\geq e^x\}\)</span> is convex. <strong>figure</strong></p></li>
-<li><p><span class="math inline">\(S_4 = \{(x,y)\in\mathbb{R}^2 \mid y \geq\sin(x)\}\)</span> is <strong>not</strong> convex. <strong>figure</strong></p></li>
+<li><p><span class="math inline">\(S_3 = \{(x,y)\in\mathbb{R}^2 \mid y\geq e^x\}\)</span> is convex. <img src="figures/Picture19.jpg" class="img-fluid" style="width:20.0%"></p></li>
+<li><p><span class="math inline">\(S_4 = \{(x,y)\in\mathbb{R}^2 \mid y \geq\sin(x)\}\)</span> is <strong>not</strong> convex. <img src="figures/Picture20.jpg" class="img-fluid" style="width:20.0%"></p></li>
 </ol>
 </div>
 </div>
@@ -740,8 +811,8 @@ H &amp;= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
 <p><span class="math display">\[\sum_{i=1}^m \lambda_i x_i\]</span></p>
 <p>is called a <em>convex combination</em> of vectors <span class="math inline">\(x_i\in\mathbb{R}^n\)</span>, <span class="math inline">\(i=1,...,m\)</span>. When:</p>
 <ul>
-<li><span class="math inline">\(m=2\)</span>: line <strong>figure</strong></li>
-<li><span class="math inline">\(m=3\)</span>: surface <strong>figure</strong></li>
+<li><span class="math inline">\(m=2\)</span>: line <img src="figures/Picture32.jpg" class="img-fluid" style="width:20.0%"></li>
+<li><span class="math inline">\(m=3\)</span>: surface <img src="figures/Picture21.jpg" class="img-fluid" style="width:20.0%"></li>
 </ul>
 <div id="thm-convexset2" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 5</strong></span> The set <span class="math inline">\(S\subseteq \mathbb{R}^n\)</span> is <em>convex</em> if and only if <span class="math inline">\(S\)</span> contains all convex combinations of its elements.</p>
@@ -765,13 +836,29 @@ H &amp;= \{x\in\mathbb{R}^n \mid \langle x,b\rangle = 0\} + a \\
 <p>We now introduce an object called the <em>convex hull</em>. Given a set <span class="math inline">\(X\subseteq\mathbb{R}^n\)</span>, we want to construct a convex set which contains <span class="math inline">\(X\)</span> and is as small as possible. Define</p>
 <p><span class="math display">\[ \texttt{co} \ (X) = \left\lbrace \sum_{k=1}^m \lambda_k x_k \mid x_k\in X, \lambda_k \geq 0, \sum_{k=1}^m \lambda_k = 1, \textnormal{ for all } m \right\rbrace .\]</span></p>
 <p>The convex hull is the set of all convex combinations of elements of <span class="math inline">\(X\)</span>. Imagine fitting an elastic band over the set.</p>
-<p><strong>figure</strong></p>
-<p>Claims:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture33.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Claims
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><span class="math inline">\(\texttt{co} \ (X)\)</span> is a convex set.</li>
+<li><p><span class="math inline">\(\texttt{co} \ (X)\)</span> is a convex set.</p></li>
+<li><p><span class="math inline">\(\texttt{co} \ (X)\)</span> is minimal in the sense that if <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is convex and <span class="math inline">\(X\subseteq S\)</span>, then <span class="math inline">\(\texttt{co} \ (X) \subseteq S\)</span>.</p></li>
 </ol>
+</div>
+</div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(x,y\in\texttt{co} \ (X)\)</span>. Then we can write</p>
+<p><span class="proof-title"><em>Proof</em> (of 1). </span>Let <span class="math inline">\(x,y\in\texttt{co} \ (X)\)</span>. Then we can write</p>
 <p><span class="math display">\[ x = \sum_{k+1}^m \lambda_k x_k, \ \ y = \sum_{\ell=1}^p \mu_\ell y_\ell, \]</span></p>
 <p>for some <span class="math inline">\(m,p, \{x_k\}, \{y_k\}\in X\)</span>, convex coefficients <span class="math inline">\(\lambda_1,...,\lambda_m\)</span>, <span class="math inline">\(\mu_1,...,\mu_p\)</span>. Now let <span class="math inline">\(\gamma\in[0,1]\)</span>:</p>
 <p><span class="math display">\[\begin{aligned}
@@ -791,11 +878,8 @@ y_{k-m}, &amp; m+1\leq k \leq m+p
 \end{aligned}\]</span></p>
 <p>Note that <span class="math inline">\(\sum_{k=1}^{m+p} \alpha_k = 1\)</span> (prove this on your own). Thus, we have shown <span class="math inline">\((1-\gamma)x + \gamma y \in \texttt{co} \ (X)\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\(\texttt{co} \ (X)\)</span> is a convex set. ■</p>
 </div>
-<ol start="2" type="1">
-<li><span class="math inline">\(\texttt{co} \ (X)\)</span> is minimal in the sense that if <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span> is convex and <span class="math inline">\(X\subseteq S\)</span>, then <span class="math inline">\(\texttt{co} \ (X) \subseteq S\)</span>.</li>
-</ol>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>If <span class="math inline">\(x\in\texttt{co} \ (X)\)</span> then <span class="math inline">\(x = \sum_{k=1}^m \lambda_k x_k\)</span>, <span class="math inline">\(x_k\in X\)</span> for all <span class="math inline">\(k=1,...,m\)</span>.</p>
+<p><span class="proof-title"><em>Proof</em> (of 2). </span>If <span class="math inline">\(x\in\texttt{co} \ (X)\)</span> then <span class="math inline">\(x = \sum_{k=1}^m \lambda_k x_k\)</span>, <span class="math inline">\(x_k\in X\)</span> for all <span class="math inline">\(k=1,...,m\)</span>.</p>
 <p><span class="math inline">\(X\subseteq S \Rightarrow\)</span> if <span class="math inline">\(x_k\in X\)</span> then <span class="math inline">\(x_k\in S\)</span>. Then, <span class="math inline">\(\texttt{co} \ (X)\subseteq S\)</span>. ■</p>
 </div>
 <div id="thm-convexhull" class="theorem">
@@ -804,7 +888,7 @@ y_{k-m}, &amp; m+1\leq k \leq m+p
 <p>for the convex coefficients <span class="math inline">\(\lambda_k\)</span> and points <span class="math inline">\(x_k\in X\)</span>.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>In text.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>In text <span class="citation" data-cites="Güler_2010">(<a href="#ref-Güler_2010" role="doc-biblioref">Güler 2010</a>)</span>.</p>
 </div>
 <section id="operations-that-preserve-convexity" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="operations-that-preserve-convexity"><span class="header-section-number">3.1.1</span> Operations that Preserve Convexity</h3>
@@ -828,7 +912,11 @@ y_{k-m}, &amp; m+1\leq k \leq m+p
 </div>
 <div class="example-container">
 <p><span class="math inline">\(S_1 = D\)</span> (unit disk) in <span class="math inline">\(\mathbb{R}^2\)</span>, <span class="math inline">\(S_2\)</span> is the <span class="math inline">\(x\)</span>-axis.</p>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture22.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
 </div>
 </div>
 <div class="proof">
@@ -878,15 +966,17 @@ y_{k-m}, &amp; m+1\leq k \leq m+p
 </div>
 </section>
 </section>
-<section id="convex-functions" class="level2" data-number="3.2">
+<section id="convex-functions" class="level2 page-columns page-full" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="convex-functions"><span class="header-section-number">3.2</span> Convex Functions</h2>
 <div id="def-convexfunction" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 9</strong></span> For <span class="math inline">\(f:V\rightarrow\mathbb{R}\)</span>, <span class="math inline">\(V\)</span> a vector space, we say that <span class="math inline">\(f\)</span> is a <em>convex function</em> if</p>
 <p><span class="math display">\[f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y),\]</span></p>
 <p>where <span class="math inline">\(0\leq\lambda \leq 1\)</span>.</p>
 </div>
-<p>What convexity tells us is that the values of the function are below the line between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
-<p><strong>figure</strong></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="figures/Picture23.jpg" class="img-fluid" style="width:90.0%"></p>
+</div></div><p>What convexity tells us is that the values of the function are below the line between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
 <div id="def-epigraph" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 10</strong></span> For a function <span class="math inline">\(f:V\rightarrow\mathbb{R}\)</span> the <em>epigraph</em> of <span class="math inline">\(f\)</span> is defined to be</p>
 <p><span class="math display">\[ \texttt{epi}(f) = \{(x,\alpha) \mid x\in V, \alpha \in \mathbb{R}, f(x) \leq \alpha\}.\]</span></p>
@@ -939,14 +1029,16 @@ f(\lambda x_1 + (1-\lambda)x_2) &amp;\leq \lambda f(x_1) + (1-\lambda) f(x_2) \\
 \Rightarrow &amp; \ln\left(\frac{1}{2} x + \frac{1}{2}y\right) \geq \ln((xy)^{1/2}) \\
 \Rightarrow &amp; \frac{1}{2} (x + y) \geq \sqrt(xy)
 \end{aligned}\]</span></p>
-<section id="conditions-of-convexity" class="level3" data-number="3.2.1">
+<section id="conditions-of-convexity" class="level3 page-columns page-full" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="conditions-of-convexity"><span class="header-section-number">3.2.1</span> Conditions of Convexity</h3>
 <div id="thm-firstorderconv" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 8 (First order condition of convexity)</strong></span> Given <span class="math inline">\(C\subseteq\mathbb{R}^n\)</span> convex, <span class="math inline">\(f:C\rightarrow\mathbb{R}\)</span> continuously differentiable, we have that <span class="math inline">\(f\)</span> is convex if and only if</p>
 <p><span class="math display">\[ \langle \nabla f(x), y-x\rangle \leq f(y) - f(x), \ \ \forall x,y\in C.\]</span></p>
 </div>
-<p><strong>figure</strong></p>
-<div class="proof">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="figures/Picture24.jpg" class="img-fluid" style="width:100.0%"></p>
+</div></div><div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span><span class="math inline">\(\Rightarrow\)</span>. Assume that <span class="math inline">\(f\)</span> is convex. Then for <span class="math inline">\(\alpha\in(0,1)\)</span></p>
 <p><span class="math display">\[\begin{aligned}
 f(x+ \alpha(y-x)) &amp;= f((1-\alpha)x + \alpha y) \\
@@ -973,6 +1065,11 @@ f(x+ \alpha(y-x)) &amp;= f((1-\alpha)x + \alpha y) \\
 </div>
 <p>Note, a function can also be <em>strictly convex</em>. Strict convexity is when <a href="#def-convexfunction" class="quarto-xref">Definition&nbsp;9</a> holds for <span class="math inline">\(x\neq y\)</span>, ie.</p>
 <p><span class="math display">\[ f((1-\alpha)x + \alpha y) &lt; (1-\alpha) f(x) + \alpha f(y).\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture26.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 <div id="thm-secondorderconv" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 9 (Second order condition of convexity)</strong></span> Let <span class="math inline">\(C\subseteq\mathbb{R}^n\)</span>, and suppose <span class="math inline">\(f:C\rightarrow\mathbb{R}\)</span> is twice continuously differentiable. Then, <span class="math inline">\(f\)</span> is convex if and only if the Hessian of <span class="math inline">\(f\)</span> at <span class="math inline">\(x\)</span> is positive semidefinite for all <span class="math inline">\(x\in C\)</span>, ie.</p>
 <p><span class="math display">\[\nabla^2 f(x) \succeq 0 \ \forall x\in C.\]</span></p>
@@ -1042,8 +1139,12 @@ g(t) &amp;= \log\det(Z + tY) \\
 <p>We now note that convex functions have convex sublevel sets. This is, given <span class="math inline">\(f:\mathbb{R}^n\rightarrow\mathbb{R}\)</span> convex,</p>
 <p><span class="math display">\[S_\alpha = \{x \mid f(x) \leq \alpha \}\]</span></p>
 <p>is convex.</p>
-<p>But what about the converse?</p>
-<p><strong>figure</strong></p>
+<p>But what about the converse? Consider</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture25.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <p>We can see that the sublevel sets <span class="math inline">\(S_\alpha\)</span> are convex, but clearly <span class="math inline">\(f\)</span> is not.</p>
 <div id="def-quasiconv" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 11</strong></span> Any function that has convex sublevel sets is called <em>quasi-convex</em>. Similarly, <em>quasi-concave</em> functions have convex superlevel sets.</p>
@@ -1096,12 +1197,18 @@ g(t) &amp;= \log\det(Z + tY) \\
 </div>
 </div>
 <p>Recall the projection mapping. Consider a set <span class="math inline">\(C\in\mathbb{R}^n\)</span> non-empty, closed, and convex. The projection map <span class="math inline">\(P_C\)</span> takes a point <span class="math inline">\(x\)</span> and finds a point in <span class="math inline">\(C\)</span> that is closest (in Euclidean distance) to <span class="math inline">\(x\)</span>.</p>
-<p><strong>figure</strong></p>
-<div id="thm-projection" class="theorem">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture27.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+<div id="thm-projection" class="theorem page-columns page-full">
 <p><span class="theorem-title"><strong>Theorem 11</strong></span> Take <span class="math inline">\(C\)</span> as above. We have the following, where <span class="math inline">\(z\in C\)</span> and <span class="math inline">\(x\in\mathbb{R}^n\)</span>,</p>
 <p><span class="math display">\[ \langle x- P_C(x), z - P_c(x)\rangle \leq 0\]</span></p>
-<p><strong>figure</strong></p>
-</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="figures/Picture28.jpg" class="img-fluid" style="width:90.0%"></p>
+</div></div></div>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Note that <span class="math inline">\(x^* = P_C(x)\)</span> is a solution to</p>
 <p><span class="math display">\[\min_{z\in C} \frac{1}{2} ||z-x||^2 .\]</span></p>
@@ -1113,14 +1220,14 @@ g(t) &amp;= \log\det(Z + tY) \\
 \end{aligned}\]</span> ■</p>
 </div>
 <p>This result holds true for Hilbert spaces. To show the existence of a minimiser we take a minimising sequence <span class="math inline">\(\{x_n\}_{n=1}^\infty\)</span>,</p>
-<p><span class="math display">\[||x-x_n|| \rightarrow d\in\inf\{||x-z||, z\in C\}\]</span>.</p>
+<p><span class="math display">\[||x-x_n|| \rightarrow d\in\inf\{||x-z||, z\in C\}.\]</span></p>
 <p>Note that Hilbert spaces are complete, and hence if we show that this sequence is Cauchy then it is convergent.</p>
-<p><span class="math display">\[\begin{aligned}
+<div class="page-columns page-full"><p><span class="math display">\[\begin{aligned}
 ||x_n-x_m||^2 &amp;= ||(x-x_n) - (x-x_m)||^2 \\
-&amp;= 2(||x-x_n||^2 + ||x-x_m||^2) - ||(x-x_n) + (x-x_m)||^2 \ \ (\textnormal{by the parallelogram law}) \\
+&amp;= 2(||x-x_n||^2 + ||x-x_m||^2) - ||(x-x_n) + (x-x_m)||^2  \\
 &amp;= 2(||x-x_n||^2 + ||x-x_m||^2) - 4||x - \frac{x_n+x_m}{2}||^2 \\
 &amp;\leq 2(||x-x_n|^2 + ||x-x_m||^2) - 4d^2.
-\end{aligned}\]</span></p>
+\end{aligned}\]</span> </p><div class="no-row-height column-margin column-container"><span class="margin-aside">By the parallelogram law.</span></div></div>
 <p>For all <span class="math inline">\(\varepsilon &gt;0\)</span>, there exists <span class="math inline">\(N\)</span> large enough such that <span class="math inline">\(n,m&gt;N\)</span> then</p>
 <p><span class="math display">\[2(\underbrace{||x-x_n||^2}{\rightarrow d^2} + \underbrace{||x-x_M||^2}{\rightarrow d^2}) - 4d^2 \rightarrow 0.\]</span></p>
 <p>So, <span class="math inline">\(||x_n - x_m||^2 \leq 0\)</span>. Therefore this is a Cauchy sequence, and the rest follows.</p>
@@ -1128,20 +1235,21 @@ g(t) &amp;= \log\det(Z + tY) \\
 <p><span class="theorem-title"><strong>Proposition 6</strong></span> Let <span class="math inline">\(C\subset\mathbb{R}\)</span> be non-empty, closed, and convex. Then the projection map <span class="math inline">\(P_C:\mathbb{R}^n\rightarrow C\)</span> is <em>non-expansive</em>.</p>
 <p>i.e.&nbsp;<span class="math inline">\(||P_C(y) - P_C(x)|| \leq ||y-x||\)</span> for all <span class="math inline">\(x,y\in\mathbb{R}^n\)</span>. Consequently, <span class="math inline">\(P_C\)</span> is continuous.</p>
 </div>
-<div class="proof">
+<div class="proof page-columns page-full">
 <p><span class="proof-title"><em>Proof</em>. </span>Recall that</p>
-<p><span class="math display">\[\begin{aligned}
+<div class="page-columns page-full"><p><span class="math display">\[\begin{aligned}
 &amp; \langle x-P_C(x), P_C(y) - P_C(x)\rangle \leq 0\\
 -&amp;\underline{\langle y-P_c(y),P_C(x) - P_C(y)\rangle \leq 0} \\
 &amp; \langle x-y + P_C(y)-P_C(x), P_C(y) - P_C(x)\rangle \leq 0 \\
 \Rightarrow &amp; \langle x-y,P_C(y)-P_C(x)\rangle + ||P_C(y) - P_C(x)||^2 \leq 0 \\
 \Rightarrow &amp; ||P_C(y) - P_C(x)||^2 \leq \langle y-x,P_C(y)-P_C(x)\rangle \\
-\Rightarrow &amp; ||P_C(y) - P_C(x)||^2 \leq ||y-x|| \ ||P_C(y) - P_C(x)|| \ \ (\textnormal{by Cauchy Schwarz}).
-\end{aligned}\]</span> ■</p>
+\Rightarrow &amp; ||P_C(y) - P_C(x)||^2 \leq ||y-x|| \ ||P_C(y) - P_C(x)|| .
+\end{aligned}\]</span> </p><div class="no-row-height column-margin column-container"><span class="margin-aside">By Cauchy Schwarz.</span></div></div>
+<p>■</p>
 </div>
 </section>
 </section>
-<section id="separation-of-convex-sets" class="level2" data-number="3.3">
+<section id="separation-of-convex-sets" class="level2 page-columns page-full" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="separation-of-convex-sets"><span class="header-section-number">3.3</span> Separation of Convex Sets</h2>
 <p>Recall that we denote by <span class="math inline">\(H_{(a,\alpha)}\)</span> the hyperplane (<span class="math inline">\(a\in\mathbb{R}n\)</span>, $)</p>
 <p><span class="math display">\[ H_{(a,\alpha)} = \{x\in\mathbb{R}^n \mid \langle a,x\rangle = \alpha \} .\]</span></p>
@@ -1162,21 +1270,111 @@ g(t) &amp;= \log\det(Z + tY) \\
 <p>Recall that for a set <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span>, the relative interior of <span class="math inline">\(S\)</span> is</p>
 <p><span class="math display">\[\textnormal{ri}(S) = \{x\in S\mid \exists \varepsilon &gt; 0, B_\varepsilon(x) \cap \textnormal{aff}(S) \subset S\},\]</span></p>
 <p>where <span class="math inline">\(\textnormal{aff}(S)\)</span> is the affine hull of <span class="math inline">\(S\)</span>.</p>
-<div id="thm-supportinghyperplane" class="theorem">
+<div id="thm-supportinghyperplane" class="theorem page-columns page-full">
 <p><span class="theorem-title"><strong>Theorem 12</strong></span> Let <span class="math inline">\(C\in\mathbb{R}^n\)</span> be a non-empty, convex set, and let <span class="math inline">\(\bar{x}\in\bar{C}\backslash\textnormal{ri}(C)\)</span>. Then, there exists a supporting hyperplane to <span class="math inline">\(C\)</span> at <span class="math inline">\(\bar{x}\)</span>, i.e.&nbsp;there exists a vector <span class="math inline">\(a\in\mathbb{R}^n\)</span> such that</p>
-<p><span class="math display">\[\langle a,x\rangle \geq \langle a,\bar{x}\rangle\]</span></p>
-<p>for all <span class="math inline">\(x\in C\)</span>.</p>
-<p><strong>figure</strong></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="figures/Picture29.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:80.0%"></p>
+<figcaption>The supporting hyperplanes are in green.</figcaption>
+</figure>
 </div>
-<p>::: {.proof} <strong>figure</strong></p>
-<p>Consider a sequence <span class="math inline">\(\{x_k\}_{k=1}^\infty\)</span> where <span class="math inline">\(x_k\in C\)</span> approaching <span class="math inline">\(\bar{x}\)</span>.</p>
-<p><strong>figure</strong></p>
-<p>This sequence gives <span class="math inline">\(\{\hat{x}_k\}_{k=1}^\infty\)</span> where</p>
-<p>ends at separating hyperplane proposition</p>
+</div></div><p><span class="math display">\[\langle a,x\rangle \geq \langle a,\bar{x}\rangle\]</span></p>
+<p>for all <span class="math inline">\(x\in C\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Consider a sequence <span class="math inline">\(\{x_k\}_{k=1}^\infty\)</span> where <span class="math inline">\(x_k\in C\)</span> approaching <span class="math inline">\(\bar{x}\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture30.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>This sequence gives <span class="math inline">\(\{\hat{x}_k\}_{k=1}^\infty\)</span> where <span class="math inline">\(\hat{x}_k = P_{\bar{C}}(x_k)\)</span>. Note that</p>
+<p><span id="eq-supphypseries"><span class="math display">\[ \langle \hat{x}_k - x_k, x - \hat{x}_k\rangle \geq 0 \ \ \forall x\in\bar{C}. \tag{4}\]</span></span></p>
+<p>We have that</p>
+<p><span class="math display">\[ \begin{aligned}
+\langle \hat{x}_k - x_k, x\rangle &amp; \geq \langle \hat{x}_k - x_k, \hat{x}_k\rangle \\
+&amp; = \langle \hat{x}_k - x_k, \hat{x}_k - x_k\rangle + \langle \hat{x}_k - x_k, x_k\rangle \\
+&amp; \geq \langle \hat{x}_k - x_k, x_k \rangle .
+\end{aligned}\]</span></p>
+<p>Let <span class="math inline">\(\alpha_k = \frac{\hat{x}_k - x_k}{|| \hat{x}_k - x_k||}\)</span>, then <span class="math inline">\(\langle \alpha_k,x\rangle \geq \langle \alpha_k, x_k\rangle\)</span>. The sequence <span class="math inline">\(\{\alpha_k\}_{k=1}^\infty\)</span> is bounded and has a convergent subsequence. Then, taking the limit,</p>
+<p><span class="math display">\[\langle \alpha, x\rangle \geq \langle \alpha, \bar{x}\rangle, \]</span></p>
+<p>which proves the result. ■</p>
+</div>
+<p>Note that the sequence <span class="math inline">\(\{P_{\bar{C}(x_k)\}_{k=1}^\infty\)</span> is convergent to <span class="math inline">\(P_{\bar{C}(\bar{x})} = \bar{x}\)</span> since <span class="math inline">\(P_{\bar{C}}\)</span> is continuous. We could have taken the limit directly from <a href="#eq-supphypseries" class="quarto-xref">Equation&nbsp;4</a>.</p>
+<div id="thm-separatinghyperplane" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 13</strong></span> Let <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> be two disjoint, non-empty, convex subsets of <span class="math inline">\(\mathbb{R}^n\)</span>. Then, there exists a hyperplane that separates <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. I.e. there exists a vector <span class="math inline">\(a\in\mathbb{R}^n\)</span> such that</p>
+<p><span class="math display">\[ \langle a,x_2\rangle \geq \langle a,x_1\rangle \ \ \forall x_1\in C_1, \ x_2\in C_2.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Consider the convex set</p>
+<p><span class="math display">\[ C = C_2 - C_1 = \{x = x_2 - x_1 \mid x_1\in C_1, \ x_2\in C_2\}. \]</span></p>
+<p>This set is convex. Since <span class="math inline">\(C_1 \cap C_2 = \emptyset\)</span>, we conclude that <span class="math inline">\(0\notin C\)</span>. Now, by an extension of <a href="#thm-supportinghyperplane" class="quarto-xref">Theorem&nbsp;12</a>, we conclude that there exists a vector <span class="math inline">\(a\neq 0\)</span> passing through 0 such that</p>
+<p><span class="math display">\[\langle a,x\rangle \geq \langle a,0\rangle = 0, \ \forall x\in C\]</span></p>
+<p>i.e.&nbsp;<span class="math inline">\(\langle a,x_2\rangle \geq \langle a,x_1\rangle\)</span> for all <span class="math inline">\(x_1\in C_1\)</span> and <span class="math inline">\(x_2\in C_2\)</span>. ■</p>
+</div>
+<div id="thm-strongseparation" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 14</strong></span> Let <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> be two non-empty, disjoint, convex sets in <span class="math inline">\(\mathbb{R}^n\)</span>. Suppose that the set <span class="math inline">\(C_2-C_1\)</span> is closed. Then, there exists a hyperplane that separates <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> strongly.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Since <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are disjoint, 0 is not in <span class="math inline">\(C_2-C_1\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture34.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<p>Let then <span class="math inline">\(\bar{x}_2-\bar{x}_1\)</span> be the vector of minimum norm over <span class="math inline">\(C\)</span> which is well defined.</p>
+<p>Let <span class="math inline">\(a=\frac{\bar{x}_2-\bar{x}_1}{2}\)</span> and <span class="math inline">\(\bar{x} = \frac{\bar{x}_2+\bar{x}_1}{2}\)</span>. Note that <span class="math inline">\(a\neq 0\)</span>.</p>
+<p>We claim that the hyperplane <span class="math inline">\(H_{(a,\alpha)}\)</span> given by</p>
+<p><span class="math display">\[ H_{(a,\alpha)} = \{x\in\mathbb{R}^n \mid \langle a,x\rangle = \alpha \triangleq \langle a, \bar{x}\rangle \}\]</span></p>
+<p>strongly separates <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. Finish the proof on your own, show <span class="math inline">\(\langle a,x_1\rangle &lt; \beta &lt; \langle a, x_2\rangle\)</span> (similar to the previous proof). ■</p>
+</div>
+<div id="thm-properseparation" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 15</strong></span> Two non-empty convex sets <span class="math inline">\(C_1\)</span>, <span class="math inline">\(C_2\)</span> can be properly separated if <span class="math inline">\(\textnormal{ri}(C_1)\)</span> and <span class="math inline">\(\textnormal{ri}(C_2)\)</span> are disjoint.</p>
+</div>
+<div id="prp-separatinghyperplane" class="theorem proposition">
+<p><span class="theorem-title"><strong>Proposition 7</strong></span> Let <span class="math inline">\(C\subset\mathbb{R}^n\)</span> be non-empty and convex, and let <span class="math inline">\(A\)</span> be an affine set such that <span class="math inline">\(\textnormal{ri}(C) \cap A = \emptyset\)</span>. Then, there exists a hyperplane <span class="math inline">\(H\)</span> separating <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> such that <span class="math inline">\(A\subseteq H\)</span>.</p>
+</div>
+<div class="proof page-columns page-full">
+<p><span class="proof-title"><em>Proof</em>. </span>Existence of a hyperplane <span class="math inline">\(H\)</span> is clear. If <span class="math inline">\(H\)</span> includes <span class="math inline">\(A\)</span>, we are done. Otherwise, there exists <span class="math inline">\(x\in A\backslash H\)</span>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture35.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div></div><p>The affine set <span class="math inline">\(A\)</span> and <span class="math inline">\(H\)</span> must be disjoint, otherwise <span class="math inline">\(y\in A\cap H\)</span> and the line between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> intersects both <span class="math inline">\(\bar{H}^+\)</span> and <span class="math inline">\(\bar{H}^-\)</span>, which is not possible since, since <span class="math inline">\(H\)</span> is separating. Thus, <span class="math inline">\(A\)</span> has to be “parallel” to <span class="math inline">\(H\)</span>. Hence, we can shift the hyperplane <span class="math inline">\(H\)</span> to a new one <span class="math inline">\(\tilde{H}\)</span> that includes <span class="math inline">\(A\)</span>. ■</p>
+</div>
 </section>
 </section>
 <section id="convex-optimisation" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Convex Optimisation</h1>
+<p><strong>V keep this for later V</strong> Recall: for all <span class="math inline">\(d\in\mathbb{R}^n\)</span> and <span class="math inline">\(\alpha\in\mathbb{R}\)</span> such that <span class="math inline">\(x^* + \alpha d \in D\)</span>, we must have</p>
+<p><span class="math display">\[\langle \nabla f(x^*),d\rangle \geq 0.\]</span></p>
+<p><img src="figures/Picture13.jpg" class="img-fluid" style="width:40.0%"></p>
+<p>this is required for a minimum. if that <span class="math inline">\(\geq\)</span> changes to <span class="math inline">\(&lt;\)</span> for any points defined from <span class="math inline">\(\alpha, \ d\)</span>, then <span class="math inline">\(x^*\)</span> is not a minimum.</p>
+<p><strong>^ keep this for later ^</strong></p>
+<div id="thm-systemlinearinequalities" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 16</strong></span> Consider a system of linear inequalities</p>
+<p><span id="eq-inequalitysystem"><span class="math display">\[ \ell_i(x) &lt; \alpha_i  \tag{5}\]</span></span></p>
+<p>where <span class="math inline">\(\ell_i:\mathbb{R}^n \rightarrow\mathbb{R}\)</span> is linear for all <span class="math inline">\(i\in\{1,...,m\}\)</span>. Then, there exists <em>no solution</em> to <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a> if and only if there exists a set of non-negative scalars <span class="math inline">\(\{\lambda_i\}_{i=1}^m\)</span> not all zero such that</p>
+<p><span class="math display">\[ \begin{aligned}
+&amp; \sum_{i=1}^m \lambda_i \ell_i(x) = 0 \ \forall x, \\
+&amp; \sum_{i=1}^m \lambda_i \alpha_i \leq 0.
+\end{aligned}\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>We first show that if there is a solution to <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a> then such scalars cannot exist. Suppose otherwise, then <span class="math inline">\(\sum_{i=1}^m \lambda_i\ell_i(x) = 0\)</span> and <span class="math inline">\(\sum_{i=1}^m \lambda_i\alpha_i \leq 0\)</span>. But since there is a solution to <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a>, we also have</p>
+<p><span class="math display">\[\sum_{i=1}^m \lambda_i (\alpha_i - \ell_i(x)) &gt; 0.\]</span></p>
+<p>Which contradicts our assumption. Thus, no such scalars <span class="math inline">\(\lambda_i\)</span> exist.</p>
+<p>Now for the other side. Define</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; A = \{y\in\mathbb{R}^n \mid \exists x\in\mathbb{R}^n, y_i = \ell_i(x) - \alpha_i, i=1,...,m\}, \\
+&amp; K = \{y\in\mathbb{R}^n \mid y_i&lt;0, i=1,...,m\}.
+\end{aligned}\]</span></p>
+</div>
 <section id="conjugate-functions" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="conjugate-functions"><span class="header-section-number">4.1</span> Conjugate Functions</h2>
 </section>

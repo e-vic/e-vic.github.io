@@ -1,7 +1,7 @@
 ---
 title: "Optimisation Theory and Applications"
 author:
-  - name: Bahman Gharesifared
+  - name: Bahman Gharesifard
     affiliation: Queen's University
   - name: Emma Hansen
     affiliation: N/A
@@ -17,7 +17,7 @@ number-depth: 3
 fig-cap-location: bottom
 categories: [notes, optimisation]
 abstract: |
-  This is a write up of my notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifared in 2016 at Queen's University.
+  This is a write up of my notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifard in 2016 at Queen's University.
 image: figures/Picture10.jpg
 ---
 
@@ -31,7 +31,7 @@ image: figures/Picture10.jpg
 
 # Introduction
 
-This document is a write-up of the *Optimisation Theory and Applications* course taught by Bahman Gharesifared in 2016 at Queen's University. The vast majority of the content is from Bahman's notes, with some comments from me (Emma Hansen).
+This document is a write-up of the *Optimisation Theory and Applications* course (MTHE434) taught by [Bahman Gharesifard](https://gharesifard.github.io/) in 2016 at [Queen's University](https://www.queensu.ca/mathstat/undergraduate/prospective-undergraduate/mthe). The vast majority of the content is from Bahman's notes, with some comments from me (Emma Hansen).
 
 ## Examples of Optimisation Problems
 

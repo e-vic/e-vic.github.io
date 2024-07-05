@@ -17,7 +17,7 @@ number-depth: 3
 fig-cap-location: bottom
 categories: [notes, optimisation]
 abstract: |
-  This is a write up of my notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifard in 2016 at Queen's University.
+  This is a write up of notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifard in 2016 at Queen's University.
 image: figures/Picture10.jpg
 ---
 
@@ -128,8 +128,8 @@ With these conditions, we want to maximise flow across the graph: $\max \ |f|$ o
 -   For parts of this course, we work with functionals on normed vector spaces. We usually consider functions on subsets of $\mathbb{R}^n$.
 
 $$\begin{aligned}
-&f: D\subset\mathbb{R}^n \rightarrow \mathbb{R}\\
-&f: E \rightarrow \mathbb{R}, \ E \textrm{ a normed vector space}
+&f: D\subset\mathbb{R}^n \rightarrow \mathbb{R},\\
+&f: E \rightarrow \mathbb{R}, \ E \textnormal{ a normed vector space}.
 \end{aligned}$$
 
 -   We usually assume $f$ is differentiable, specifically Fréchet or Gâteaux differentiable. Nevertheless, we denote gradient (or derivative) of $f$ by $\nabla f$:
@@ -153,17 +153,12 @@ Let $f:\mathcal{U}\rightarrow\mathbb{R}$, where $\mathcal{U}\subset\mathbb{R}^n$
 -   **local/global maximiser** defined similarly.
 :::
 
-## Unconstrained Optimisation
-
-### Existence and Uniqueness of Solutions
-
 ::: {#thm-weierstrass}
 ## Weierstrass, 1858
 
 Let $K$ be a compact set in a topological space. Let $f:K\rightarrow\mathbb{R}$ be a continuous function. Then, there exists $x^*\in K$ such that $f(x^*)\leq f(x)$ for all $x\in K$.
 :::
-
-::: proof
+::: {.proof}
 Recall that $K$ is compact if every open cover of $K$ has a finite subcover.
 
 We prove @thm-weierstrass in two steps.
@@ -189,13 +184,13 @@ Step 2: We show that $f$ has a gloal minimizer. Suppose otherwise and let:
 -   $Y_n = \{x\in K | f(x) > f^* + \frac{1}{n}\}$ (open)
 -   $K = \cup_{n=1}^\infty Y_n$ again. Using compactness and a similar argument as before, there exists $\tilde{n}>1$ such that $K = Y_{\tilde{n}}$.
 
+Thus we have that $f(x)>f^* + \frac{1}{\tilde{n}}$ for all $x\in K$. This, however, contradicts the definition of $f^*$ as the infimum. ■
+:::
 :::: {.column-margin}
 ![](figures/Picture5.jpg){width=80%}
 ::::
-Thus we have that $f(x)>f^* + \frac{1}{\tilde{n}}$ for all $x\in K$. This, however, contradicts the definition of $f^*$ as the infimum. ■
-:::
 
-Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in $C^0([0,1])$ is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there eists a minimiser which is not continuous.) Weierstrass theorem doesn't work well for infinite dimensions.
+Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in $C^0([0,1])$ is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there exists a minimiser which is not continuous.) Weierstrass theorem doesn't work well for infinite dimensions.
 
 We now go about **relaxing compactness**.
 
@@ -209,7 +204,7 @@ This means that if the set of values of a function that are less than $\alpha$ i
 ![](figures/Picture7.jpg){width=80%}
 :::
 
-::: proof
+::: {.proof}
 Pretty straightforward. For an idea, see the figure.
 :::
 
@@ -227,7 +222,7 @@ Note: here, $E$ is any normed vector space.
 If $f:D\rightarrow\mathbb{R}$, where $D$ is closed and $f$ is continuous, then $f$ achieves a *global minimum* on $D$.
 :::
 
-::: proof
+::: {.proof}
 Since $F$ is continuous and $d$ is closed, we have that $\{x\in D | f(x) \leq \alpha\}$, $\alpha\in\mathbb{R}$, is closed.
 
 We claim that this set is also bounded: Suppose otherwise, then there is a sequence $||x_n||\rightarrow\infty$. Then, using coercivity $|f(x)|\rightarrow\infty$ on this sublevel set, which is a contradiction! Thus, the sublevel set is also bounded.
@@ -235,9 +230,18 @@ We claim that this set is also bounded: Suppose otherwise, then there is a seque
 By the previous result, since the sublevel set is compact, we have a global minimum. ■
 :::
 
+## Unconstrained Optimisation
+
+Let $f:\mathbb{R}^n\rightarrow\mathbb{R}$,
+
+$$ \min_{x\in\mathbb{R}^n} \ \ f(x) $$
+
+is an unconstrained optimisation problem.
+
+
 ### Necessary Conditions of Optimality
 
-Consider a $C^1$-function $f$ on $\mathbb{R}^n$ and suppose tht $x^*$ is a local minimum of $f$ in some open set $D\subset \mathbb{R}^n$. Note that $x^*$ is in the interior of $d$.
+Consider a $C^1$-function $f$ on $\mathbb{R}^n$ and suppose tht $x^*$ is a local minimum of $f$ in some open set $D\subset \mathbb{R}^n$. Note that $x^*$ is in the interior of $D$.
 
 ![](figures/Picture8.jpg){width=40% fig-align="center"}
 
@@ -357,11 +361,11 @@ It is easy to see that the necessary conditions we have are not sufficient. For 
 ::: proof
 To show this, note that
 
-$$f(x^* + \alpha d) = f(x^*) + \frac{1}{2}\alpha^2 d^T\nabla^2 f(x^*) d + ... \.$$
+$$f(x^* + \alpha d) = f(x^*) + \frac{1}{2}\alpha^2 d^T\nabla^2 f(x^*) d + ... \ .$$
 
 Again, we can choose \$\alpha small enough to have
 
-$$ \frac{\alpha^2}{2} d^T \nabla^2 f(x^*) d > |\mathcal{O}(\alpha^2).$$
+$$ \frac{\alpha^2}{2} d^T \nabla^2 f(x^*) d > |\mathcal{O}(\alpha^2)|.$$
 
 Since $\nabla^2 f(x^*)$ is positive definite, then $f(x^* + \alpha d) > f(x^*)$ for all $d$. Thus, $x^*$ is a local minimum! ■
 :::
@@ -392,7 +396,7 @@ To do this, use the first order condition of optimality:
 
 $$ \frac{\partial f}{\partial y_i} = \frac{1}{n} e^{y_i} - \frac{1}{n} e^{\frac{y_1 + ... + y_n}{n}} \ \ \forall i $$
 
-which are zero if and only if $ e^{y_i} = e^{\frac{y_1 + ... + y_n}{n}} \ \Rightarrow y_i = \frac{y_1 + ... + y_n}{n}$ for all $i$. (Check this for yourselves).
+which are zero if and only if $e^{y_i} = e^{\frac{y_1 + ... + y_n}{n}} \ \Rightarrow y_i = \frac{y_1 + ... + y_n}{n}$ for all $i$. (Check this for yourselves).
 
 This gives a system of linear equations with solution $y_i = \frac{Y}{n}$ for all $i$. i.e. picked all $y_i$ to be the same for any value of $Y\in\mathbb{R}$.
 
@@ -486,7 +490,7 @@ where $D$ is described usin functions $h_i$.
 
 What if instead we use some curves, $\gamma(\cdot)$, passing through $x^*$, ie. we take $\gamma(0) = x^*$. Let us take these curves to be at least $C^1$.
 
-![](figures/Picture12.jpg){width=20%}
+![](figures/Picture12.jpg){width=40% fig-align="center"}
 
 Let us define $g(\alpha) = f(\gamma(\alpha))$. We can now carry the same argument as before, using $g(\alpha) = g(0) + \alpha g'(0) + \mathcal{O}(\alpha)$, and argue that 
 
@@ -1215,7 +1219,7 @@ $$\begin{aligned}
 
 For all $\varepsilon >0$, there exists $N$ large enough such that $n,m>N$ then 
 
-$$2(\underbrace{||x-x_n||^2}{\rightarrow d^2} + \underbrace{||x-x_M||^2}{\rightarrow d^2}) - 4d^2 \rightarrow 0.$$
+$$2(\underbrace{||x-x_n||^2}_{\rightarrow d^2} + \underbrace{||x-x_M||^2}_{\rightarrow d^2}) - 4d^2 \rightarrow 0.$$
 
 So, $||x_n - x_m||^2 \leq 0$. Therefore this is a Cauchy sequence, and the rest follows. 
 
@@ -1234,9 +1238,9 @@ $$\begin{aligned}
 \Rightarrow & \langle x-y,P_C(y)-P_C(x)\rangle + ||P_C(y) - P_C(x)||^2 \leq 0 \\
 \Rightarrow & ||P_C(y) - P_C(x)||^2 \leq \langle y-x,P_C(y)-P_C(x)\rangle \\
 \Rightarrow & ||P_C(y) - P_C(x)||^2 \leq ||y-x|| \ ||P_C(y) - P_C(x)|| .
-\end{aligned}$$ [By Cauchy Schwarz.]{.aside}
+\end{aligned}$$
 
-■
+Where the last line follows from Cauchy-Schwarz. ■
 :::
 
 ## Separation of Convex Sets
@@ -1352,12 +1356,11 @@ Let $C\subset\mathbb{R}^n$ be non-empty and convex, and let $A$ be an affine set
 ::: {.proof}
 Existence of a hyperplane $H$ is clear. If $H$ includes $A$, we are done. Otherwise, there exists $x\in A\backslash H$. 
 
+The affine set $A$ and $H$ must be disjoint, otherwise $y\in A\cap H$ and the line between $x$ and $y$ intersects both $\bar{H}^+$ and $\bar{H}^-$, which is not possible since, since $H$ is separating. Thus, $A$ has to be "parallel" to $H$. Hence, we can shift the hyperplane $H$ to a new one $\tilde{H}$ that includes $A$. ■
+:::
 :::: {.column-margin}
 ![](figures/Picture35.jpg){width=90% fig-align="center"}
 ::::
-
-The affine set $A$ and $H$ must be disjoint, otherwise $y\in A\cap H$ and the line between $x$ and $y$ intersects both $\bar{H}^+$ and $\bar{H}^-$, which is not possible since, since $H$ is separating. Thus, $A$ has to be "parallel" to $H$. Hence, we can shift the hyperplane $H$ to a new one $\tilde{H}$ that includes $A$. ■
-:::
 
 # Convex Optimisation
 

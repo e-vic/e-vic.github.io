@@ -202,7 +202,7 @@ window.Quarto = {
   <div>
     <div class="abstract">
       <div class="block-title">Abstract</div>
-      <p>This is a write up of my notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifard in 2016 at Queen’s University.</p>
+      <p>This is a write up of notes from the Optimisation Theory and Applicaitons course taught by Bahman Gharesifard in 2016 at Queen’s University.</p>
     </div>
   </div>
   
@@ -223,9 +223,8 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#unconstrained-optimisation" id="toc-unconstrained-optimisation" class="nav-link" data-scroll-target="#unconstrained-optimisation"><span class="header-section-number">2.1</span> Unconstrained Optimisation</a>
   <ul class="collapse">
-  <li><a href="#existence-and-uniqueness-of-solutions" id="toc-existence-and-uniqueness-of-solutions" class="nav-link" data-scroll-target="#existence-and-uniqueness-of-solutions"><span class="header-section-number">2.1.1</span> Existence and Uniqueness of Solutions</a></li>
-  <li><a href="#necessary-conditions-of-optimality" id="toc-necessary-conditions-of-optimality" class="nav-link" data-scroll-target="#necessary-conditions-of-optimality"><span class="header-section-number">2.1.2</span> Necessary Conditions of Optimality</a></li>
-  <li><a href="#sufficient-conditions-of-optimality" id="toc-sufficient-conditions-of-optimality" class="nav-link" data-scroll-target="#sufficient-conditions-of-optimality"><span class="header-section-number">2.1.3</span> Sufficient Conditions of Optimality</a></li>
+  <li><a href="#necessary-conditions-of-optimality" id="toc-necessary-conditions-of-optimality" class="nav-link" data-scroll-target="#necessary-conditions-of-optimality"><span class="header-section-number">2.1.1</span> Necessary Conditions of Optimality</a></li>
+  <li><a href="#sufficient-conditions-of-optimality" id="toc-sufficient-conditions-of-optimality" class="nav-link" data-scroll-target="#sufficient-conditions-of-optimality"><span class="header-section-number">2.1.2</span> Sufficient Conditions of Optimality</a></li>
   </ul></li>
   <li><a href="#constrained-optimisation" id="toc-constrained-optimisation" class="nav-link" data-scroll-target="#constrained-optimisation"><span class="header-section-number">2.2</span> Constrained Optimisation</a></li>
   </ul></li>
@@ -370,8 +369,8 @@ window.Quarto = {
 <li>For parts of this course, we work with functionals on normed vector spaces. We usually consider functions on subsets of <span class="math inline">\(\mathbb{R}^n\)</span>.</li>
 </ul>
 <p><span class="math display">\[\begin{aligned}
-&amp;f: D\subset\mathbb{R}^n \rightarrow \mathbb{R}\\
-&amp;f: E \rightarrow \mathbb{R}, \ E \textrm{ a normed vector space}
+&amp;f: D\subset\mathbb{R}^n \rightarrow \mathbb{R},\\
+&amp;f: E \rightarrow \mathbb{R}, \ E \textnormal{ a normed vector space}.
 \end{aligned}\]</span></p>
 <ul>
 <li>We usually assume <span class="math inline">\(f\)</span> is differentiable, specifically Fréchet or Gâteaux differentiable. Nevertheless, we denote gradient (or derivative) of <span class="math inline">\(f\)</span> by <span class="math inline">\(\nabla f\)</span>:</li>
@@ -396,14 +395,10 @@ window.Quarto = {
 <li><strong>local/global maximiser</strong> defined similarly.</li>
 </ul>
 </div>
-<section id="unconstrained-optimisation" class="level2 page-columns page-full" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="unconstrained-optimisation"><span class="header-section-number">2.1</span> Unconstrained Optimisation</h2>
-<section id="existence-and-uniqueness-of-solutions" class="level3 page-columns page-full" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="existence-and-uniqueness-of-solutions"><span class="header-section-number">2.1.1</span> Existence and Uniqueness of Solutions</h3>
 <div id="thm-weierstrass" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 1 (Weierstrass, 1858)</strong></span> Let <span class="math inline">\(K\)</span> be a compact set in a topological space. Let <span class="math inline">\(f:K\rightarrow\mathbb{R}\)</span> be a continuous function. Then, there exists <span class="math inline">\(x^*\in K\)</span> such that <span class="math inline">\(f(x^*)\leq f(x)\)</span> for all <span class="math inline">\(x\in K\)</span>.</p>
 </div>
-<div class="proof page-columns page-full">
+<div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Recall that <span class="math inline">\(K\)</span> is compact if every open cover of <span class="math inline">\(K\)</span> has a finite subcover.</p>
 <p>We prove <a href="#thm-weierstrass" class="quarto-xref">Theorem&nbsp;1</a> in two steps.</p>
 <p>Step 1: We show that <span class="math inline">\(f\)</span> is bounded from below. Let <span class="math inline">\(K_n = \{ x\in K | f(x) &gt; n\}\)</span> (open sets). Then,</p>
@@ -419,12 +414,12 @@ window.Quarto = {
 <li><span class="math inline">\(Y_n = \{x\in K | f(x) &gt; f^* + \frac{1}{n}\}\)</span> (open)</li>
 <li><span class="math inline">\(K = \cup_{n=1}^\infty Y_n\)</span> again. Using compactness and a similar argument as before, there exists <span class="math inline">\(\tilde{n}&gt;1\)</span> such that <span class="math inline">\(K = Y_{\tilde{n}}\)</span>.</li>
 </ul>
+<p>Thus we have that <span class="math inline">\(f(x)&gt;f^* + \frac{1}{\tilde{n}}\)</span> for all <span class="math inline">\(x\in K\)</span>. This, however, contradicts the definition of <span class="math inline">\(f^*\)</span> as the infimum. ■</p>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p><img src="figures/Picture5.jpg" class="img-fluid" style="width:80.0%"></p>
-</div></div><p>Thus we have that <span class="math inline">\(f(x)&gt;f^* + \frac{1}{\tilde{n}}\)</span> for all <span class="math inline">\(x\in K\)</span>. This, however, contradicts the definition of <span class="math inline">\(f^*\)</span> as the infimum. ■</p>
-</div>
-<p>Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in <span class="math inline">\(C^0([0,1])\)</span> is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there eists a minimiser which is not continuous.) Weierstrass theorem doesn’t work well for infinite dimensions.</p>
+</div></div><p>Remark: Compactness is a good assumption in finite dimensional spaces, but often not in infinite dimensional spaces. The reason is that this assumption is too strong. For example, the unit ball in <span class="math inline">\(C^0([0,1])\)</span> is not compact. (In fact, this statement can be proved using Weierstrass theorem! You can show there exists a minimiser which is not continuous.) Weierstrass theorem doesn’t work well for infinite dimensions.</p>
 <p>We now go about <strong>relaxing compactness</strong>.</p>
 <div id="thm-globalmin" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 2</strong></span> Suppose <span class="math inline">\(F: E\rightarrow\mathbb{R}\)</span> is continuous. If <span class="math inline">\(f\)</span> has a non-empty compact sublevel set, i.e.&nbsp;<span class="math inline">\(\{x\in E | f(x) \leq \alpha\}\)</span> for some <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, then <span class="math inline">\(f\)</span> achieves a <em>global minimum</em>.</p>
@@ -449,10 +444,14 @@ window.Quarto = {
 <p>We claim that this set is also bounded: Suppose otherwise, then there is a sequence <span class="math inline">\(||x_n||\rightarrow\infty\)</span>. Then, using coercivity <span class="math inline">\(|f(x)|\rightarrow\infty\)</span> on this sublevel set, which is a contradiction! Thus, the sublevel set is also bounded.</p>
 <p>By the previous result, since the sublevel set is compact, we have a global minimum. ■</p>
 </div>
-</section>
-<section id="necessary-conditions-of-optimality" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="necessary-conditions-of-optimality"><span class="header-section-number">2.1.2</span> Necessary Conditions of Optimality</h3>
-<p>Consider a <span class="math inline">\(C^1\)</span>-function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb{R}^n\)</span> and suppose tht <span class="math inline">\(x^*\)</span> is a local minimum of <span class="math inline">\(f\)</span> in some open set <span class="math inline">\(D\subset \mathbb{R}^n\)</span>. Note that <span class="math inline">\(x^*\)</span> is in the interior of <span class="math inline">\(d\)</span>.</p>
+<section id="unconstrained-optimisation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="unconstrained-optimisation"><span class="header-section-number">2.1</span> Unconstrained Optimisation</h2>
+<p>Let <span class="math inline">\(f:\mathbb{R}^n\rightarrow\mathbb{R}\)</span>,</p>
+<p><span class="math display">\[ \min_{x\in\mathbb{R}^n} \ \ f(x) \]</span></p>
+<p>is an unconstrained optimisation problem.</p>
+<section id="necessary-conditions-of-optimality" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="necessary-conditions-of-optimality"><span class="header-section-number">2.1.1</span> Necessary Conditions of Optimality</h3>
+<p>Consider a <span class="math inline">\(C^1\)</span>-function <span class="math inline">\(f\)</span> on <span class="math inline">\(\mathbb{R}^n\)</span> and suppose tht <span class="math inline">\(x^*\)</span> is a local minimum of <span class="math inline">\(f\)</span> in some open set <span class="math inline">\(D\subset \mathbb{R}^n\)</span>. Note that <span class="math inline">\(x^*\)</span> is in the interior of <span class="math inline">\(D\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="figures/Picture8.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
@@ -481,8 +480,8 @@ g'(\alpha) &amp;= \nabla f (x^* + \alpha d) \cdot \vec{d} \\
 \end{aligned}\]</span></p>
 <p>Then, <span class="math inline">\(g'(0) = \nabla f(x^*) \cdot d = 0\)</span> for all <span class="math inline">\(d\in\mathbb{R}^n\)</span>. Thus, <span class="math inline">\(\nabla f(x^*) = 0\)</span>. This is the <em>first necessary condition</em> of optimality.</p>
 </section>
-<section id="sufficient-conditions-of-optimality" class="level3" data-number="2.1.3">
-<h3 data-number="2.1.3" class="anchored" data-anchor-id="sufficient-conditions-of-optimality"><span class="header-section-number">2.1.3</span> Sufficient Conditions of Optimality</h3>
+<section id="sufficient-conditions-of-optimality" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="sufficient-conditions-of-optimality"><span class="header-section-number">2.1.2</span> Sufficient Conditions of Optimality</h3>
 <p>Consider now the function <span class="math inline">\(f\)</span>, this time in <span class="math inline">\(C^2\)</span>.</p>
 <p><span class="math display">\[g(\alpha) = g(0) + g'(0) \alpha + \frac{1}{2}g''(0)\alpha^2 + \mathcal{O}(\alpha^2),\]</span></p>
 <p>with <span class="math inline">\(\lim_{\alpha\rightarrow 0} \frac{\mathcal{O}(\alpha^2)}{\alpha^2} = 0\)</span>.</p>
@@ -544,9 +543,9 @@ d^T \Lambda d &amp;= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
 <p>It is easy to see that the necessary conditions we have are not sufficient. For example, take <span class="math inline">\(f: x\mapsto x^3\)</span>. However, if <span class="math inline">\(f\)</span> is in <span class="math inline">\(C^2\)</span> and <span class="math inline">\(\nabla f (X^*) = 0\)</span>, <span class="math inline">\(\nabla^2f(x^*) \prec 0\)</span>, then <span class="math inline">\(x^*\)</span> is a minimiser.</p>
 <div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>To show this, note that</p>
-<p><span class="math display">\[f(x^* + \alpha d) = f(x^*) + \frac{1}{2}\alpha^2 d^T\nabla^2 f(x^*) d + ... \.\]</span></p>
+<p><span class="math display">\[f(x^* + \alpha d) = f(x^*) + \frac{1}{2}\alpha^2 d^T\nabla^2 f(x^*) d + ... \ .\]</span></p>
 <p>Again, we can choose $small enough to have</p>
-<p><span class="math display">\[ \frac{\alpha^2}{2} d^T \nabla^2 f(x^*) d &gt; |\mathcal{O}(\alpha^2).\]</span></p>
+<p><span class="math display">\[ \frac{\alpha^2}{2} d^T \nabla^2 f(x^*) d &gt; |\mathcal{O}(\alpha^2)|.\]</span></p>
 <p>Since <span class="math inline">\(\nabla^2 f(x^*)\)</span> is positive definite, then <span class="math inline">\(f(x^* + \alpha d) &gt; f(x^*)\)</span> for all <span class="math inline">\(d\)</span>. Thus, <span class="math inline">\(x^*\)</span> is a local minimum! ■</p>
 </div>
 <p>Note that: <span class="math inline">\(\alpha\)</span> depends on <span class="math inline">\(d\)</span>. If <span class="math inline">\(|\alpha| &lt; \varepsilon^*(d)\)</span>, different <span class="math inline">\(d\)</span> will result in different <span class="math inline">\(\varepsilon\)</span>, thus, choose the smallest <span class="math inline">\(\varepsilon\)</span>. Without loss of generality assume <span class="math inline">\(||d|| = 1\)</span>, <span class="math inline">\(\varepsilon^* = \min(\varepsilon(d))\)</span> which results from Weierstrass theorem.</p>
@@ -569,7 +568,7 @@ d^T \Lambda d &amp;= \sum_{i=1}^n \lambda_a d_i^2 \geq 0 \ \ \forall d_i \\
 <p>Note that we want tot show <span class="math inline">\(f(y_1,..,y_n) \geq 0\)</span>. This is the same problem as above. It is enough to show that <span class="math inline">\(f\)</span> acheives its minimum value at zero.</p>
 <p>To do this, use the first order condition of optimality:</p>
 <p><span class="math display">\[ \frac{\partial f}{\partial y_i} = \frac{1}{n} e^{y_i} - \frac{1}{n} e^{\frac{y_1 + ... + y_n}{n}} \ \ \forall i \]</span></p>
-<p>which are zero if and only if $ e^{y_i} = e^{} &nbsp;y_i = $ for all <span class="math inline">\(i\)</span>. (Check this for yourselves).</p>
+<p>which are zero if and only if <span class="math inline">\(e^{y_i} = e^{\frac{y_1 + ... + y_n}{n}} \ \Rightarrow y_i = \frac{y_1 + ... + y_n}{n}\)</span> for all <span class="math inline">\(i\)</span>. (Check this for yourselves).</p>
 <p>This gives a system of linear equations with solution <span class="math inline">\(y_i = \frac{Y}{n}\)</span> for all <span class="math inline">\(i\)</span>. i.e.&nbsp;picked all <span class="math inline">\(y_i\)</span> to be the same for any value of <span class="math inline">\(Y\in\mathbb{R}\)</span>.</p>
 <p>Note that <span class="math inline">\(f\left(\frac{Y}{n},...,\frac{Y}{n}\right) = 0\)</span>.</p>
 <p>We now need to justify that we have a global minimiser. (And, ideally a unique one.)</p>
@@ -653,7 +652,11 @@ h_i(x) = 0 &amp; i=1,...,m
 \end{array} \right. ,\]</span></p>
 <p>where <span class="math inline">\(D\)</span> is described usin functions <span class="math inline">\(h_i\)</span>.</p>
 <p>What if instead we use some curves, <span class="math inline">\(\gamma(\cdot)\)</span>, passing through <span class="math inline">\(x^*\)</span>, ie. we take <span class="math inline">\(\gamma(0) = x^*\)</span>. Let us take these curves to be at least <span class="math inline">\(C^1\)</span>.</p>
-<p><img src="figures/Picture12.jpg" class="img-fluid" style="width:20.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture12.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <p>Let us define <span class="math inline">\(g(\alpha) = f(\gamma(\alpha))\)</span>. We can now carry the same argument as before, using <span class="math inline">\(g(\alpha) = g(0) + \alpha g'(0) + \mathcal{O}(\alpha)\)</span>, and argue that</p>
 <p><span class="math display">\[\nabla f(\gamma(0))\cdot \gamma'(0) = 0.\]</span></p>
 <p>We need to study this <span class="math inline">\(\gamma'(0)\)</span> more carefully.</p>
@@ -1229,23 +1232,23 @@ g(t) &amp;= \log\det(Z + tY) \\
 &amp;\leq 2(||x-x_n|^2 + ||x-x_m||^2) - 4d^2.
 \end{aligned}\]</span> </p><div class="no-row-height column-margin column-container"><span class="margin-aside">By the parallelogram law.</span></div></div>
 <p>For all <span class="math inline">\(\varepsilon &gt;0\)</span>, there exists <span class="math inline">\(N\)</span> large enough such that <span class="math inline">\(n,m&gt;N\)</span> then</p>
-<p><span class="math display">\[2(\underbrace{||x-x_n||^2}{\rightarrow d^2} + \underbrace{||x-x_M||^2}{\rightarrow d^2}) - 4d^2 \rightarrow 0.\]</span></p>
+<p><span class="math display">\[2(\underbrace{||x-x_n||^2}_{\rightarrow d^2} + \underbrace{||x-x_M||^2}_{\rightarrow d^2}) - 4d^2 \rightarrow 0.\]</span></p>
 <p>So, <span class="math inline">\(||x_n - x_m||^2 \leq 0\)</span>. Therefore this is a Cauchy sequence, and the rest follows.</p>
 <div id="prp-projectionnonexpansive" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 6</strong></span> Let <span class="math inline">\(C\subset\mathbb{R}\)</span> be non-empty, closed, and convex. Then the projection map <span class="math inline">\(P_C:\mathbb{R}^n\rightarrow C\)</span> is <em>non-expansive</em>.</p>
 <p>i.e.&nbsp;<span class="math inline">\(||P_C(y) - P_C(x)|| \leq ||y-x||\)</span> for all <span class="math inline">\(x,y\in\mathbb{R}^n\)</span>. Consequently, <span class="math inline">\(P_C\)</span> is continuous.</p>
 </div>
-<div class="proof page-columns page-full">
+<div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Recall that</p>
-<div class="page-columns page-full"><p><span class="math display">\[\begin{aligned}
+<p><span class="math display">\[\begin{aligned}
 &amp; \langle x-P_C(x), P_C(y) - P_C(x)\rangle \leq 0\\
 -&amp;\underline{\langle y-P_c(y),P_C(x) - P_C(y)\rangle \leq 0} \\
 &amp; \langle x-y + P_C(y)-P_C(x), P_C(y) - P_C(x)\rangle \leq 0 \\
 \Rightarrow &amp; \langle x-y,P_C(y)-P_C(x)\rangle + ||P_C(y) - P_C(x)||^2 \leq 0 \\
 \Rightarrow &amp; ||P_C(y) - P_C(x)||^2 \leq \langle y-x,P_C(y)-P_C(x)\rangle \\
 \Rightarrow &amp; ||P_C(y) - P_C(x)||^2 \leq ||y-x|| \ ||P_C(y) - P_C(x)|| .
-\end{aligned}\]</span> </p><div class="no-row-height column-margin column-container"><span class="margin-aside">By Cauchy Schwarz.</span></div></div>
-<p>■</p>
+\end{aligned}\]</span></p>
+<p>Where the last line follows from Cauchy-Schwarz. ■</p>
 </div>
 </section>
 </section>
@@ -1336,8 +1339,10 @@ g(t) &amp;= \log\det(Z + tY) \\
 <div id="prp-separatinghyperplane" class="theorem proposition">
 <p><span class="theorem-title"><strong>Proposition 7</strong></span> Let <span class="math inline">\(C\subset\mathbb{R}^n\)</span> be non-empty and convex, and let <span class="math inline">\(A\)</span> be an affine set such that <span class="math inline">\(\textnormal{ri}(C) \cap A = \emptyset\)</span>. Then, there exists a hyperplane <span class="math inline">\(H\)</span> separating <span class="math inline">\(A\)</span> and <span class="math inline">\(C\)</span> such that <span class="math inline">\(A\subseteq H\)</span>.</p>
 </div>
-<div class="proof page-columns page-full">
+<div class="proof">
 <p><span class="proof-title"><em>Proof</em>. </span>Existence of a hyperplane <span class="math inline">\(H\)</span> is clear. If <span class="math inline">\(H\)</span> includes <span class="math inline">\(A\)</span>, we are done. Otherwise, there exists <span class="math inline">\(x\in A\backslash H\)</span>.</p>
+<p>The affine set <span class="math inline">\(A\)</span> and <span class="math inline">\(H\)</span> must be disjoint, otherwise <span class="math inline">\(y\in A\cap H\)</span> and the line between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> intersects both <span class="math inline">\(\bar{H}^+\)</span> and <span class="math inline">\(\bar{H}^-\)</span>, which is not possible since, since <span class="math inline">\(H\)</span> is separating. Thus, <span class="math inline">\(A\)</span> has to be “parallel” to <span class="math inline">\(H\)</span>. Hence, we can shift the hyperplane <span class="math inline">\(H\)</span> to a new one <span class="math inline">\(\tilde{H}\)</span> that includes <span class="math inline">\(A\)</span>. ■</p>
+</div>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
@@ -1345,9 +1350,7 @@ g(t) &amp;= \log\det(Z + tY) \\
 <p><img src="figures/Picture35.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
 </figure>
 </div>
-</div></div><p>The affine set <span class="math inline">\(A\)</span> and <span class="math inline">\(H\)</span> must be disjoint, otherwise <span class="math inline">\(y\in A\cap H\)</span> and the line between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> intersects both <span class="math inline">\(\bar{H}^+\)</span> and <span class="math inline">\(\bar{H}^-\)</span>, which is not possible since, since <span class="math inline">\(H\)</span> is separating. Thus, <span class="math inline">\(A\)</span> has to be “parallel” to <span class="math inline">\(H\)</span>. Hence, we can shift the hyperplane <span class="math inline">\(H\)</span> to a new one <span class="math inline">\(\tilde{H}\)</span> that includes <span class="math inline">\(A\)</span>. ■</p>
-</div>
-</section>
+</div></div></section>
 </section>
 <section id="convex-optimisation" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Convex Optimisation</h1>

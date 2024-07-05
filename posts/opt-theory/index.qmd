@@ -71,7 +71,7 @@ Example: 850BC -- Dido's Problem
 ::::
 :::: {.example-container}
 
-![](figures/Picture4.jpg){width=40% fig-align="center"}
+![](figures/Picture4.jpg){width=60% fig-align="center"}
 
 Consider a curve of fixed length $\ell$. What is the maximum area of land you can enclose using this curve?
 

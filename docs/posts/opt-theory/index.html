@@ -244,13 +244,9 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#conjugate-functions" id="toc-conjugate-functions" class="nav-link" data-scroll-target="#conjugate-functions"><span class="header-section-number">4.1</span> Conjugate Functions</a></li>
   <li><a href="#duality-theory" id="toc-duality-theory" class="nav-link" data-scroll-target="#duality-theory"><span class="header-section-number">4.2</span> Duality Theory</a></li>
-  <li><a href="#nonlinear-programming" id="toc-nonlinear-programming" class="nav-link" data-scroll-target="#nonlinear-programming"><span class="header-section-number">4.3</span> Nonlinear Programming</a></li>
-  <li><a href="#conjugate-functions-1" id="toc-conjugate-functions-1" class="nav-link" data-scroll-target="#conjugate-functions-1"><span class="header-section-number">4.4</span> Conjugate Functions</a></li>
-  <li><a href="#duality-theory-1" id="toc-duality-theory-1" class="nav-link" data-scroll-target="#duality-theory-1"><span class="header-section-number">4.5</span> Duality Theory</a></li>
-  <li><a href="#nonlinear-programming-1" id="toc-nonlinear-programming-1" class="nav-link" data-scroll-target="#nonlinear-programming-1"><span class="header-section-number">4.6</span> Nonlinear Programming</a>
+  <li><a href="#nonlinear-programming" id="toc-nonlinear-programming" class="nav-link" data-scroll-target="#nonlinear-programming"><span class="header-section-number">4.3</span> Nonlinear Programming</a>
   <ul class="collapse">
-  <li><a href="#conditions-for-optimality" id="toc-conditions-for-optimality" class="nav-link" data-scroll-target="#conditions-for-optimality"><span class="header-section-number">4.6.1</span> Conditions for Optimality</a></li>
-  <li><a href="#nlp-and-duality" id="toc-nlp-and-duality" class="nav-link" data-scroll-target="#nlp-and-duality"><span class="header-section-number">4.6.2</span> NLP and Duality</a></li>
+  <li><a href="#nlp-and-duality" id="toc-nlp-and-duality" class="nav-link" data-scroll-target="#nlp-and-duality"><span class="header-section-number">4.3.1</span> NLP and Duality</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#algorithms-for-optimisation" id="toc-algorithms-for-optimisation" class="nav-link" data-scroll-target="#algorithms-for-optimisation"><span class="header-section-number">5</span> Algorithms for Optimisation</a>
@@ -1393,10 +1389,14 @@ g(t) &amp;= \log\det(Z + tY) \\
 <p><span class="math display">\[ f^*(x^*) = \sup_{x\in C} (\langle x, x^*\rangle - f(x)).\]</span></p>
 </div>
 <p>Note that when <span class="math inline">\(f\)</span> is differentiable the critical point of <span class="math inline">\(\langle x, x^*\rangle - f(x)\)</span> happens at <span class="math inline">\(x^* = f'(x)\)</span>.</p>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture36.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
+</figure>
+</div>
 <p>For example, in <span class="math inline">\(\mathbb{R}^2\)</span> this is: <span class="math inline">\(x^*x - f(x)\)</span>, now fix <span class="math inline">\(x^*\)</span></p>
 <p><span class="math display">\[\sup_{x\in\mathbb{R}^2} (x^*x - f(x)) \Rightarrow x^* = f'(x).\]</span></p>
-<p>The slope of the <em>COLOUR</em> line is parallel to the slope of <span class="math inline">\(x^*x\)</span>. I.e. <span class="math inline">\(x\)</span> is such that the slope of the tangent to the curve is exactly <span class="math inline">\(x^*\)</span>.</p>
+<p>The slope of the upper purple line is parallel to the slope of <span class="math inline">\(x^*x\)</span>. I.e. <span class="math inline">\(x\)</span> is such that the slope of the tangent to the curve is exactly <span class="math inline">\(x^*\)</span>.</p>
 <p>We also note that the set conjugate set <span class="math inline">\(C^*\)</span> and the conjugate function <span class="math inline">\(f^*\)</span> are both convex. Moreover, <span class="math inline">\(\texttt{epi}(f^*)\)</span> is a closed convex set.</p>
 <div class="example">
 <div class="example-header">
@@ -1482,7 +1482,11 @@ this defines the Euler-Lagrange equations.
 <p><span class="math display">\[f^*(x^*) \geq \langle x,x^*\rangle g(x),\]</span></p>
 <p>for all <span class="math inline">\(x,x^*\)</span>. Thus, <span class="math inline">\(f(x) - g(x) \geq g^*(x^*) - f^*(x^*)\)</span>. This proves the claim.</p>
 <p>It is enough to show that there exists some point <span class="math inline">\(x_0^* \in C^*\cap D^*\)</span> for with the inequality in <a href="#eq-dualityproof1" class="quarto-xref">Equation&nbsp;6</a> is achieved.</p>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture37.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 <p>We want to separate the epigrpahs. The natural candidates for separation are</p>
 <p><span class="math display">\[\begin{aligned}
 \texttt{epi}_{f-\mu}(C) = \{(x,\alpha) \mid x\in C, f(x) - \mu\leq \alpha\}, \\
@@ -1505,7 +1509,11 @@ this defines the Euler-Lagrange equations.
 </div>
 <div class="example-container">
 <p>Suppose a total of <span class="math inline">\(R\in\mathbb{R}_{&gt;0}\)</span> units of resources are supposed to be allocated to <span class="math inline">\(n\)</span> locations.</p>
-<p><strong>figure</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture38.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:20.0%"></p>
+</figure>
+</div>
 <p>The payoff of allocating <span class="math inline">\(x_i\)</span> units of resources to location <span class="math inline">\(i\)</span> is <span class="math inline">\(g_i(x_i)\)</span>, <span class="math inline">\(g_i:\mathbb{R}\rightarrow\mathbb{R}\)</span>, and suppose that <span class="math inline">\(g_i\)</span> is increasing and concave.</p>
 <p>We want to maximise <span class="math inline">\(\sum_{i=1}^n g_i(x)\)</span> subject to <span class="math inline">\(\sum_{i=1}^n x_i = R\)</span> (max number of resources) and <span class="math inline">\(x_i\geq 0\)</span>.</p>
 <p>Let us take: - <span class="math inline">\(D\)</span> to be the positive orthant, <span class="math inline">\(D = \{x \mid x_i\geq 0, i\in\{1,...,n\}\}\)</span> - <span class="math inline">\(C = \{x \mid \sum_{i=1}^n x_i = R\}\)</span> - <span class="math inline">\(f\)</span> to be zero (since we are going to be using Fenchel Duality and need a convex and a concave function)</p>
@@ -1606,7 +1614,7 @@ f^*(x^*) &amp;= \sup_{x\in C} (\langle x,x^*\rangle - f(x)) \\
 </div>
 <div id="thm-KKT" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 21 (Karush-Kuhn-Tucker (KKT) necessary conditions of optimality)</strong></span> Suppose that <span class="math inline">\(x^*\)</span> is a solution to the nonlinear programming problem <a href="#eq-NLP" class="quarto-xref">Equation&nbsp;9</a>. Suppose that <span class="math inline">\(X^*\)</span> is regular. Then, there exists unique vectors <span class="math inline">\(\lambda^* = (\lambda_1^*,...,\lambda_m^*)\)</span> and <span class="math inline">\(\mu^* = (\mu_1^*,...,\mu_r^*)\)</span> such that for</p>
-<p><span class="math display">\[L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i H_i(x) + \sum_{j=1}^r \mu_j g_j(x),\]</span></p>
+<p><span class="math display">\[L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i h_i(x) + \sum_{j=1}^r \mu_j g_j(x),\]</span></p>
 <p>we have</p>
 <p><span class="math display">\[\begin{aligned}
 &amp; \nabla L(x^*,\lambda^*,\mu^*) = 0 \\
@@ -1614,20 +1622,41 @@ f^*(x^*) &amp;= \sup_{x\in C} (\langle x,x^*\rangle - f(x)) \\
 &amp; \mu_j^* = 0, j\notin A(x^*).
 \end{aligned}\]</span></p>
 </div>
-</section>
-<section id="conjugate-functions-1" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="conjugate-functions-1"><span class="header-section-number">4.4</span> Conjugate Functions</h2>
-</section>
-<section id="duality-theory-1" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="duality-theory-1"><span class="header-section-number">4.5</span> Duality Theory</h2>
-</section>
-<section id="nonlinear-programming-1" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="nonlinear-programming-1"><span class="header-section-number">4.6</span> Nonlinear Programming</h2>
-<section id="conditions-for-optimality" class="level3" data-number="4.6.1">
-<h3 data-number="4.6.1" class="anchored" data-anchor-id="conditions-for-optimality"><span class="header-section-number">4.6.1</span> Conditions for Optimality</h3>
-</section>
-<section id="nlp-and-duality" class="level3" data-number="4.6.2">
-<h3 data-number="4.6.2" class="anchored" data-anchor-id="nlp-and-duality"><span class="header-section-number">4.6.2</span> NLP and Duality</h3>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>We have shown this result for the case of equality constraints. Hence, all we need to show here is that <span class="math inline">\(\mu_j^*\geq 0\)</span> for all <span class="math inline">\(j\in A(x^*)\)</span>.</p>
+<p>Let <span class="math inline">\(g_j^+(x) = \max\{0,g_j(x)\}\)</span>, <span class="math inline">\(j\in\{1,...,r\}\)</span>. Note tht this function is continuously differentiable. Let us now define a sequence of functions <span class="math inline">\(\{\tilde{F}^k\}_{k=1}^\infty\)</span></p>
+<p><span class="math display">\[ \tilde{F}^k(x) = f(x) + \frac{k}{2}||h(x)||^2 + \frac{k}{2}\sum_{j=1}^r (g_j^+(x))^{-2} +\frac{\alpha}{2}||x-x^*||^2,\]</span></p>
+<p>where <span class="math inline">\(x\in\mathbb{S} = \{x\mid ||x-x^*||\leq \varepsilon\}\)</span>, <span class="math inline">\(\alpha&gt;0\)</span>, <span class="math inline">\(\varepsilon&gt;0\)</span> small enough such that <span class="math inline">\(f(x^*)\leq f(x) \ \forall x\in\mathbb{S}\)</span> that are feasible.</p>
+<p>For simplicity, let us assume that the functions <span class="math inline">\(\tilde{F}^k\)</span> are represented by equality constraints only. The general proof is similar.</p>
+<p><span class="math display">\[ F^k(x) = f(x) + \frac{k}{2} ||h(x)||^2 + \frac{\alpha}{2}||x-x^*||^2.\]</span></p>
+<p>Suppose now that <span class="math inline">\(\{x^k\}\)</span> is a sequence of minimisers of <span class="math inline">\(\{F^k\}\)</span> over <span class="math inline">\(\mathbb{S}\)</span> (we can say this because of Weierstrass <a href="#thm-weierstrass" class="quarto-xref">Theorem&nbsp;1</a>).</p>
+<p><span class="math display">\[ F^k(x^k) = f(x^k) + \frac{k}{2}||h(x^k)||^2 + \frac{\alpha}{2}||x^k-x^*||^2 \leq F^k(x^*) = f(x^*).\]</span></p>
+<p>Now, since <span class="math inline">\(f(x^k)\)</span> is bounded over <span class="math inline">\(\mathbb{S}\)</span>, we must have that</p>
+<p><span class="math display">\[\lim_{k\rightarrow 0} ||h(x^k)|| = 0.\]</span></p>
+<p>Therefore, by continuity, the limit point <span class="math inline">\(\bar{x}\)</span> of <span class="math inline">\(\{x^k\}\)</span> satisfies <span class="math inline">\(h(\bar{x}) = 0\)</span>. Taking the limit</p>
+<p><span class="math display">\[ f(\bar{x}) + \frac{\alpha}{2}||\bar{x}-x^*||^2 \leq f(x^*).\]</span></p>
+<p>But since <span class="math inline">\(\bar{x}\in\mathbb{S}\)</span> and <span class="math inline">\(\bar{x}\)</span> is also feasible, we have that</p>
+<p><span class="math display">\[f(x^*) \leq f(\bar{x}).\]</span></p>
+<p>Thus, combining the last two inequalities, we must have <span class="math inline">\(\bar{x} = x^*\)</span>. We conclude that <span class="math inline">\(\{x^k\}\)</span> converges to <span class="math inline">\(x^*\)</span>.</p>
+<p>Now, by the necessary condition of optimality for <span class="math inline">\(F^k\)</span>, we have</p>
+<p><span class="math display">\[\nabla F^k(x^k) = \nabla f(x^k) + k\nabla h(x^k) h(x^k) + \alpha (x^k - x^*) = 0.\]</span></p>
+<p>Recall that by regularity, for <span class="math inline">\(k\)</span> large enough, <span class="math inline">\(\nabla h(x^k)\)</span> has rank <span class="math inline">\(m\)</span>. Hence, <span class="math inline">\(H_h(x^k) \triangleq \nabla^T h(x^k) \nabla h(x^k)\)</span> is invertible. Thus,</p>
+<p><span class="math display">\[ k h(x^k) = - H_h^{-1} (x_k) \nabla^T h(x^k) (\nabla f(^k) + \alpha (x^k - x^*)).\]</span></p>
+<p>By taking the limit</p>
+<p><span class="math display">\[ \begin{aligned}
+&amp; \lim_{k\rightarrow\infty} k h(x^k) = -(\nabla^T h(x^*) \nabla h(x^*))^{-1} \nabla h(x^*) \nabla f(x^*), \\
+\Rightarrow &amp; \nabla^T h(x^*) \left(\lim_{k\rightarrow\infty} k h(x^k)\nabla h(x^k) + \nabla f(x^k)\right) = 0.
+\end{aligned}\]</span></p>
+<p>Using that <span class="math inline">\(\nabla h(x^*)\)</span> is full rank,</p>
+<p><span class="math display">\[\lim_{k\rightarrow\infty} (k h(x^k))\nabla h(x^*) + \nabla f(x^*) = 0.\]</span></p>
+<p>By the necessary condition of optimality,</p>
+<p><span class="math display">\[ \lim_{k\rightarrow\infty} k h(x^k) = \lambda^*.\]</span></p>
+<p>A similar argument for <span class="math inline">\(\tilde{F}(x^k)\)</span> shows that</p>
+<p><span class="math display">\[\lim_{k\rightarrow\infty} k g_j^+(x^k) = \mu_j^*.\]</span></p>
+<p>And, note that <span class="math inline">\(g_j^+(x^*) \geq 0 \ \Rightarrow \mu_j^* \geq 0\)</span>. ■</p>
+</div>
+<section id="nlp-and-duality" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="nlp-and-duality"><span class="header-section-number">4.3.1</span> NLP and Duality</h3>
 </section>
 </section>
 </section>

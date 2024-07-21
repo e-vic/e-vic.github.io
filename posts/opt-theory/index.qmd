@@ -1418,13 +1418,13 @@ $$ f^*(x^*) = \sup_{x\in C} (\langle x, x^*\rangle - f(x)).$$
 
 Note that when $f$ is differentiable the critical point of $\langle x, x^*\rangle - f(x)$ happens at $x^* = f'(x)$.
 
-**figure**
+![](figures/Picture36.jpg){width=40% fig-align="center"}
 
 For example, in $\mathbb{R}^2$ this is: $x^*x - f(x)$, now fix $x^*$
 
 $$\sup_{x\in\mathbb{R}^2} (x^*x - f(x)) \Rightarrow x^* = f'(x).$$
 
-The slope of the *COLOUR* line is parallel to the slope of $x^*x$. I.e. $x$ is such that the slope of the tangent to the curve is exactly $x^*$.
+The slope of the upper purple line is parallel to the slope of $x^*x$. I.e. $x$ is such that the slope of the tangent to the curve is exactly $x^*$.
 
 We also note that the set conjugate set $C^*$ and the conjugate function $f^*$ are both convex. Moreover, $\epi(f^*)$ is a closed convex set.
 
@@ -1543,7 +1543,7 @@ for all $x,x^*$. Thus, $f(x) - g(x) \geq g^*(x^*) - f^*(x^*)$. This proves the c
 
 It is enough to show that there exists some point $x_0^* \in C^*\cap D^*$ for with the inequality in @eq-dualityproof1 is achieved.
 
-**figure**
+![](figures/Picture37.jpg){width=60% fig-align="center"}
 
 We want to separate the epigrpahs. The natural candidates for separation are 
 
@@ -1580,7 +1580,7 @@ Example: Resource allocation
 :::: {.example-container}
 Suppose a total of $R\in\mathbb{R}_{>0}$ units of resources are supposed to be allocated to $n$ locations.
 
-**figure**
+![](figures/Picture38.jpg){width=20% fig-align="center"}
 
 The payoff of allocating $x_i$ units of resources to location $i$ is $g_i(x_i)$, $g_i:\mathbb{R}\rightarrow\mathbb{R}$, and suppose that $g_i$ is increasing and concave. 
 
@@ -1746,7 +1746,7 @@ are linearly independent.
 # Karush-Kuhn-Tucker (KKT) necessary conditions of optimality
 Suppose that $x^*$ is a solution to the nonlinear programming problem @eq-NLP. Suppose that $X^*$ is regular. Then, there exists unique vectors $\lambda^* = (\lambda_1^*,...,\lambda_m^*)$ and $\mu^* = (\mu_1^*,...,\mu_r^*)$ such that for 
 
-$$L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i H_i(x) + \sum_{j=1}^r \mu_j g_j(x),$$
+$$L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i h_i(x) + \sum_{j=1}^r \mu_j g_j(x),$$
 
 we have
 
@@ -1755,16 +1755,67 @@ $$\begin{aligned}
 & \mu_j^* \geq 0 \textnormal{ for any } j\in\{1,...,r\} \\
 & \mu_j^* = 0, j\notin A(x^*).
 \end{aligned}$$
-
 :::
+::: {.proof}
+We have shown this result for the case of equality constraints. Hence, all we need to show here is that $\mu_j^*\geq 0$ for all $j\in A(x^*)$.
 
-## Conjugate Functions
+Let $g_j^+(x) = \max\{0,g_j(x)\}$, $j\in\{1,...,r\}$. Note tht this function is continuously differentiable. Let us now define a sequence of functions $\{\tilde{F}^k\}_{k=1}^\infty$
 
-## Duality Theory
+$$ \tilde{F}^k(x) = f(x) + \frac{k}{2}||h(x)||^2 + \frac{k}{2}\sum_{j=1}^r (g_j^+(x))^{-2} +\frac{\alpha}{2}||x-x^*||^2,$$
 
-## Nonlinear Programming
+where $x\in\mathbb{S} = \{x\mid ||x-x^*||\leq \varepsilon\}$, $\alpha>0$, $\varepsilon>0$ small enough such that $f(x^*)\leq f(x) \ \forall x\in\mathbb{S}$ that are feasible.
 
-### Conditions for Optimality
+For simplicity, let us assume that the functions $\tilde{F}^k$ are represented by equality constraints only. The general proof is similar. 
+
+$$ F^k(x) = f(x) + \frac{k}{2} ||h(x)||^2 + \frac{\alpha}{2}||x-x^*||^2.$$
+
+Suppose now that $\{x^k\}$ is a sequence of minimisers of $\{F^k\}$ over $\mathbb{S}$ (we can say this because of Weierstrass @thm-weierstrass).
+
+$$ F^k(x^k) = f(x^k) + \frac{k}{2}||h(x^k)||^2 + \frac{\alpha}{2}||x^k-x^*||^2 \leq F^k(x^*) = f(x^*).$$
+
+Now, since $f(x^k)$ is bounded over $\mathbb{S}$, we must have that
+
+$$\lim_{k\rightarrow 0} ||h(x^k)|| = 0.$$
+
+Therefore, by continuity, the limit point $\bar{x}$ of $\{x^k\}$ satisfies $h(\bar{x}) = 0$. Taking the limit
+
+$$ f(\bar{x}) + \frac{\alpha}{2}||\bar{x}-x^*||^2 \leq f(x^*).$$
+
+But since $\bar{x}\in\mathbb{S}$ and $\bar{x}$ is also feasible, we have that 
+
+$$f(x^*) \leq f(\bar{x}).$$
+
+Thus, combining the last two inequalities, we must have $\bar{x} = x^*$. We conclude that $\{x^k\}$ converges to $x^*$.
+
+Now, by the necessary condition of optimality for $F^k$, we have
+
+$$\nabla F^k(x^k) = \nabla f(x^k) + k\nabla h(x^k) h(x^k) + \alpha (x^k - x^*) = 0.$$
+
+Recall that by regularity, for $k$ large enough, $\nabla h(x^k)$ has rank $m$. Hence, $H_h(x^k) \triangleq \nabla^T h(x^k) \nabla h(x^k)$ is invertible. Thus, 
+
+$$ k h(x^k) = - H_h^{-1} (x_k) \nabla^T h(x^k) (\nabla f(^k) + \alpha (x^k - x^*)).$$
+
+By taking the limit
+
+$$ \begin{aligned}
+& \lim_{k\rightarrow\infty} k h(x^k) = -(\nabla^T h(x^*) \nabla h(x^*))^{-1} \nabla h(x^*) \nabla f(x^*), \\ 
+\Rightarrow & \nabla^T h(x^*) \left(\lim_{k\rightarrow\infty} k h(x^k)\nabla h(x^k) + \nabla f(x^k)\right) = 0.
+\end{aligned}$$
+
+Using that $\nabla h(x^*)$ is full rank,
+
+$$\lim_{k\rightarrow\infty} (k h(x^k))\nabla h(x^*) + \nabla f(x^*) = 0.$$
+
+By the necessary condition of optimality,
+
+$$ \lim_{k\rightarrow\infty} k h(x^k) = \lambda^*.$$
+
+A similar argument for $\tilde{F}(x^k)$ shows that
+
+$$\lim_{k\rightarrow\infty} k g_j^+(x^k) = \mu_j^*.$$
+
+And, note that $g_j^+(x^*) \geq 0 \ \Rightarrow \mu_j^* \geq 0$. ■
+:::
 
 ### NLP and Duality
 

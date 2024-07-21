@@ -223,7 +223,7 @@ If $f:D\rightarrow\mathbb{R}$, where $D$ is closed and $f$ is continuous, then $
 :::
 
 ::: {.proof}
-Since $F$ is continuous and $d$ is closed, we have that $\{x\in D | f(x) \leq \alpha\}$, $\alpha\in\mathbb{R}$, is closed.
+Since $F$ is continuous and $D$ is closed, we have that $\{x\in D | f(x) \leq \alpha\}$, $\alpha\in\mathbb{R}$, is closed.
 
 We claim that this set is also bounded: Suppose otherwise, then there is a sequence $||x_n||\rightarrow\infty$. Then, using coercivity $|f(x)|\rightarrow\infty$ on this sublevel set, which is a contradiction! Thus, the sublevel set is also bounded.
 
@@ -1364,17 +1364,6 @@ The affine set $A$ and $H$ must be disjoint, otherwise $y\in A\cap H$ and the li
 
 # Convex Optimisation
 
-**V keep this for later V**
-Recall: for all $d\in\mathbb{R}^n$  and $\alpha\in\mathbb{R}$ such that $x^* + \alpha d \in D$, we must have 
-
-$$\langle \nabla f(x^*),d\rangle \geq 0.$$
-
-![](figures/Picture13.jpg){width=40%}
-
-this is required for a minimum. if that $\geq$ changes to $<$ for any points defined from $\alpha, \ d$, then $x^*$ is not a minimum. 
-
-**^ keep this for later ^**
-
 ::: {#thm-systemlinearinequalities}
 Consider a system of linear inequalities 
 
@@ -1388,18 +1377,385 @@ $$ \begin{aligned}
 \end{aligned}$$
 :::
 ::: {.proof}
-We first show that if there is a solution to @eq-inequalitysystem then such scalars cannot exist. Suppose otherwise, then $\sum_{i=1}^m \lambda_i\ell_i(x) = 0$ and $\sum_{i=1}^m \lambda_i\alpha_i \leq 0$. But since there is a solution to @eq-inequalitysystem, we also have
+We first show that if there is a solution to @eq-inequalitysystem then such scalars cannot exist (contrapositive of $\Leftarrow$). Suppose otherwise, then $\sum_{i=1}^m \lambda_i\ell_i(x) = 0$ and $\sum_{i=1}^m \lambda_i\alpha_i \leq 0$. But since there is a solution to @eq-inequalitysystem, we also have
 
 $$\sum_{i=1}^m \lambda_i (\alpha_i - \ell_i(x)) > 0.$$
 
 Which contradicts our assumption. Thus, no such scalars $\lambda_i$ exist.
 
-Now for the other side. Define 
+Now for the other side (direct proof of $\Rightarrow$). Define 
 
 $$\begin{aligned}
 & A = \{y\in\mathbb{R}^n \mid \exists x\in\mathbb{R}^n, y_i = \ell_i(x) - \alpha_i, i=1,...,m\}, \\
 & K = \{y\in\mathbb{R}^n \mid y_i<0, i=1,...,m\}.
 \end{aligned}$$
+
+Note that $K$ is an open convex set. Moreover, $K\cap A = \emptyset$, since vectors in $A$ have at least one entry for which $\ell_i(x) - \alpha_i \geq 0$ since @eq-inequalitysystem is inconsistent. Since $K\cap A=\emptyset$, by @prp-separatinghyperplane there exists a hyperplane $H_{(\lambda,\gamma)}$ that separates $K$ and $A$ such that $A\subseteq H$. In particular, 
+
+$$K \subseteq H^- \textnormal{ meaning }\langle \lambda, y\rangle < \gamma \ \forall \ y\in K.$$
+
+This implies that $\lambda \geq 0$ and $\gamma \geq 0$. Also, since $A\subseteq H$, we have that
+
+$$\begin{aligned}
+& \langle \lambda, y\rangle = \gamma \ \forall y\in A, \\
+\Rightarrow & \gamma = \sum_{i=1}^m \lambda_i (\ell_i(x) - \alpha_i) = \sum_{i=1}^m \lambda_i \ell_i(x) - \sum_{i=1}^m \lambda_i \alpha_i \ \forall x\in\mathbb{R}^n
+\end{aligned}$$
+
+Thus $\sum_{i=1}^m \lambda_i \ell_i(x) = 0$ (since $\gamma$ and $\lambda$ are fixed), and $- \sum_{i=1}^m \lambda_i \alpha_i = \gamma \Rightarrow \sum_{i=1}^m \lambda_i \alpha_i \leq 0$. ■
+:::
+
+## Conjugate Functions
+
+::: {#def-conjugates}
+Let $C$ be a convex non-empty set in $\mathbb{R}^n$ and let $f$ be a function on $C$. The *conjugate set* $C^*$of $C$ on $\mathbb{R}^n$ is defined as
+
+$$ C^* = \{x^*\in\mathbb{R}^n \mid \sup_{x\in C} (\langle x, x^*\rangle - f(x)) < \infty\} $$
+
+The *conjugate function* $f^*$ of $f$ on $C^*$ is defined as
+
+$$ f^*(x^*) = \sup_{x\in C} (\langle x, x^*\rangle - f(x)).$$
+:::
+
+Note that when $f$ is differentiable the critical point of $\langle x, x^*\rangle - f(x)$ happens at $x^* = f'(x)$.
+
+**figure**
+
+For example, in $\mathbb{R}^2$ this is: $x^*x - f(x)$, now fix $x^*$
+
+$$\sup_{x\in\mathbb{R}^2} (x^*x - f(x)) \Rightarrow x^* = f'(x).$$
+
+The slope of the *COLOUR* line is parallel to the slope of $x^*x$. I.e. $x$ is such that the slope of the tangent to the curve is exactly $x^*$.
+
+We also note that the set conjugate set $C^*$ and the conjugate function $f^*$ are both convex. Moreover, $\epi(f^*)$ is a closed convex set.
+
+
+::: {.example}
+:::: {.example-header}
+Examples
+::::
+:::: {.example-container}
+1. Consider $f:\mathbb{R}\rightarrow\mathbb{R}$ such that $x\mapsto f(x) = ax + b$, $a,b\in\mathbb{R}$. 
+
+$$ f^*(x^*) = \sup_{x\in\mathbb{R}} (x^*x - (ax + b)) = \sup_{x\in\mathbb{R}} (x(x^*-a) - b) $$
+
+If $x^*\neq a$, then the supremum is unbounded, and $x^*\notin C^*$. When $x^* = a$, then $f^*(x) = -b$.
+
+2. Consider $f:\mathbb{R}\rightarrow\mathbb{R}$ such that $x\mapsto (e^x)$. Then
+
+$$ f^*(x^*) = \sup_{x\in\mathbb{R}} (x^*x-e^x)$$
+
+When $x^* <0$, this is unbounded. When $x^*>0$, the maximum is reached at $x = \log(x^*)$ and hence
+
+$$f^*(x^*) = x^*\log(x^*) - x^*.$$
+
+When $x^*=0$, $f^*(x^*) = 0$.
+::::
+:::
+
+The notion of conjugate functions in the context of optimsation is due to Fenchal (1953), however, this is a generalisation of Legendre transforms (1787)
+
+$$f^*(p) = \sup_{x\in S} (p^Tx - f(x)).$$
+
+
+<!-- not doing this example since it's not relevant to the backgrounds of the students I'm teaching -->
+<!-- ::: {.example}
+:::: {.example-header}
+Example: Hamiltonian
+::::
+:::: {.example-container}
+Consider a (simple) mechanical system defined on a configuration $Q = \mathbb{R}^n$. We use the coordinates $q = (q_1,...,q_n)$ for $Q$. The kinetic energy of this system is 
+
+$$ K(q,\dot{q}) = \frac{1}{2} \dot{q}^T M(q) \dot{q}, $$
+
+and the potential energy is $V(q)$.
+
+**figure**
+
+Recall, for a spring-mass system, 
+
+$$ K(x,\dot{x}) = \frac{1}{2} m\dot{x}^2. $$
+
+We define the Lagrangian to be
+
+$$\mathcal{L}(q,\dot{q}) = K(q,\dot{q}) - V(q).$$
+
+And recall the Newton equation of motion is $\sum F = m a$, in terms of the Lagrangian this is
+
+$$\frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{q}} - \frac{\partial \mathcal{L}}{\partial q} = 0,$$
+
+this defines the Euler-Lagrange equations. 
+
+::::
+::: -->
+
+Note that $f(x) + f^*(y) \geq x^T y$, this is called the Fenchel-Young inequality.
+
+::: {.example}
+:::: {.example-header}
+Example
+::::
+:::: {.example-container}
+Let $f:\mathbb{R}\rightarrow\mathbb{R}$ such that $a\mapsto \frac{1}{2} a^2$, then $f^*(b) = \sup (ab - \frac{a^2}{2}) = \frac{b^2}{2}$. We know from Young's inequality
+
+$$ \frac{1}{2}(a^2 + b^2) \geq ab,$$
+
+but this is the Fenchel-Young inequality using the funciton $f$ defined above!
+::::
+:::
+
+
+
+
+## Duality Theory
+
+::: {#thm-fenchelduality}
+# Fenchel Duality
+Let $f$ be a convex function over $C$, $g$ be a concave function of $D$. Both $C$ and $D$ are convex sets in $X = \mathbb{R}^n$. Suppose $C\cap D$ has a non-empty relative interior and $\epi_f(C)$ and $\epi_g(D)$ have non-empty interiors. Consider
+
+$$ \inf_{x\in C\cap D} \ (f(x) - g(x))$$
+
+and suppose that this problem has a finite solution $\mu\in\mathbb{R}$, its value achieved at some $x_0\in C\cap D$. Then,
+
+$$ \mu = \inf_{x\in C\cap D}  \ (f(x) - g(x)) = \sup_{x^*\in C^*\cap D^*} \ (g^*(x^*) - f^*(y^*))$$ 
+
+and the supremum on the right hand side is achieved at some $x_0^*\in C^*\cap D^*$. Moreover
+
+$$\max_{x\in C} (\langle x, x_0^*\rangle - f(x)) = \langle x_0, x_0^*\rangle - f(x_0)$$
+
+and
+
+$$\min_{x\in D} (\langle x, x_0^*\rangle - g(x)) = \langle x_0,x_0^*\rangle - g(x_0).$$
+:::
+::: {.proof}
+We first show that 
+
+$$\mu = \inf_{x\in C\cap D} (f(x) - g(x)) \geq \sup_{x^*\in C^*\cap D^*}(g^*(x^*)-f^*(x^*)).$$ {#eq-dualityproof1} 
+
+By the Fenchel-Young inequality
+
+$$f^*(x^*) \geq \langle x,x^*\rangle - f(x),$$
+
+and
+
+$$f^*(x^*) \geq \langle x,x^*\rangle g(x),$$
+
+for all $x,x^*$. Thus, $f(x) - g(x) \geq g^*(x^*) - f^*(x^*)$. This proves the claim.
+
+It is enough to show that there exists some point $x_0^* \in C^*\cap D^*$ for with the inequality in @eq-dualityproof1 is achieved.
+
+**figure**
+
+We want to separate the epigrpahs. The natural candidates for separation are 
+
+$$\begin{aligned}
+\epi_{f-\mu}(C) = \{(x,\alpha) \mid x\in C, f(x) - \mu\leq \alpha\}, \\
+\epi_{g}(D) = \{(x,\alpha) \mid x\in D, g(x) \geq \alpha\},
+\end{aligned}$$
+
+noting that for concave functions, the epigraph is written as the infimum. After verifying tha tthe separation theorem can be applied, we get that there exists a hyperplane that separates $\epi_g(D)$ and $\epi_{f-\mu}(C)$, denoted by
+
+$$ H= \{(r,x) \in\mathbb{R}\times X \mid \langle x, x_0^*\rangle -r = c\},$$
+
+where $x_0^*\in\mathbb{R}^n$ and $c\in\mathbb{R}$, without loss of generality. Note that we are saying that this hyperplane is not "vertical", since
+
+$$\langle x, x_0^*\rangle - r = (r,x)\cdot(-1,x_0^*).$$
+
+The $-1$ can't be zero, since if it was it would separate $C$ and $D$ and we assumed they can't be separated (since their intesection has non-empty relative interior). 
+
+Now that we have this hyperplane, we note that $H$ is above $\epi_g(D)$ and arbitrarily close to it. I.e.
+
+$$c = \inf_{x\in D} (\langle x,x_0^*\rangle - g(x)) = g^*(x^*),$$ {#eq-dualityproof2}
+
+similarly, $H$ is below $\epi_{f-\mu}(C)$ and arbitrarily close to it
+
+$$c = \sup_{x\in C} (\langle x,x_0^*\rangle - f(x) + \mu) = f^*(x^*) + \mu.$$ {#eq-dualityproof3}
+
+Thus, with @eq-dualityproof2 and @eq-dualityproof3 we have $g^*(x_0^*) = f^*(x_0^*) + \mu$, i.e. the inequality @eq-dualityproof1 is achieved! ■
+:::
+
+::: {.example}
+:::: {.example-header}
+Example: Resource allocation
+::::
+:::: {.example-container}
+Suppose a total of $R\in\mathbb{R}_{>0}$ units of resources are supposed to be allocated to $n$ locations.
+
+**figure**
+
+The payoff of allocating $x_i$ units of resources to location $i$ is $g_i(x_i)$, $g_i:\mathbb{R}\rightarrow\mathbb{R}$, and suppose that $g_i$ is increasing and concave. 
+
+We want to maximise $\sum_{i=1}^n g_i(x)$ subject to $\sum_{i=1}^n x_i = R$ (max number of resources) and $x_i\geq 0$.
+
+Let us take: 
+- $D$ to be the positive orthant, $D = \{x \mid x_i\geq 0, i\in\{1,...,n\}\}$
+- $C = \{x \mid \sum_{i=1}^n x_i = R\}$
+- $f$ to be zero (since we are going to be using Fenchel Duality and need a convex and a concave function)
+
+Note that $f^*(y) = \sup_{x\in C} y^T x$. When is $f^*$ well defined? Suppose $y = \alpha\mathbb{1}_n$ (where $\mathbb{1}_n$ is the vector of ones), then
+
+$$ f^*(y) = \sup_{x\in C} \ \alpha \mathbb{1}_n^T x = \alpha R.$$
+
+If $y\neq \alpha\mathbb{1}_n$ for any $\alpha\in\mathbb{R}$, then $f^*$ is not well defined (i.e. infinity, check this on your own). Then
+
+$$C^* = \{y \mid y = \alpha\mathbb{1}_n, \alpha\in\mathbb{R}\}.$$
+
+Let $g_i^*(y_i) = \inf_{x_i\geq 0} (x_i y_i - g_i(x_i))$. Then the dual problem is given by 
+
+$$\min_{\alpha\in\mathbb{R}} (\alpha R - \sum_{i=1}^n g_i^*(\alpha))$$
+::::
+:::
+
+Consider two convex sets $X$ and $Y$ in $\mathbb{R}^n$. Suppose that there are two players $A$ and $B$, $A$ choosing $x\in X$ and $B$ choosing $y\in Y$, with the goal of, respectively, minimising $\langle x,y\rangle$ and maximising $\langle x,y\rangle$ over $x$ and $y$. 
+
+Let now the strategy of one player be $\min_{x\in X} \max_{y\in Y} \langle x,y\rangle$, and the strategy of the other player to be $\max_{y\in Y}\min_{x\in X} \langle x,y\rangle$. Do the players end up with the same result?
+
+::: {#thm-minimax}
+# Minimax 
+Let $X$ and $Y$ be two compact convex sets in $\mathbb{R}^n$. Then, 
+
+$$\min_{x\in X} \max_{y\in Y} \langle x,y\rangle = \max_{y\in Y}\min_{x\in X} \langle x,y\rangle.$$
+:::
+::: {.proof}
+Using Fenchel Duality (@thm-fenchelduality) let $C = \mathbb{R}^n$. Define $f(x) = \max_{y\in Y} \langle x,y\rangle$, $x\in C$. By compactness of $Y$, $f$ is continuous and clearly convex on $C$. Consider now the problem
+
+$$\min_{x\in X} \ f(x)$$
+
+which has a solution by the Weierstrass theorem (@thm-weierstrass). Let us now take $g$ to be the zero function on $D=X$. Note that
+
+$$g^*(x^*) = \min_{x\in X} \langle x,x^*\rangle.$$
+
+It is well-defined and hence $D^* = \mathbb{R}^n$ (since $X$ is compact). It is left to compute $f^*$ on $C^*$
+
+$$\begin{aligned}
+f^*(x^*) &= \sup_{x\in C} (\langle x,x^*\rangle - f(x)) \\
+&= \sup_{x\in C} (\langle x,x^*\rangle - \max_{y\in Y}\langle x,y\rangle), \ \ x^*\in Y
+\end{aligned}$$ 
+
+Note that $X\subset C$ if $x^*\in Y$, then $f^*(x^*) = 0$ (by picking $x$ such that $\max_{y\in Y} \langle x,y\rangle$ is at $x^*$). Also, we can show that, if $x^*\notin Y$, then
+
+$$\sup_{x\in C} (\langle x,x^*\rangle - \max_{y\in Y}\langle x,y\rangle) = +\infty.$$
+
+As a result, $C^* = Y$. 
+
+
+Now, using Fenchel duality 
+
+$$\begin{aligned}
+& \min_{x\in C\cap D} (f(x) - 0) = \max_{y\in C^*\cap D^*} (g^*(y) - 0) \\ 
+\Rightarrow & \min_{x\in X} f(x) = \max_{y\in Y} g^*(y) \\
+\Rightarrow & \min_{x\in X} \max_{y\in Y} \langle x,y\rangle = \max_{y\in Y} \min_{x\in X} \langle x,y\rangle
+\end{aligned}$$ ■
+:::
+
+::: {#def-saddlepoint}
+# Saddle points
+A point $x^*,z^*\in X\times Z$, where $X\subseteq \mathbb{R}^n$ and $Z\subseteq\mathbb{R}^m$, is called a local min-max saddle point of a continuously differentiable function $F$ if there exists open neighbourhoods $U_x^* \subseteq\mathbb{R}^n$ and $U_z^* \subseteq \mathbb{R}^m$ such that
+
+$$F^*(x^*,z) \leq F(x^*,z^*) \leq F(x,z^*).$$
+
+This point is called a global min-max saddle point if $U_x^* = X$ and $U_z^* = Z$.
+:::
+
+::: {#thm-weakduality}
+# Weak duality
+Let $F:X\times Z\rightarrow\mathbb{R}$ be as before. Then,
+
+$$\sup_{z\in Z}\inf_{x\in X} F(x,z) \leq \inf_{x\in X}\sup_{z\in Z} F(x,z).$$
+:::
+::: {.proof}
+We know $\inf_{x\in X} F(x,z) \leq F(\tilde{x},z)$ for all $z\in Z$, $\tilde{x}\in X$. In particular, we have
+
+$$\sup_{z\in Z} \inf_{x\in X} F(x,z) \leq \sup_{z\in Z} F(\tilde{x},z) \ \forall \tilde{x}\in X.$$
+
+As a result, 
+
+$$\sup_{z\in Z}\inf_{x\in X} F(x,z) \leq \inf_{x\in X}\sup_{z\in Z} F(x,z).$$ ■
+:::
+
+Now we ask the question, when is this inequality an equality? We now study this question.
+
+Define 
+
+$$P_v \triangleq \inf_{x\in X} \sup_{z\in Z} F(x,z)$$
+
+to be the *primal problem* and $P_v$ the primal value, and 
+
+$$D_v\triangleq \sup_{z\in Z}\inf_{x\in X} F(x,z)$$
+
+to be the *dual problem* with $D_v$ the dual value. So far we know that $P_v \geq D_v$. Let us define the *duality gap* to be the difference between the primal and dual, $P_v - D_v$.
+
+::: {#thm-primaldual}
+Let $F:X\times Z\rightarrow\mathbb{R}$ be as before. Then the following two conditions are equivalent. 
+
+1. $(x^*,z^*)\in X\times Z$ is a saddle point of $F$. (Note: if it isnot specified as local, then saddle points are assumed to be global.)
+
+2. $x^*$ solves the primal problem, $z^*$ solves the dual problem, and the duality gap is zero, i.e.
+
+$$\min_{x\in X}\max_{z\in Z} F(x,z) = \max_{z\in Z}\min_{x\in X} F(x,z).$$
+
+And, whenever any of these two conditions are satisfied, $P_v = D_v = F(x^*,z^*)$.
+:::
+::: {.proof}
+Suppose that 1. holds. Then, by definition we have 
+
+$$F(x^*,z) \leq F(x^*,z^*) \leq F(x,z^*).$$
+
+Hence, $\sup_{z\in Z} F(x^*,z) = \max_{z\in Z} F(x^*,z) = F(x^*,z^*)$, and $\inf_{x\in X} F(x,z^*) = \min_{x,z^*} F(x,z^*) = F(x^*,z^*)$. And as a result,
+
+$$\begin{aligned}
+\inf_{x\in X}\sup_{z\in Z} F(x,z) \leq \sup_{z\in Z} F(x^*,z) &= F(x^*,z^*) \\
+&= \inf_{x\in X} F(x,z^*) \\
+&\leq \sup_{z\in Z} \inf_{x\in X} F(x,z).
+\end{aligned}$$
+
+Then, using Weak duality (@thm-weakduality), we have $\min_{x\in X}\sup_{z\in Z} F(x,z) = \max_{z\in Z}\inf_{x\in X} F(x,z) = F(x^*,z^*)$ and the duality gap is 0.
+
+To prove the other side, suppose that 2. holds. Then, we have that the primal and dual problems have the same solution
+
+$$\inf_{x\in X} F(x,z^*) = \sup_{z\in Z} F(x^*,z).$$
+
+This implies that $F(x^*,z^*) = \sup_{\tilde{z}\in Z} F(x^*,\tilde{z}) \geq F(x^*,z)$ for all $z\in Z$. Similarly, $F(x^*,z^*) = \inf_{\tilde{x}\in X} F(\tilde{x},z^*) \leq F(x,z^*)$ for all $x\in X$. Using these, we have
+
+$$F(x^*,z) \leq F(x^*,z^*) \leq F(x,z^*),$$
+
+which implies that $(x^*,z^*)$ is a saddle point. ■
+:::
+
+
+## Nonlinear Programming
+Consider the problem of minimising a function subject to both equality and inequality constraints
+
+$$\begin{aligned}
+\min_x & \ f(x) \\
+\textnormal{such that} & \ h_i(x) = 0, i\in\{1,...,m\},\\
+& \ g_j(x) \leq 0, j\in\{1,...,r\}.
+\end{aligned}$$ {#eq-NLP}
+
+Note, the functions $f$, $h_i$, and $g_j$ are "nice", map $\mathbb{R^n}\rightarrow\mathbb{R}$, and continuously differentiable.
+
+::: {#def-regular}
+# Regularity
+A feasible point $x$ is said to be regular if the equality constraint gradients, $\nabla h_i(x)$, $i\in\{1,...,m\}$ and the inequality constraint gradients, $\nabla g_j(x)$, for $j$ in the active set 
+
+$$A(x) = \{j \mid g_j(x) = 0\},$$
+
+are linearly independent.
+:::
+
+::: {#thm-KKT}
+# Karush-Kuhn-Tucker (KKT) necessary conditions of optimality
+Suppose that $x^*$ is a solution to the nonlinear programming problem @eq-NLP. Suppose that $X^*$ is regular. Then, there exists unique vectors $\lambda^* = (\lambda_1^*,...,\lambda_m^*)$ and $\mu^* = (\mu_1^*,...,\mu_r^*)$ such that for 
+
+$$L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i H_i(x) + \sum_{j=1}^r \mu_j g_j(x),$$
+
+we have
+
+$$\begin{aligned}
+& \nabla L(x^*,\lambda^*,\mu^*) = 0 \\
+& \mu_j^* \geq 0 \textnormal{ for any } j\in\{1,...,r\} \\
+& \mu_j^* = 0, j\notin A(x^*).
+\end{aligned}$$
+
 :::
 
 ## Conjugate Functions

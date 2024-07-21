@@ -244,10 +244,13 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#conjugate-functions" id="toc-conjugate-functions" class="nav-link" data-scroll-target="#conjugate-functions"><span class="header-section-number">4.1</span> Conjugate Functions</a></li>
   <li><a href="#duality-theory" id="toc-duality-theory" class="nav-link" data-scroll-target="#duality-theory"><span class="header-section-number">4.2</span> Duality Theory</a></li>
-  <li><a href="#nonlinear-programming" id="toc-nonlinear-programming" class="nav-link" data-scroll-target="#nonlinear-programming"><span class="header-section-number">4.3</span> Nonlinear Programming</a>
+  <li><a href="#nonlinear-programming" id="toc-nonlinear-programming" class="nav-link" data-scroll-target="#nonlinear-programming"><span class="header-section-number">4.3</span> Nonlinear Programming</a></li>
+  <li><a href="#conjugate-functions-1" id="toc-conjugate-functions-1" class="nav-link" data-scroll-target="#conjugate-functions-1"><span class="header-section-number">4.4</span> Conjugate Functions</a></li>
+  <li><a href="#duality-theory-1" id="toc-duality-theory-1" class="nav-link" data-scroll-target="#duality-theory-1"><span class="header-section-number">4.5</span> Duality Theory</a></li>
+  <li><a href="#nonlinear-programming-1" id="toc-nonlinear-programming-1" class="nav-link" data-scroll-target="#nonlinear-programming-1"><span class="header-section-number">4.6</span> Nonlinear Programming</a>
   <ul class="collapse">
-  <li><a href="#conditions-for-optimality" id="toc-conditions-for-optimality" class="nav-link" data-scroll-target="#conditions-for-optimality"><span class="header-section-number">4.3.1</span> Conditions for Optimality</a></li>
-  <li><a href="#nlp-and-duality" id="toc-nlp-and-duality" class="nav-link" data-scroll-target="#nlp-and-duality"><span class="header-section-number">4.3.2</span> NLP and Duality</a></li>
+  <li><a href="#conditions-for-optimality" id="toc-conditions-for-optimality" class="nav-link" data-scroll-target="#conditions-for-optimality"><span class="header-section-number">4.6.1</span> Conditions for Optimality</a></li>
+  <li><a href="#nlp-and-duality" id="toc-nlp-and-duality" class="nav-link" data-scroll-target="#nlp-and-duality"><span class="header-section-number">4.6.2</span> NLP and Duality</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#algorithms-for-optimisation" id="toc-algorithms-for-optimisation" class="nav-link" data-scroll-target="#algorithms-for-optimisation"><span class="header-section-number">5</span> Algorithms for Optimisation</a>
@@ -440,7 +443,7 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Proposition 1</strong></span> If <span class="math inline">\(f:D\rightarrow\mathbb{R}\)</span>, where <span class="math inline">\(D\)</span> is closed and <span class="math inline">\(f\)</span> is continuous, then <span class="math inline">\(f\)</span> achieves a <em>global minimum</em> on <span class="math inline">\(D\)</span>.</p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>Since <span class="math inline">\(F\)</span> is continuous and <span class="math inline">\(d\)</span> is closed, we have that <span class="math inline">\(\{x\in D | f(x) \leq \alpha\}\)</span>, <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, is closed.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>Since <span class="math inline">\(F\)</span> is continuous and <span class="math inline">\(D\)</span> is closed, we have that <span class="math inline">\(\{x\in D | f(x) \leq \alpha\}\)</span>, <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, is closed.</p>
 <p>We claim that this set is also bounded: Suppose otherwise, then there is a sequence <span class="math inline">\(||x_n||\rightarrow\infty\)</span>. Then, using coercivity <span class="math inline">\(|f(x)|\rightarrow\infty\)</span> on this sublevel set, which is a contradiction! Thus, the sublevel set is also bounded.</p>
 <p>By the previous result, since the sublevel set is compact, we have a global minimum. ■</p>
 </div>
@@ -1354,11 +1357,6 @@ g(t) &amp;= \log\det(Z + tY) \\
 </section>
 <section id="convex-optimisation" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Convex Optimisation</h1>
-<p><strong>V keep this for later V</strong> Recall: for all <span class="math inline">\(d\in\mathbb{R}^n\)</span> and <span class="math inline">\(\alpha\in\mathbb{R}\)</span> such that <span class="math inline">\(x^* + \alpha d \in D\)</span>, we must have</p>
-<p><span class="math display">\[\langle \nabla f(x^*),d\rangle \geq 0.\]</span></p>
-<p><img src="figures/Picture13.jpg" class="img-fluid" style="width:40.0%"></p>
-<p>this is required for a minimum. if that <span class="math inline">\(\geq\)</span> changes to <span class="math inline">\(&lt;\)</span> for any points defined from <span class="math inline">\(\alpha, \ d\)</span>, then <span class="math inline">\(x^*\)</span> is not a minimum.</p>
-<p><strong>^ keep this for later ^</strong></p>
 <div id="thm-systemlinearinequalities" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 16</strong></span> Consider a system of linear inequalities</p>
 <p><span id="eq-inequalitysystem"><span class="math display">\[ \ell_i(x) &lt; \alpha_i  \tag{5}\]</span></span></p>
@@ -1369,28 +1367,267 @@ g(t) &amp;= \log\det(Z + tY) \\
 \end{aligned}\]</span></p>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>We first show that if there is a solution to <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a> then such scalars cannot exist. Suppose otherwise, then <span class="math inline">\(\sum_{i=1}^m \lambda_i\ell_i(x) = 0\)</span> and <span class="math inline">\(\sum_{i=1}^m \lambda_i\alpha_i \leq 0\)</span>. But since there is a solution to <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a>, we also have</p>
+<p><span class="proof-title"><em>Proof</em>. </span>We first show that if there is a solution to <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a> then such scalars cannot exist (contrapositive of <span class="math inline">\(\Leftarrow\)</span>). Suppose otherwise, then <span class="math inline">\(\sum_{i=1}^m \lambda_i\ell_i(x) = 0\)</span> and <span class="math inline">\(\sum_{i=1}^m \lambda_i\alpha_i \leq 0\)</span>. But since there is a solution to <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a>, we also have</p>
 <p><span class="math display">\[\sum_{i=1}^m \lambda_i (\alpha_i - \ell_i(x)) &gt; 0.\]</span></p>
 <p>Which contradicts our assumption. Thus, no such scalars <span class="math inline">\(\lambda_i\)</span> exist.</p>
-<p>Now for the other side. Define</p>
+<p>Now for the other side (direct proof of <span class="math inline">\(\Rightarrow\)</span>). Define</p>
 <p><span class="math display">\[\begin{aligned}
 &amp; A = \{y\in\mathbb{R}^n \mid \exists x\in\mathbb{R}^n, y_i = \ell_i(x) - \alpha_i, i=1,...,m\}, \\
 &amp; K = \{y\in\mathbb{R}^n \mid y_i&lt;0, i=1,...,m\}.
 \end{aligned}\]</span></p>
+<p>Note that <span class="math inline">\(K\)</span> is an open convex set. Moreover, <span class="math inline">\(K\cap A = \emptyset\)</span>, since vectors in <span class="math inline">\(A\)</span> have at least one entry for which <span class="math inline">\(\ell_i(x) - \alpha_i \geq 0\)</span> since <a href="#eq-inequalitysystem" class="quarto-xref">Equation&nbsp;5</a> is inconsistent. Since <span class="math inline">\(K\cap A=\emptyset\)</span>, by <a href="#prp-separatinghyperplane" class="quarto-xref">Proposition&nbsp;7</a> there exists a hyperplane <span class="math inline">\(H_{(\lambda,\gamma)}\)</span> that separates <span class="math inline">\(K\)</span> and <span class="math inline">\(A\)</span> such that <span class="math inline">\(A\subseteq H\)</span>. In particular,</p>
+<p><span class="math display">\[K \subseteq H^- \textnormal{ meaning }\langle \lambda, y\rangle &lt; \gamma \ \forall \ y\in K.\]</span></p>
+<p>This implies that <span class="math inline">\(\lambda \geq 0\)</span> and <span class="math inline">\(\gamma \geq 0\)</span>. Also, since <span class="math inline">\(A\subseteq H\)</span>, we have that</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; \langle \lambda, y\rangle = \gamma \ \forall y\in A, \\
+\Rightarrow &amp; \gamma = \sum_{i=1}^m \lambda_i (\ell_i(x) - \alpha_i) = \sum_{i=1}^m \lambda_i \ell_i(x) - \sum_{i=1}^m \lambda_i \alpha_i \ \forall x\in\mathbb{R}^n
+\end{aligned}\]</span></p>
+<p>Thus <span class="math inline">\(\sum_{i=1}^m \lambda_i \ell_i(x) = 0\)</span> (since <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\lambda\)</span> are fixed), and <span class="math inline">\(- \sum_{i=1}^m \lambda_i \alpha_i = \gamma \Rightarrow \sum_{i=1}^m \lambda_i \alpha_i \leq 0\)</span>. ■</p>
 </div>
 <section id="conjugate-functions" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="conjugate-functions"><span class="header-section-number">4.1</span> Conjugate Functions</h2>
+<div id="def-conjugates" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13</strong></span> Let <span class="math inline">\(C\)</span> be a convex non-empty set in <span class="math inline">\(\mathbb{R}^n\)</span> and let <span class="math inline">\(f\)</span> be a function on <span class="math inline">\(C\)</span>. The <em>conjugate set</em> <span class="math inline">\(C^*\)</span>of <span class="math inline">\(C\)</span> on <span class="math inline">\(\mathbb{R}^n\)</span> is defined as</p>
+<p><span class="math display">\[ C^* = \{x^*\in\mathbb{R}^n \mid \sup_{x\in C} (\langle x, x^*\rangle - f(x)) &lt; \infty\} \]</span></p>
+<p>The <em>conjugate function</em> <span class="math inline">\(f^*\)</span> of <span class="math inline">\(f\)</span> on <span class="math inline">\(C^*\)</span> is defined as</p>
+<p><span class="math display">\[ f^*(x^*) = \sup_{x\in C} (\langle x, x^*\rangle - f(x)).\]</span></p>
+</div>
+<p>Note that when <span class="math inline">\(f\)</span> is differentiable the critical point of <span class="math inline">\(\langle x, x^*\rangle - f(x)\)</span> happens at <span class="math inline">\(x^* = f'(x)\)</span>.</p>
+<p><strong>figure</strong></p>
+<p>For example, in <span class="math inline">\(\mathbb{R}^2\)</span> this is: <span class="math inline">\(x^*x - f(x)\)</span>, now fix <span class="math inline">\(x^*\)</span></p>
+<p><span class="math display">\[\sup_{x\in\mathbb{R}^2} (x^*x - f(x)) \Rightarrow x^* = f'(x).\]</span></p>
+<p>The slope of the <em>COLOUR</em> line is parallel to the slope of <span class="math inline">\(x^*x\)</span>. I.e. <span class="math inline">\(x\)</span> is such that the slope of the tangent to the curve is exactly <span class="math inline">\(x^*\)</span>.</p>
+<p>We also note that the set conjugate set <span class="math inline">\(C^*\)</span> and the conjugate function <span class="math inline">\(f^*\)</span> are both convex. Moreover, <span class="math inline">\(\texttt{epi}(f^*)\)</span> is a closed convex set.</p>
+<div class="example">
+<div class="example-header">
+<p>Examples</p>
+</div>
+<div class="example-container">
+<ol type="1">
+<li>Consider <span class="math inline">\(f:\mathbb{R}\rightarrow\mathbb{R}\)</span> such that <span class="math inline">\(x\mapsto f(x) = ax + b\)</span>, <span class="math inline">\(a,b\in\mathbb{R}\)</span>.</li>
+</ol>
+<p><span class="math display">\[ f^*(x^*) = \sup_{x\in\mathbb{R}} (x^*x - (ax + b)) = \sup_{x\in\mathbb{R}} (x(x^*-a) - b) \]</span></p>
+<p>If <span class="math inline">\(x^*\neq a\)</span>, then the supremum is unbounded, and <span class="math inline">\(x^*\notin C^*\)</span>. When <span class="math inline">\(x^* = a\)</span>, then <span class="math inline">\(f^*(x) = -b\)</span>.</p>
+<ol start="2" type="1">
+<li>Consider <span class="math inline">\(f:\mathbb{R}\rightarrow\mathbb{R}\)</span> such that <span class="math inline">\(x\mapsto (e^x)\)</span>. Then</li>
+</ol>
+<p><span class="math display">\[ f^*(x^*) = \sup_{x\in\mathbb{R}} (x^*x-e^x)\]</span></p>
+<p>When <span class="math inline">\(x^* &lt;0\)</span>, this is unbounded. When <span class="math inline">\(x^*&gt;0\)</span>, the maximum is reached at <span class="math inline">\(x = \log(x^*)\)</span> and hence</p>
+<p><span class="math display">\[f^*(x^*) = x^*\log(x^*) - x^*.\]</span></p>
+<p>When <span class="math inline">\(x^*=0\)</span>, <span class="math inline">\(f^*(x^*) = 0\)</span>.</p>
+</div>
+</div>
+<p>The notion of conjugate functions in the context of optimsation is due to Fenchal (1953), however, this is a generalisation of Legendre transforms (1787)</p>
+<p><span class="math display">\[f^*(p) = \sup_{x\in S} (p^Tx - f(x)).\]</span></p>
+<!-- not doing this example since it's not relevant to the backgrounds of the students I'm teaching -->
+<!-- ::: {.example}
+:::: {.example-header}
+Example: Hamiltonian
+::::
+:::: {.example-container}
+Consider a (simple) mechanical system defined on a configuration $Q = \mathbb{R}^n$. We use the coordinates $q = (q_1,...,q_n)$ for $Q$. The kinetic energy of this system is 
+
+$$ K(q,\dot{q}) = \frac{1}{2} \dot{q}^T M(q) \dot{q}, $$
+
+and the potential energy is $V(q)$.
+
+**figure**
+
+Recall, for a spring-mass system, 
+
+$$ K(x,\dot{x}) = \frac{1}{2} m\dot{x}^2. $$
+
+We define the Lagrangian to be
+
+$$\mathcal{L}(q,\dot{q}) = K(q,\dot{q}) - V(q).$$
+
+And recall the Newton equation of motion is $\sum F = m a$, in terms of the Lagrangian this is
+
+$$\frac{d}{dt} \frac{\partial \mathcal{L}}{\partial \dot{q}} - \frac{\partial \mathcal{L}}{\partial q} = 0,$$
+
+this defines the Euler-Lagrange equations. 
+
+::::
+::: -->
+<p>Note that <span class="math inline">\(f(x) + f^*(y) \geq x^T y\)</span>, this is called the Fenchel-Young inequality.</p>
+<div class="example">
+<div class="example-header">
+<p>Example</p>
+</div>
+<div class="example-container">
+<p>Let <span class="math inline">\(f:\mathbb{R}\rightarrow\mathbb{R}\)</span> such that <span class="math inline">\(a\mapsto \frac{1}{2} a^2\)</span>, then <span class="math inline">\(f^*(b) = \sup (ab - \frac{a^2}{2}) = \frac{b^2}{2}\)</span>. We know from Young’s inequality</p>
+<p><span class="math display">\[ \frac{1}{2}(a^2 + b^2) \geq ab,\]</span></p>
+<p>but this is the Fenchel-Young inequality using the funciton <span class="math inline">\(f\)</span> defined above!</p>
+</div>
+</div>
 </section>
 <section id="duality-theory" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="duality-theory"><span class="header-section-number">4.2</span> Duality Theory</h2>
+<div id="thm-fenchelduality" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 17 (Fenchel Duality)</strong></span> Let <span class="math inline">\(f\)</span> be a convex function over <span class="math inline">\(C\)</span>, <span class="math inline">\(g\)</span> be a concave function of <span class="math inline">\(D\)</span>. Both <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> are convex sets in <span class="math inline">\(X = \mathbb{R}^n\)</span>. Suppose <span class="math inline">\(C\cap D\)</span> has a non-empty relative interior and <span class="math inline">\(\texttt{epi}_f(C)\)</span> and <span class="math inline">\(\texttt{epi}_g(D)\)</span> have non-empty interiors. Consider</p>
+<p><span class="math display">\[ \inf_{x\in C\cap D} \ (f(x) - g(x))\]</span></p>
+<p>and suppose that this problem has a finite solution <span class="math inline">\(\mu\in\mathbb{R}\)</span>, its value achieved at some <span class="math inline">\(x_0\in C\cap D\)</span>. Then,</p>
+<p><span class="math display">\[ \mu = \inf_{x\in C\cap D}  \ (f(x) - g(x)) = \sup_{x^*\in C^*\cap D^*} \ (g^*(x^*) - f^*(y^*))\]</span></p>
+<p>and the supremum on the right hand side is achieved at some <span class="math inline">\(x_0^*\in C^*\cap D^*\)</span>. Moreover</p>
+<p><span class="math display">\[\max_{x\in C} (\langle x, x_0^*\rangle - f(x)) = \langle x_0, x_0^*\rangle - f(x_0)\]</span></p>
+<p>and</p>
+<p><span class="math display">\[\min_{x\in D} (\langle x, x_0^*\rangle - g(x)) = \langle x_0,x_0^*\rangle - g(x_0).\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>We first show that</p>
+<p><span id="eq-dualityproof1"><span class="math display">\[\mu = \inf_{x\in C\cap D} (f(x) - g(x)) \geq \sup_{x^*\in C^*\cap D^*}(g^*(x^*)-f^*(x^*)). \tag{6}\]</span></span></p>
+<p>By the Fenchel-Young inequality</p>
+<p><span class="math display">\[f^*(x^*) \geq \langle x,x^*\rangle - f(x),\]</span></p>
+<p>and</p>
+<p><span class="math display">\[f^*(x^*) \geq \langle x,x^*\rangle g(x),\]</span></p>
+<p>for all <span class="math inline">\(x,x^*\)</span>. Thus, <span class="math inline">\(f(x) - g(x) \geq g^*(x^*) - f^*(x^*)\)</span>. This proves the claim.</p>
+<p>It is enough to show that there exists some point <span class="math inline">\(x_0^* \in C^*\cap D^*\)</span> for with the inequality in <a href="#eq-dualityproof1" class="quarto-xref">Equation&nbsp;6</a> is achieved.</p>
+<p><strong>figure</strong></p>
+<p>We want to separate the epigrpahs. The natural candidates for separation are</p>
+<p><span class="math display">\[\begin{aligned}
+\texttt{epi}_{f-\mu}(C) = \{(x,\alpha) \mid x\in C, f(x) - \mu\leq \alpha\}, \\
+\texttt{epi}_{g}(D) = \{(x,\alpha) \mid x\in D, g(x) \geq \alpha\},
+\end{aligned}\]</span></p>
+<p>noting that for concave functions, the epigraph is written as the infimum. After verifying tha tthe separation theorem can be applied, we get that there exists a hyperplane that separates <span class="math inline">\(\texttt{epi}_g(D)\)</span> and <span class="math inline">\(\texttt{epi}_{f-\mu}(C)\)</span>, denoted by</p>
+<p><span class="math display">\[ H= \{(r,x) \in\mathbb{R}\times X \mid \langle x, x_0^*\rangle -r = c\},\]</span></p>
+<p>where <span class="math inline">\(x_0^*\in\mathbb{R}^n\)</span> and <span class="math inline">\(c\in\mathbb{R}\)</span>, without loss of generality. Note that we are saying that this hyperplane is not “vertical”, since</p>
+<p><span class="math display">\[\langle x, x_0^*\rangle - r = (r,x)\cdot(-1,x_0^*).\]</span></p>
+<p>The <span class="math inline">\(-1\)</span> can’t be zero, since if it was it would separate <span class="math inline">\(C\)</span> and <span class="math inline">\(D\)</span> and we assumed they can’t be separated (since their intesection has non-empty relative interior).</p>
+<p>Now that we have this hyperplane, we note that <span class="math inline">\(H\)</span> is above <span class="math inline">\(\texttt{epi}_g(D)\)</span> and arbitrarily close to it. I.e.</p>
+<p><span id="eq-dualityproof2"><span class="math display">\[c = \inf_{x\in D} (\langle x,x_0^*\rangle - g(x)) = g^*(x^*), \tag{7}\]</span></span></p>
+<p>similarly, <span class="math inline">\(H\)</span> is below <span class="math inline">\(\texttt{epi}_{f-\mu}(C)\)</span> and arbitrarily close to it</p>
+<p><span id="eq-dualityproof3"><span class="math display">\[c = \sup_{x\in C} (\langle x,x_0^*\rangle - f(x) + \mu) = f^*(x^*) + \mu. \tag{8}\]</span></span></p>
+<p>Thus, with <a href="#eq-dualityproof2" class="quarto-xref">Equation&nbsp;7</a> and <a href="#eq-dualityproof3" class="quarto-xref">Equation&nbsp;8</a> we have <span class="math inline">\(g^*(x_0^*) = f^*(x_0^*) + \mu\)</span>, i.e.&nbsp;the inequality <a href="#eq-dualityproof1" class="quarto-xref">Equation&nbsp;6</a> is achieved! ■</p>
+</div>
+<div class="example">
+<div class="example-header">
+<p>Example: Resource allocation</p>
+</div>
+<div class="example-container">
+<p>Suppose a total of <span class="math inline">\(R\in\mathbb{R}_{&gt;0}\)</span> units of resources are supposed to be allocated to <span class="math inline">\(n\)</span> locations.</p>
+<p><strong>figure</strong></p>
+<p>The payoff of allocating <span class="math inline">\(x_i\)</span> units of resources to location <span class="math inline">\(i\)</span> is <span class="math inline">\(g_i(x_i)\)</span>, <span class="math inline">\(g_i:\mathbb{R}\rightarrow\mathbb{R}\)</span>, and suppose that <span class="math inline">\(g_i\)</span> is increasing and concave.</p>
+<p>We want to maximise <span class="math inline">\(\sum_{i=1}^n g_i(x)\)</span> subject to <span class="math inline">\(\sum_{i=1}^n x_i = R\)</span> (max number of resources) and <span class="math inline">\(x_i\geq 0\)</span>.</p>
+<p>Let us take: - <span class="math inline">\(D\)</span> to be the positive orthant, <span class="math inline">\(D = \{x \mid x_i\geq 0, i\in\{1,...,n\}\}\)</span> - <span class="math inline">\(C = \{x \mid \sum_{i=1}^n x_i = R\}\)</span> - <span class="math inline">\(f\)</span> to be zero (since we are going to be using Fenchel Duality and need a convex and a concave function)</p>
+<p>Note that <span class="math inline">\(f^*(y) = \sup_{x\in C} y^T x\)</span>. When is <span class="math inline">\(f^*\)</span> well defined? Suppose <span class="math inline">\(y = \alpha\mathbb{1}_n\)</span> (where <span class="math inline">\(\mathbb{1}_n\)</span> is the vector of ones), then</p>
+<p><span class="math display">\[ f^*(y) = \sup_{x\in C} \ \alpha \mathbb{1}_n^T x = \alpha R.\]</span></p>
+<p>If <span class="math inline">\(y\neq \alpha\mathbb{1}_n\)</span> for any <span class="math inline">\(\alpha\in\mathbb{R}\)</span>, then <span class="math inline">\(f^*\)</span> is not well defined (i.e.&nbsp;infinity, check this on your own). Then</p>
+<p><span class="math display">\[C^* = \{y \mid y = \alpha\mathbb{1}_n, \alpha\in\mathbb{R}\}.\]</span></p>
+<p>Let <span class="math inline">\(g_i^*(y_i) = \inf_{x_i\geq 0} (x_i y_i - g_i(x_i))\)</span>. Then the dual problem is given by</p>
+<p><span class="math display">\[\min_{\alpha\in\mathbb{R}} (\alpha R - \sum_{i=1}^n g_i^*(\alpha))\]</span></p>
+</div>
+</div>
+<p>Consider two convex sets <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in <span class="math inline">\(\mathbb{R}^n\)</span>. Suppose that there are two players <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, <span class="math inline">\(A\)</span> choosing <span class="math inline">\(x\in X\)</span> and <span class="math inline">\(B\)</span> choosing <span class="math inline">\(y\in Y\)</span>, with the goal of, respectively, minimising <span class="math inline">\(\langle x,y\rangle\)</span> and maximising <span class="math inline">\(\langle x,y\rangle\)</span> over <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
+<p>Let now the strategy of one player be <span class="math inline">\(\min_{x\in X} \max_{y\in Y} \langle x,y\rangle\)</span>, and the strategy of the other player to be <span class="math inline">\(\max_{y\in Y}\min_{x\in X} \langle x,y\rangle\)</span>. Do the players end up with the same result?</p>
+<div id="thm-minimax" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 18 (Minimax)</strong></span> Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two compact convex sets in <span class="math inline">\(\mathbb{R}^n\)</span>. Then,</p>
+<p><span class="math display">\[\min_{x\in X} \max_{y\in Y} \langle x,y\rangle = \max_{y\in Y}\min_{x\in X} \langle x,y\rangle.\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Using Fenchel Duality (<a href="#thm-fenchelduality" class="quarto-xref">Theorem&nbsp;17</a>) let <span class="math inline">\(C = \mathbb{R}^n\)</span>. Define <span class="math inline">\(f(x) = \max_{y\in Y} \langle x,y\rangle\)</span>, <span class="math inline">\(x\in C\)</span>. By compactness of <span class="math inline">\(Y\)</span>, <span class="math inline">\(f\)</span> is continuous and clearly convex on <span class="math inline">\(C\)</span>. Consider now the problem</p>
+<p><span class="math display">\[\min_{x\in X} \ f(x)\]</span></p>
+<p>which has a solution by the Weierstrass theorem (<a href="#thm-weierstrass" class="quarto-xref">Theorem&nbsp;1</a>). Let us now take <span class="math inline">\(g\)</span> to be the zero function on <span class="math inline">\(D=X\)</span>. Note that</p>
+<p><span class="math display">\[g^*(x^*) = \min_{x\in X} \langle x,x^*\rangle.\]</span></p>
+<p>It is well-defined and hence <span class="math inline">\(D^* = \mathbb{R}^n\)</span> (since <span class="math inline">\(X\)</span> is compact). It is left to compute <span class="math inline">\(f^*\)</span> on <span class="math inline">\(C^*\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+f^*(x^*) &amp;= \sup_{x\in C} (\langle x,x^*\rangle - f(x)) \\
+&amp;= \sup_{x\in C} (\langle x,x^*\rangle - \max_{y\in Y}\langle x,y\rangle), \ \ x^*\in Y
+\end{aligned}\]</span></p>
+<p>Note that <span class="math inline">\(X\subset C\)</span> if <span class="math inline">\(x^*\in Y\)</span>, then <span class="math inline">\(f^*(x^*) = 0\)</span> (by picking <span class="math inline">\(x\)</span> such that <span class="math inline">\(\max_{y\in Y} \langle x,y\rangle\)</span> is at <span class="math inline">\(x^*\)</span>). Also, we can show that, if <span class="math inline">\(x^*\notin Y\)</span>, then</p>
+<p><span class="math display">\[\sup_{x\in C} (\langle x,x^*\rangle - \max_{y\in Y}\langle x,y\rangle) = +\infty.\]</span></p>
+<p>As a result, <span class="math inline">\(C^* = Y\)</span>.</p>
+<p>Now, using Fenchel duality</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; \min_{x\in C\cap D} (f(x) - 0) = \max_{y\in C^*\cap D^*} (g^*(y) - 0) \\
+\Rightarrow &amp; \min_{x\in X} f(x) = \max_{y\in Y} g^*(y) \\
+\Rightarrow &amp; \min_{x\in X} \max_{y\in Y} \langle x,y\rangle = \max_{y\in Y} \min_{x\in X} \langle x,y\rangle
+\end{aligned}\]</span> ■</p>
+</div>
+<div id="def-saddlepoint" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14 (Saddle points)</strong></span> A point <span class="math inline">\(x^*,z^*\in X\times Z\)</span>, where <span class="math inline">\(X\subseteq \mathbb{R}^n\)</span> and <span class="math inline">\(Z\subseteq\mathbb{R}^m\)</span>, is called a local min-max saddle point of a continuously differentiable function <span class="math inline">\(F\)</span> if there exists open neighbourhoods <span class="math inline">\(U_x^* \subseteq\mathbb{R}^n\)</span> and <span class="math inline">\(U_z^* \subseteq \mathbb{R}^m\)</span> such that</p>
+<p><span class="math display">\[F^*(x^*,z) \leq F(x^*,z^*) \leq F(x,z^*).\]</span></p>
+<p>This point is called a global min-max saddle point if <span class="math inline">\(U_x^* = X\)</span> and <span class="math inline">\(U_z^* = Z\)</span>.</p>
+</div>
+<div id="thm-weakduality" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 19 (Weak duality)</strong></span> Let <span class="math inline">\(F:X\times Z\rightarrow\mathbb{R}\)</span> be as before. Then,</p>
+<p><span class="math display">\[\sup_{z\in Z}\inf_{x\in X} F(x,z) \leq \inf_{x\in X}\sup_{z\in Z} F(x,z).\]</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>We know <span class="math inline">\(\inf_{x\in X} F(x,z) \leq F(\tilde{x},z)\)</span> for all <span class="math inline">\(z\in Z\)</span>, <span class="math inline">\(\tilde{x}\in X\)</span>. In particular, we have</p>
+<p><span class="math display">\[\sup_{z\in Z} \inf_{x\in X} F(x,z) \leq \sup_{z\in Z} F(\tilde{x},z) \ \forall \tilde{x}\in X.\]</span></p>
+<p>As a result,</p>
+<p><span class="math display">\[\sup_{z\in Z}\inf_{x\in X} F(x,z) \leq \inf_{x\in X}\sup_{z\in Z} F(x,z).\]</span> ■</p>
+</div>
+<p>Now we ask the question, when is this inequality an equality? We now study this question.</p>
+<p>Define</p>
+<p><span class="math display">\[P_v \triangleq \inf_{x\in X} \sup_{z\in Z} F(x,z)\]</span></p>
+<p>to be the <em>primal problem</em> and <span class="math inline">\(P_v\)</span> the primal value, and</p>
+<p><span class="math display">\[D_v\triangleq \sup_{z\in Z}\inf_{x\in X} F(x,z)\]</span></p>
+<p>to be the <em>dual problem</em> with <span class="math inline">\(D_v\)</span> the dual value. So far we know that <span class="math inline">\(P_v \geq D_v\)</span>. Let us define the <em>duality gap</em> to be the difference between the primal and dual, <span class="math inline">\(P_v - D_v\)</span>.</p>
+<div id="thm-primaldual" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 20</strong></span> Let <span class="math inline">\(F:X\times Z\rightarrow\mathbb{R}\)</span> be as before. Then the following two conditions are equivalent.</p>
+<ol type="1">
+<li><p><span class="math inline">\((x^*,z^*)\in X\times Z\)</span> is a saddle point of <span class="math inline">\(F\)</span>. (Note: if it isnot specified as local, then saddle points are assumed to be global.)</p></li>
+<li><p><span class="math inline">\(x^*\)</span> solves the primal problem, <span class="math inline">\(z^*\)</span> solves the dual problem, and the duality gap is zero, i.e.</p></li>
+</ol>
+<p><span class="math display">\[\min_{x\in X}\max_{z\in Z} F(x,z) = \max_{z\in Z}\min_{x\in X} F(x,z).\]</span></p>
+<p>And, whenever any of these two conditions are satisfied, <span class="math inline">\(P_v = D_v = F(x^*,z^*)\)</span>.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Suppose that 1. holds. Then, by definition we have</p>
+<p><span class="math display">\[F(x^*,z) \leq F(x^*,z^*) \leq F(x,z^*).\]</span></p>
+<p>Hence, <span class="math inline">\(\sup_{z\in Z} F(x^*,z) = \max_{z\in Z} F(x^*,z) = F(x^*,z^*)\)</span>, and <span class="math inline">\(\inf_{x\in X} F(x,z^*) = \min_{x,z^*} F(x,z^*) = F(x^*,z^*)\)</span>. And as a result,</p>
+<p><span class="math display">\[\begin{aligned}
+\inf_{x\in X}\sup_{z\in Z} F(x,z) \leq \sup_{z\in Z} F(x^*,z) &amp;= F(x^*,z^*) \\
+&amp;= \inf_{x\in X} F(x,z^*) \\
+&amp;\leq \sup_{z\in Z} \inf_{x\in X} F(x,z).
+\end{aligned}\]</span></p>
+<p>Then, using Weak duality (<a href="#thm-weakduality" class="quarto-xref">Theorem&nbsp;19</a>), we have <span class="math inline">\(\min_{x\in X}\sup_{z\in Z} F(x,z) = \max_{z\in Z}\inf_{x\in X} F(x,z) = F(x^*,z^*)\)</span> and the duality gap is 0.</p>
+<p>To prove the other side, suppose that 2. holds. Then, we have that the primal and dual problems have the same solution</p>
+<p><span class="math display">\[\inf_{x\in X} F(x,z^*) = \sup_{z\in Z} F(x^*,z).\]</span></p>
+<p>This implies that <span class="math inline">\(F(x^*,z^*) = \sup_{\tilde{z}\in Z} F(x^*,\tilde{z}) \geq F(x^*,z)\)</span> for all <span class="math inline">\(z\in Z\)</span>. Similarly, <span class="math inline">\(F(x^*,z^*) = \inf_{\tilde{x}\in X} F(\tilde{x},z^*) \leq F(x,z^*)\)</span> for all <span class="math inline">\(x\in X\)</span>. Using these, we have</p>
+<p><span class="math display">\[F(x^*,z) \leq F(x^*,z^*) \leq F(x,z^*),\]</span></p>
+<p>which implies that <span class="math inline">\((x^*,z^*)\)</span> is a saddle point. ■</p>
+</div>
 </section>
 <section id="nonlinear-programming" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="nonlinear-programming"><span class="header-section-number">4.3</span> Nonlinear Programming</h2>
-<section id="conditions-for-optimality" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="conditions-for-optimality"><span class="header-section-number">4.3.1</span> Conditions for Optimality</h3>
+<p>Consider the problem of minimising a function subject to both equality and inequality constraints</p>
+<p><span id="eq-NLP"><span class="math display">\[\begin{aligned}
+\min_x &amp; \ f(x) \\
+\textnormal{such that} &amp; \ h_i(x) = 0, i\in\{1,...,m\},\\
+&amp; \ g_j(x) \leq 0, j\in\{1,...,r\}.
+\end{aligned} \tag{9}\]</span></span></p>
+<p>Note, the functions <span class="math inline">\(f\)</span>, <span class="math inline">\(h_i\)</span>, and <span class="math inline">\(g_j\)</span> are “nice”, map <span class="math inline">\(\mathbb{R^n}\rightarrow\mathbb{R}\)</span>, and continuously differentiable.</p>
+<div id="def-regular" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 15 (Regularity)</strong></span> A feasible point <span class="math inline">\(x\)</span> is said to be regular if the equality constraint gradients, <span class="math inline">\(\nabla h_i(x)\)</span>, <span class="math inline">\(i\in\{1,...,m\}\)</span> and the inequality constraint gradients, <span class="math inline">\(\nabla g_j(x)\)</span>, for <span class="math inline">\(j\)</span> in the active set</p>
+<p><span class="math display">\[A(x) = \{j \mid g_j(x) = 0\},\]</span></p>
+<p>are linearly independent.</p>
+</div>
+<div id="thm-KKT" class="theorem">
+<p><span class="theorem-title"><strong>Theorem 21 (Karush-Kuhn-Tucker (KKT) necessary conditions of optimality)</strong></span> Suppose that <span class="math inline">\(x^*\)</span> is a solution to the nonlinear programming problem <a href="#eq-NLP" class="quarto-xref">Equation&nbsp;9</a>. Suppose that <span class="math inline">\(X^*\)</span> is regular. Then, there exists unique vectors <span class="math inline">\(\lambda^* = (\lambda_1^*,...,\lambda_m^*)\)</span> and <span class="math inline">\(\mu^* = (\mu_1^*,...,\mu_r^*)\)</span> such that for</p>
+<p><span class="math display">\[L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i H_i(x) + \sum_{j=1}^r \mu_j g_j(x),\]</span></p>
+<p>we have</p>
+<p><span class="math display">\[\begin{aligned}
+&amp; \nabla L(x^*,\lambda^*,\mu^*) = 0 \\
+&amp; \mu_j^* \geq 0 \textnormal{ for any } j\in\{1,...,r\} \\
+&amp; \mu_j^* = 0, j\notin A(x^*).
+\end{aligned}\]</span></p>
+</div>
 </section>
-<section id="nlp-and-duality" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="nlp-and-duality"><span class="header-section-number">4.3.2</span> NLP and Duality</h3>
+<section id="conjugate-functions-1" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="conjugate-functions-1"><span class="header-section-number">4.4</span> Conjugate Functions</h2>
+</section>
+<section id="duality-theory-1" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="duality-theory-1"><span class="header-section-number">4.5</span> Duality Theory</h2>
+</section>
+<section id="nonlinear-programming-1" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="nonlinear-programming-1"><span class="header-section-number">4.6</span> Nonlinear Programming</h2>
+<section id="conditions-for-optimality" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="conditions-for-optimality"><span class="header-section-number">4.6.1</span> Conditions for Optimality</h3>
+</section>
+<section id="nlp-and-duality" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="nlp-and-duality"><span class="header-section-number">4.6.2</span> NLP and Duality</h3>
 </section>
 </section>
 </section>

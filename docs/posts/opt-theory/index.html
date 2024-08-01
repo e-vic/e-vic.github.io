@@ -1262,16 +1262,38 @@ g(t) &amp;= \log\det(Z + tY) \\
 <div id="def-separatinghyperplanes" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 12</strong></span> Let <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> be two non-empty sets in <span class="math inline">\(\mathbb{R}^n\)</span>$. Then a hyperplane <span class="math inline">\(H_{(a,\alpha)}\)</span> is called:</p>
 <ul>
-<li><p><em>Separating hyperplane</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(\bar{H}^+\)</span> (<span class="math inline">\(H^+\)</span> closure) and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(\bar{H}^-\)</span>. <img src="figures/Picture39.jpg" class="img-fluid" style="width:70.0%"></p></li>
-<li><p><em>Strictly separating</em> hyperplane for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> is <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(H^+\)</span> and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(H^-\)</span>.</p></li>
+<li><em>Separating hyperplane</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(\bar{H}^+\)</span> (<span class="math inline">\(H^+\)</span> closure) and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(\bar{H}^-\)</span>.</li>
 </ul>
-<p><img src="figures/Picture40.jpg" class="img-fluid" style="width:30.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture39.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
+</figure>
+</div>
 <ul>
-<li><p><em>Strongly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if there exists <span class="math inline">\(\alpha_1,\alpha_2\in\mathbb{R}\)</span> with <span class="math inline">\(\alpha_1 &gt; \alpha &gt; \alpha_2\)</span> such that <span class="math inline">\(C_1 \subset \bar{H}^+_{(a,\alpha_1)}\)</span> and <span class="math inline">\(C_2\subset \bar{H}^-_{(a,\alpha_2)}\)</span>. <img src="figures/Picture41.jpg" class="img-fluid" style="width:35.0%"></p></li>
-<li><p><em>Properly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(H\)</span> is a separating hyperplane and not both <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are contained in <span class="math inline">\(H\)</span>.</p></li>
-<li><p><em>Supporting hyperplane</em> of <span class="math inline">\(C_1\)</span> at point <span class="math inline">\(\bar{x}\in\bar{C}_1\)</span> if <span class="math inline">\(\bar{x} \in H\)</span> and <span class="math inline">\(H\)</span> separates <span class="math inline">\(\{\bar{x}\}\)</span> and <span class="math inline">\(C_1\)</span>.</p></li>
+<li><em>Strictly separating</em> hyperplane for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> is <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(H^+\)</span> and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(H^-\)</span>.</li>
 </ul>
-<p><img src="figures/Picture42.jpg" class="img-fluid" style="width:30.0%"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture40.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
+<ul>
+<li><em>Strongly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if there exists <span class="math inline">\(\alpha_1,\alpha_2\in\mathbb{R}\)</span> with <span class="math inline">\(\alpha_1 &gt; \alpha &gt; \alpha_2\)</span> such that <span class="math inline">\(C_1 \subset \bar{H}^+_{(a,\alpha_1)}\)</span> and <span class="math inline">\(C_2\subset \bar{H}^-_{(a,\alpha_2)}\)</span>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture41.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
+</figure>
+</div>
+<ul>
+<li><em>Properly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(H\)</span> is a separating hyperplane and not both <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are contained in <span class="math inline">\(H\)</span>.</li>
+<li><em>Supporting hyperplane</em> of <span class="math inline">\(C_1\)</span> at point <span class="math inline">\(\bar{x}\in\bar{C}_1\)</span> if <span class="math inline">\(\bar{x} \in H\)</span> and <span class="math inline">\(H\)</span> separates <span class="math inline">\(\{\bar{x}\}\)</span> and <span class="math inline">\(C_1\)</span>.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/Picture42.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
+</figure>
+</div>
 </div>
 <p>Recall that for a set <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span>, the relative interior of <span class="math inline">\(S\)</span> is</p>
 <p><span class="math display">\[\textnormal{ri}(S) = \{x\in S\mid \exists \varepsilon &gt; 0, B_\varepsilon(x) \cap \textnormal{aff}(S) \subset S\},\]</span></p>

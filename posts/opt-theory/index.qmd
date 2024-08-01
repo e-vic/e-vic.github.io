@@ -1261,19 +1261,21 @@ $$H_{(a,\alpha)}^- = \{x\in\mathbb{R}^n \mid \langle a,x\rangle < \alpha \}.$$
 Let $C_1$ and $C_2$ be two non-empty sets in $\mathbb{R}^n$$. Then a hyperplane $H_{(a,\alpha)}$ is called:
 
 - *Separating hyperplane* for $C_1$ and $C_2$ if $C_1$ is contained in $\bar{H}^+$ ($H^+$ closure) and $C_2$ in $\bar{H}^-$.
-![](figures/Picture39.jpg){width=70%}
+
+![](figures/Picture39.jpg){width=70% fig-align="center"}
 
 - *Strictly separating* hyperplane for $C_1$ and $C_2$ is $C_1$ is contained in $H^+$ and $C_2$ in $H^-$.
 
-![](figures/Picture40.jpg){width=30%}
+![](figures/Picture40.jpg){width=30% fig-align="center"}
 
 - *Strongly separating* for $C_1$ and $C_2$ if there exists $\alpha_1,\alpha_2\in\mathbb{R}$ with $\alpha_1 > \alpha > \alpha_2$ such that $C_1 \subset \bar{H}^+_{(a,\alpha_1)}$ and $C_2\subset \bar{H}^-_{(a,\alpha_2)}$.
-![](figures/Picture41.jpg){width=35%}
+
+![](figures/Picture41.jpg){width=35% fig-align="center"}
 
 - *Properly separating* for $C_1$ and $C_2$ if $H$ is a separating hyperplane and not both $C_1$ and $C_2$ are contained in $H$.
 - *Supporting hyperplane* of $C_1$ at point $\bar{x}\in\bar{C}_1$ if $\bar{x} \in H$ and $H$ separates $\{\bar{x}\}$ and $C_1$.
 
-![](figures/Picture42.jpg){width=30%}
+![](figures/Picture42.jpg){width=30% fig-align="center"}
 :::
 
 Recall that for a set $S\subseteq\mathbb{R}^n$, the relative interior of $S$ is 

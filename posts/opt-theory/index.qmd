@@ -1261,10 +1261,19 @@ $$H_{(a,\alpha)}^- = \{x\in\mathbb{R}^n \mid \langle a,x\rangle < \alpha \}.$$
 Let $C_1$ and $C_2$ be two non-empty sets in $\mathbb{R}^n$$. Then a hyperplane $H_{(a,\alpha)}$ is called:
 
 - *Separating hyperplane* for $C_1$ and $C_2$ if $C_1$ is contained in $\bar{H}^+$ ($H^+$ closure) and $C_2$ in $\bar{H}^-$.
+![](figures/Picture39.jpg){width=70%}
+
 - *Strictly separating* hyperplane for $C_1$ and $C_2$ is $C_1$ is contained in $H^+$ and $C_2$ in $H^-$.
+
+![](figures/Picture40.jpg){width=30%}
+
 - *Strongly separating* for $C_1$ and $C_2$ if there exists $\alpha_1,\alpha_2\in\mathbb{R}$ with $\alpha_1 > \alpha > \alpha_2$ such that $C_1 \subset \bar{H}^+_{(a,\alpha_1)}$ and $C_2\subset \bar{H}^-_{(a,\alpha_2)}$.
+![](figures/Picture41.jpg){width=35%}
+
 - *Properly separating* for $C_1$ and $C_2$ if $H$ is a separating hyperplane and not both $C_1$ and $C_2$ are contained in $H$.
 - *Supporting hyperplane* of $C_1$ at point $\bar{x}\in\bar{C}_1$ if $\bar{x} \in H$ and $H$ separates $\{\bar{x}\}$ and $C_1$.
+
+![](figures/Picture42.jpg){width=30%}
 :::
 
 Recall that for a set $S\subseteq\mathbb{R}^n$, the relative interior of $S$ is 
@@ -1274,7 +1283,7 @@ $$\ri(S) = \{x\in S\mid \exists \varepsilon > 0, B_\varepsilon(x) \cap \aff(S) \
 where $\aff(S)$ is the affine hull of $S$.
 
 ::: {#thm-supportinghyperplane}
-Let $C\in\mathbb{R}^n$ be a non-empty, convex set, and let $\bar{x}\in\bar{C}\backslash\ri(C)$. Then, there exists a supporting hyperplane to $C$ at $\bar{x}$, i.e. there exists a vector $a\in\mathbb{R}^n$ such that 
+Let $C\in\mathbb{R}^n$ be a non-empty, convex set, and let $\bar{x}\in\bar{C}\setminus \ri(C)$. Then, there exists a supporting hyperplane to $C$ at $\bar{x}$, i.e. there exists a vector $a\in\mathbb{R}^n$ such that 
 
 :::: {.column-margin}
 ![The supporting hyperplanes are in green.](figures/Picture29.jpg){width=80% fig-align="left"}
@@ -1817,7 +1826,30 @@ $$\lim_{k\rightarrow\infty} k g_j^+(x^k) = \mu_j^*.$$
 And, note that $g_j^+(x^*) \geq 0 \ \Rightarrow \mu_j^* \geq 0$. ■
 :::
 
+
 ### NLP and Duality
+
+We wish to study the following optimisation problem
+
+$$\begin{aligned}
+\min_{x\in C} \ & f(x) \\
+\textnormal{such that} \ & g_j(x) \leq 0, j\in\{1,...,r\}, \\
+& h_i(x) = 0, i\in\{1,...,m\},
+\end{aligned}$$
+
+where $C$ is non-empty and convex, $f, g_j$ are continuously differentiable from $C\rightarrow\mathbb{R}$, and $h_i(x) = \langle a_i, x\rangle + \beta_i$, $i = 1,...,m$.
+
+We are going to state the so-called Strong Duality Theorem for Convex Programming (which is the problem we just stated). Let
+
+$$L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i h_i(x) + \sum_{j=1}^r \mu_j g_j(x).$$
+
+As before, we can write the primal problem
+
+$$ \inf_{x\in C} \sup_{\mu\geq 0, \lambda\in\mathbb{R}^m} L(x,\lambda, \mu),$$
+
+and the dual problem
+
+$$\sup_{\mu\geq 0, \lambda\in\mathbb{R}^n} \inf_{x\in C} L(x,\lambda,\mu).$$
 
 # Algorithms for Optimisation
 

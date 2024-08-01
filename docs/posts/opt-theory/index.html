@@ -1262,18 +1262,22 @@ g(t) &amp;= \log\det(Z + tY) \\
 <div id="def-separatinghyperplanes" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 12</strong></span> Let <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> be two non-empty sets in <span class="math inline">\(\mathbb{R}^n\)</span>$. Then a hyperplane <span class="math inline">\(H_{(a,\alpha)}\)</span> is called:</p>
 <ul>
-<li><em>Separating hyperplane</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(\bar{H}^+\)</span> (<span class="math inline">\(H^+\)</span> closure) and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(\bar{H}^-\)</span>.</li>
-<li><em>Strictly separating</em> hyperplane for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> is <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(H^+\)</span> and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(H^-\)</span>.</li>
-<li><em>Strongly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if there exists <span class="math inline">\(\alpha_1,\alpha_2\in\mathbb{R}\)</span> with <span class="math inline">\(\alpha_1 &gt; \alpha &gt; \alpha_2\)</span> such that <span class="math inline">\(C_1 \subset \bar{H}^+_{(a,\alpha_1)}\)</span> and <span class="math inline">\(C_2\subset \bar{H}^-_{(a,\alpha_2)}\)</span>.</li>
-<li><em>Properly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(H\)</span> is a separating hyperplane and not both <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are contained in <span class="math inline">\(H\)</span>.</li>
-<li><em>Supporting hyperplane</em> of <span class="math inline">\(C_1\)</span> at point <span class="math inline">\(\bar{x}\in\bar{C}_1\)</span> if <span class="math inline">\(\bar{x} \in H\)</span> and <span class="math inline">\(H\)</span> separates <span class="math inline">\(\{\bar{x}\}\)</span> and <span class="math inline">\(C_1\)</span>.</li>
+<li><p><em>Separating hyperplane</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(\bar{H}^+\)</span> (<span class="math inline">\(H^+\)</span> closure) and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(\bar{H}^-\)</span>. <img src="figures/Picture39.jpg" class="img-fluid" style="width:70.0%"></p></li>
+<li><p><em>Strictly separating</em> hyperplane for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> is <span class="math inline">\(C_1\)</span> is contained in <span class="math inline">\(H^+\)</span> and <span class="math inline">\(C_2\)</span> in <span class="math inline">\(H^-\)</span>.</p></li>
 </ul>
+<p><img src="figures/Picture40.jpg" class="img-fluid" style="width:30.0%"></p>
+<ul>
+<li><p><em>Strongly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if there exists <span class="math inline">\(\alpha_1,\alpha_2\in\mathbb{R}\)</span> with <span class="math inline">\(\alpha_1 &gt; \alpha &gt; \alpha_2\)</span> such that <span class="math inline">\(C_1 \subset \bar{H}^+_{(a,\alpha_1)}\)</span> and <span class="math inline">\(C_2\subset \bar{H}^-_{(a,\alpha_2)}\)</span>. <img src="figures/Picture41.jpg" class="img-fluid" style="width:35.0%"></p></li>
+<li><p><em>Properly separating</em> for <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> if <span class="math inline">\(H\)</span> is a separating hyperplane and not both <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> are contained in <span class="math inline">\(H\)</span>.</p></li>
+<li><p><em>Supporting hyperplane</em> of <span class="math inline">\(C_1\)</span> at point <span class="math inline">\(\bar{x}\in\bar{C}_1\)</span> if <span class="math inline">\(\bar{x} \in H\)</span> and <span class="math inline">\(H\)</span> separates <span class="math inline">\(\{\bar{x}\}\)</span> and <span class="math inline">\(C_1\)</span>.</p></li>
+</ul>
+<p><img src="figures/Picture42.jpg" class="img-fluid" style="width:30.0%"></p>
 </div>
 <p>Recall that for a set <span class="math inline">\(S\subseteq\mathbb{R}^n\)</span>, the relative interior of <span class="math inline">\(S\)</span> is</p>
 <p><span class="math display">\[\textnormal{ri}(S) = \{x\in S\mid \exists \varepsilon &gt; 0, B_\varepsilon(x) \cap \textnormal{aff}(S) \subset S\},\]</span></p>
 <p>where <span class="math inline">\(\textnormal{aff}(S)\)</span> is the affine hull of <span class="math inline">\(S\)</span>.</p>
 <div id="thm-supportinghyperplane" class="theorem page-columns page-full">
-<p><span class="theorem-title"><strong>Theorem 12</strong></span> Let <span class="math inline">\(C\in\mathbb{R}^n\)</span> be a non-empty, convex set, and let <span class="math inline">\(\bar{x}\in\bar{C}\backslash\textnormal{ri}(C)\)</span>. Then, there exists a supporting hyperplane to <span class="math inline">\(C\)</span> at <span class="math inline">\(\bar{x}\)</span>, i.e.&nbsp;there exists a vector <span class="math inline">\(a\in\mathbb{R}^n\)</span> such that</p>
+<p><span class="theorem-title"><strong>Theorem 12</strong></span> Let <span class="math inline">\(C\in\mathbb{R}^n\)</span> be a non-empty, convex set, and let <span class="math inline">\(\bar{x}\in\bar{C}\setminus \textnormal{ri}(C)\)</span>. Then, there exists a supporting hyperplane to <span class="math inline">\(C\)</span> at <span class="math inline">\(\bar{x}\)</span>, i.e.&nbsp;there exists a vector <span class="math inline">\(a\in\mathbb{R}^n\)</span> such that</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-left">
@@ -1657,6 +1661,19 @@ f^*(x^*) &amp;= \sup_{x\in C} (\langle x,x^*\rangle - f(x)) \\
 </div>
 <section id="nlp-and-duality" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="nlp-and-duality"><span class="header-section-number">4.3.1</span> NLP and Duality</h3>
+<p>We wish to study the following optimisation problem</p>
+<p><span class="math display">\[\begin{aligned}
+\min_{x\in C} \ &amp; f(x) \\
+\textnormal{such that} \ &amp; g_j(x) \leq 0, j\in\{1,...,r\}, \\
+&amp; h_i(x) = 0, i\in\{1,...,m\},
+\end{aligned}\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is non-empty and convex, <span class="math inline">\(f, g_j\)</span> are continuously differentiable from <span class="math inline">\(C\rightarrow\mathbb{R}\)</span>, and <span class="math inline">\(h_i(x) = \langle a_i, x\rangle + \beta_i\)</span>, <span class="math inline">\(i = 1,...,m\)</span>.</p>
+<p>We are going to state the so-called Strong Duality Theorem for Convex Programming (which is the problem we just stated). Let</p>
+<p><span class="math display">\[L(x,\lambda,\mu) = f(x) + \sum_{i=1}^m \lambda_i h_i(x) + \sum_{j=1}^r \mu_j g_j(x).\]</span></p>
+<p>As before, we can write the primal problem</p>
+<p><span class="math display">\[ \inf_{x\in C} \sup_{\mu\geq 0, \lambda\in\mathbb{R}^m} L(x,\lambda, \mu),\]</span></p>
+<p>and the dual problem</p>
+<p><span class="math display">\[\sup_{\mu\geq 0, \lambda\in\mathbb{R}^n} \inf_{x\in C} L(x,\lambda,\mu).\]</span></p>
 </section>
 </section>
 </section>

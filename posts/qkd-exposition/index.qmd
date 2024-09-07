@@ -26,7 +26,7 @@ number-sections: true
 toc: true
 toc-location: left
 abstract: |
-  This exerpt, from the report I wrote for my candidacy exam, contains a brief description of quantum key distribution key rate calculations, and outlines one approach to solving for the key rate as a minimisation problem. 
+  This excerpt, from the report I wrote for my candidacy exam, contains a brief description of quantum key distribution key rate calculations, and outlines one approach to solving for the key rate as a minimisation problem. 
 ---
 
 $$
